@@ -1,2 +1,19 @@
-# Welcome to my capstone repository.
-# This repo consisits of 3 branches , Main (current), frontend and backend branch
+# capstone
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
