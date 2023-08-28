@@ -1,4 +1,5 @@
 <template>
+
   <h1 class="text-center m-3">CLOUD 9 SUPERSTORE</h1>
   <div class="container">
     <div class="col-12">
@@ -10,7 +11,7 @@
     </div>
     <div class="d-flex justify-content-center">
       <h1 class="text-center">SHOP</h1>
-      <!-- <button class="btn-view-all ">View All</button> -->
+      <!-- <button class="btn-view-all ms-auto">View All</button> -->
     </div>
     <div class="shop row justify-content-center">
       <div class="col-4">
@@ -19,7 +20,11 @@
           alt=""
           class="hardware-display"
         />
-        <h2 class="text-start category-name">HARDWARE</h2>
+        <div class="d-flex">
+    <h2 class="text-start category-name">HARDWARE</h2>
+       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        </div>
+    
       </div>
       <div class="col-2"></div>
       <div class="col-4">
@@ -28,7 +33,11 @@
           alt=""
           class="hardware-display"
         />
-        <h2 class="text-start category-name">SKIN ROUTINE</h2>
+        <!-- <h2 class="text-start category-name">SKIN ROUTINE</h2> -->
+            <div class="d-flex">
+    <h2 class="text-start category-name">SKIN ROUTINE</h2>
+       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        </div>
       </div>
       <div class="col-4">
         <img
@@ -36,7 +45,11 @@
           alt=""
           class="hardware-display"
         />
-        <h2 class="text-start category-name">BEVERAGES</h2>
+            <div class="d-flex">
+    <h2 class="text-start category-name">BEVERAGES</h2>
+       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        </div>
+        <!-- <h2 class="text-start category-name">BEVERAGES</h2> -->
       </div>
       <div class="col-2"></div>
       <div class="col-4">
@@ -45,10 +58,15 @@
           alt=""
           class="hardware-display"
         />
-        <h2 class="text-start category-name">SNACKS</h2>
+            <div class="d-flex">
+    <h2 class="text-start category-name">SNACKS</h2>
+       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        </div>
+        <!-- <h2 class="text-start category-name">SNACKS</h2> -->
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -78,4 +96,8 @@ export default {};
   color: var(--bgwhite);
   background-color: var(--secondary-color);
 } */
+.arrow{
+  width: 60px;
+  height: 37px;
+}
 </style>

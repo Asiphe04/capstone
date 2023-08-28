@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar fixed-top">
     <div class="logo">
       <svg
         width="114"
@@ -45,6 +45,9 @@
       </div>
     </ul>
   </nav>
+  <br>
+<br>
+<br>
 </template>
 
 <style scoped>
@@ -64,7 +67,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  /* padding: 5px; */
   background-color: var(--secondary-color);
   color: var(--bgwhite);
 }

@@ -28,9 +28,7 @@ export default {
   display: none;
 }
 #app {
-  font-family: "Inter", sans-serif, bold;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter";
   text-align: center;
   background-color: var(--primary-color);
 }
@@ -39,13 +37,10 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6,p,
 label {
   color: var(--bgwhite) !important;
 }
 
-/* 
-nav a.router-link-exact-active {
-  color: #42b983;
-} */
+
 </style>
