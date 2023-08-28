@@ -59,8 +59,8 @@
         </div>
       </div>
 </div>
-<h1>MEET THE TEAM</h1>
-   <div class="radio-inputs  justify-content-center align-items-center ">
+<h2>MEET THE TEAM</h2>
+   <div class="radio-inputs container">
   <label class="radio">
     <input type="radio" name="radio" checked="" v-model="activeTab" value="managers">
     <span class="name">Managers</span>
@@ -77,19 +77,34 @@
 
 </div>
  <div v-if="activeTab === 'managers'" class="managers">
-  <h1 >Managers</h1>
+  <h3 >Managers</h3>
 
 </div>
   <div v-else-if="activeTab === 'supervisers'" class="supervisers">
-  <h1 >supervisers</h1>
+  <h3 >supervisers</h3>
 
 
 </div>
  <div v-if="activeTab === 'floorteam'" class="floorteam">
-  <h1 >Managers</h1>
+  <h3 >Floor Team</h3>
 
 </div>
-<h1>IN PARTNERSHIP WITH:</h1>
+<h2>IN PARTNERSHIP WITH:</h2>
+<div class="container d-flex mx-auto justify-content-center align-items-center">
+<div class="circle1 m-3 ">
+  <img src="https://i.postimg.cc/rwhMRKDh/buco.png" alt="" class="sponser">
+</div>
+<div class="circle1 m-3">
+   <img src="https://i.postimg.cc/4yJXhtQS/g1.png" alt="" class="sponser">
+</div>
+<div class="circle1 m-3">
+   <img src="https://i.postimg.cc/j5SfQWcL/sminof.jpg" alt="" class="sponser">
+</div>
+<div class="circle1 m-3">
+   <img src="https://i.postimg.cc/DyT29VVc/simba.png" alt="" class="sponser">
+</div>
+</div>
+
 </template>
 <style scoped>
 .employees-img{
@@ -154,7 +169,17 @@
   background-color: #fff;
   font-weight: 600;
 }
-
+/* div.circle1 {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid var(--bgblack);
+} */
+div.circle1, .sponser {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
 </style>
 <script>
