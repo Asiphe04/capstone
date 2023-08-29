@@ -35,19 +35,19 @@
       <input type="checkbox" id="checkbox_toggle" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a  href="/about">About</a></li>
-        <li><a href="/">Products</a></li>
-        <li><a href="/">Contact</a></li>
-        <li><a href="/">Cart</a></li>
-        <li><a href="/">Wishlist</a></li>
-        <li><a href="/">Admin</a></li>
+        <li><router-link to="/" class="link">Home</router-link></li>
+        <li><router-link to="/about" class="link">About</router-link></li>
+        <li><router-link to="/" class="link">Products</router-link></li>
+        <li><router-link to="/" class="link">Contact</router-link></li>
+        <li><router-link to="/" class="link">Cart</router-link></li>
+        <li><router-link to="/" class="link">Wishlist</router-link></li>
+        <li><router-link to="/" class="link">Admin</router-link></li>
       </div>
     </ul>
   </nav>
-  <br>
-<br>
-<br>
+  <br />
+  <br />
+  <br />
 </template>
 
 <style scoped>
@@ -55,7 +55,7 @@
   margin: 0;
 }
 
-a {
+.link {
   text-decoration: none;
 }
 
@@ -72,8 +72,8 @@ li {
   color: var(--bgwhite);
 }
 
-.nav-links a {
-  color: var(--bgwhite);
+.link {
+  color: var(--bgwhite) !important;
 }
 
 .logo {
@@ -87,7 +87,7 @@ li {
 }
 
 .menu li:hover {
-  background-color: #4c9e9e;
+  background-color: var(--primary-color);
   border-radius: 5px;
   transition: 0.3s ease;
 }
