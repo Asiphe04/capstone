@@ -37,11 +37,11 @@
       <div class="menu">
         <li><router-link to="/" class="link">Home</router-link></li>
         <li><router-link to="/about" class="link">About</router-link></li>
-        <li><router-link to="/" class="link">Products</router-link></li>
-        <li><router-link to="/" class="link">Contact</router-link></li>
+        <li><router-link to="/products" class="link">Products</router-link></li>
+        <li><router-link to="/contact" class="link">Contact</router-link></li>
+        <li><router-link to="/admin" class="link">Admin</router-link></li>
         <li><router-link to="/" class="link">Cart</router-link></li>
         <li><router-link to="/" class="link">Wishlist</router-link></li>
-        <li><router-link to="/" class="link">Admin</router-link></li>
       </div>
     </ul>
   </nav>

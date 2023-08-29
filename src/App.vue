@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sarabun&display=swap");
 
 :root {
   --primary-color: #33658a;
@@ -28,7 +28,12 @@ export default {
   display: none;
 }
 #app {
-  font-family: "Inter";
+  -o-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  font-family: Sarabun, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   text-align: center;
   background-color: var(--primary-color);
 }
@@ -37,10 +42,9 @@ h2,
 h3,
 h4,
 h5,
-h6,p,
+h6,
+p,
 label {
   color: var(--bgwhite) !important;
 }
-
-
 </style>
