@@ -41,7 +41,7 @@
         <li><router-link to="/contact" class="link">Contact</router-link></li>
         <li><router-link to="/admin" class="link">Admin</router-link></li>
         <li><router-link to="/" class="link">Cart</router-link></li>
-        <li><router-link to="/" class="link">Wishlist</router-link></li>
+        <!-- <li><router-link to="/" class="link">Wishlist</router-link></li> -->
       </div>
     </ul>
   </nav>
