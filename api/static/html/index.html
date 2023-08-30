@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>API</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-info">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">API Routes</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item active-li">
+              <a
+                class="nav-link active"
+                target="_blank"
+                href="https://nodejseomp.onrender.com/"
+                >Render</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                target="_blank"
+                href="https://nodeeomp-70dc2.web.app/#/"
+              >
+                Firebase</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                target="_blank"
+                href="https://github.com/Asiphe04/NodeJS_EOMP.git"
+                >Repo</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="m-2">
+      <h1 class="text-center">API</h1>
+
+      <div
+        class="container-fluid mx-auto my-3 bshad"
+        style="width: 80%; border: 2px solid #333"
+      >
+        <h2>Home Route</h2>
+        <table class="table table-success table-striped m-1 p-0">
+          <thead>
+            <tr>
+              <th scope="col">Request</th>
+              <th scope="col">Route URL</th>
+              <th scope="col" colspan="2">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/</td>
+              <td colspan="2">Home page.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="container-fluid mx-auto my-3 bshad"
+        style="width: 80%; border: 2px solid #333"
+      >
+        <h2>User Routes</h2>
+        <table class="table table-success table-striped m-1 p-0">
+          <thead>
+            <tr>
+              <th scope="col">Request</th>
+              <th scope="col">Route URL</th>
+              <th scope="col" colspan="2">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/users</td>
+              <td>Fetches all users from DB and displays</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/users</td>
+              <td>Inserts new users to the DB</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/users/login</td>
+              <td>
+                Upon examining the database to confirm the user's email and
+                password, a JWT is generated for authenticated users
+              </td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/users/:id</td>
+              <td>Fetches specific user from DB by their userID & displays</td>
+            </tr>
+            <tr>
+              <td>PATCH</td>
+              <td>/users/:id</td>
+              <td>Updates specific user information</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/users/:id</td>
+              <td>Deletes specific user by the User ID.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="container-fluid mx-auto my-3 bshad"
+        style="width: 80%; border: 2px solid #333"
+      >
+        <h2>Product Routes</h2>
+        <table class="table table-success table-striped m-1 p-0">
+          <thead>
+            <tr>
+              <th scope="col">Request</th>
+              <th scope="col">Route URL</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/products</td>
+              <td>Fetches all products from DB and displays</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/products</td>
+              <td>Inserts new product to the DB</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/products/:id</td>
+              <td>
+                Fetches specific product from DB by their Product ID & displays
+              </td>
+            </tr>
+            <tr>
+              <td>PATCH</td>
+              <td>/products/:id</td>
+              <td>Updates/Changes specific product information</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/products/:id</td>
+              <td>Deletes specific product by the product ID.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <style>
+      .navbar {
+        position: fixed;
+        width: 100%;
+        top: 0;
+      }
+    </style>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
