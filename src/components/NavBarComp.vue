@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top">
+  <nav class="navbar fixed-top justify-content-center">
     <div class="logo">
       <svg
         width="114"
@@ -35,22 +35,113 @@
       <input type="checkbox" id="checkbox_toggle" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
-        <li><router-link to="/" class="link">Home</router-link></li>
-        <li><router-link to="/about" class="link">About</router-link></li>
-        <li><router-link to="/products" class="link">Products</router-link></li>
-        <li><router-link to="/contact" class="link">Contact</router-link></li>
-        <li><router-link to="/admin" class="link">Admin</router-link></li>
-        <li><router-link to="/" class="link">Cart</router-link></li>
-        <!-- <li><router-link to="/" class="link">Wishlist</router-link></li> -->
+        <li>
+          <router-link to="/" class="link" :exact-active-class="'active-link'"
+            ><i class="fa fa-home fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Home</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/about"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">About</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/products"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa-brands fa-product-hunt fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Products</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/contact"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-address-book fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Contact</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/admin"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">User</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/wishlist"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Wishlist</span></router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/cart"
+            class="link"
+            :exact-active-class="'active-link'"
+          >
+            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Cart</span></router-link
+          >
+        </li>
       </div>
     </ul>
+    <div class="icons d-flex"></div>
   </nav>
+
   <br />
   <br />
   <br />
 </template>
 
 <style scoped>
+.link.active-link .fa-home,
+.link.active-link .fa-info-circle,
+.link.active-link .fa-shopping-cart,
+.link.active-link .fa-heart,
+.link.active-link .fa-address-book,
+.link.active-link .fa-user,
+.link.active-link .fa-product-hunt {
+  color: var(--primary-color); /* Change this to your desired green color */
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -30px; /* Position it at the bottom of the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in;
+}
+
+.link:hover .tooltip {
+  opacity: 1;
+}
+
 * {
   margin: 0;
 }
@@ -87,7 +178,7 @@ li {
 }
 
 .menu li:hover {
-  background-color: var(--primary-color);
+  background-color: #4083b6;
   border-radius: 5px;
   transition: 0.3s ease;
 }

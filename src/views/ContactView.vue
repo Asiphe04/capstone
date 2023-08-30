@@ -1,6 +1,6 @@
 <template>
   <h1 class="m-2">CONTACT US</h1>
-  <div class="container d-flex ">
+  <div class="container d-flex">
     <div class="contact-form col-6 m-4">
       <span class="title text-white">Leave a Message</span>
       <form class="form" action="https://formspree.io/f/mzblbdga" method="POST">
@@ -74,7 +74,9 @@ export default {};
 #contact-img {
   border-radius: 3%;
   height: 330px;
-  width: 500px;
+  width: 100%;
+  /* width: 500px;
+   */
   /* background-image: url("https://i.postimg.cc/nhcxpbgY/l2.png"); */
   /* background-size: cover; */
   /* background-position: center; */
