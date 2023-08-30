@@ -6,20 +6,24 @@
         :alt="product.prodName"
         class="top-picks-img"
       />
+      <p class="text-start">
+      {{product.description}}
+      </p>
+   
     </div>
-    <div class="col-6 mt-5">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-        eveniet est molestias, nulla dolorum aperiam nesciunt hic labore natus
-        totam sint suscipit nihil, porro, dignissimos illo pariatur ex. Enim,
-        perspiciatis?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quis
-        nobis, fugiat vel iste eveniet, perferendis, ullam amet minus nesciunt
-        earum neque quasi voluptas consectetur blanditiis pariatur accusantium
-        iure ducimus.
-      </p>
+    <div class="col-6 mt-3">
+      <h1 class="text-start uppercase">{{product.prodName}}</h1>
+      <h3 class="text-start uppercase">{{product.category}}</h3>
+      <br>
+       <h4 class="text-start">R{{product.amount}}</h4>
+      <h5 class="text-end">SIZE GUIDE:</h5>
+      <h6 class="text-end">NB: ONLY THIS SIZE IS AVAILABLE</h6>
+
+       
+        <div class="buttons text-start">
+           <button >Add to Cart</button>
+           <button >Back</button>
+        </div>
     </div>
   </div>
   <!-- <div v-if="product" class="employee-details">
@@ -54,3 +58,33 @@ export default {
   },
 };
 </script>
+<style scoped>
+h6{
+  color: #FF4C4C !important;
+}
+button {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge var(--secondary-color);
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  margin: 14px;
+}
+.top-picks-img{
+  width: 419px;
+  height: 419px;
+}
+h3{
+  text-transform: uppercase !important;
+   font-size: 50px;
+}
+h1{
+   text-transform: uppercase !important;
+  font-size: 100px;
+}
+</style>
