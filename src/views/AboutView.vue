@@ -100,7 +100,12 @@
     </label>
 
     <label class="radio">
-      <input type="radio" name="radio" v-model="activeTab" value="floorteam" />
+      <input
+        type="radio"
+        name="radio"
+        v-model="activeTab"
+        value="floor worker"
+      />
       <span class="name">Floor Team</span>
     </label>
   </div>
@@ -108,27 +113,31 @@
     v-if="activeTab === 'managers'"
     class="managers d-flex justify-content-center"
   >
-    <UserComp v-for="user of users" :key="user.userID" :user="user" />
+    <UserComp
+      v-for="user in filteredUsers('Manager')"
+      :key="user.userID"
+      :user="user"
+    />
   </div>
-  <div v-else-if="activeTab === 'supervisers'" class="supervisers">
-    <UserComp v-for="user of users" :key="user.userID" :user="user" />
-    <!-- <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/j57fWv4S/guy3.webp"
-      alt=""
-      class="employee-img"
-    /> -->
+  <div
+    v-else-if="activeTab === 'supervisers'"
+    class="supervisers d-flex justify-content-center"
+  >
+    <UserComp
+      v-for="user in filteredUsers('Supervisor')"
+      :key="user.userID"
+      :user="user"
+    />
   </div>
-  <div v-if="activeTab === 'floorteam'" class="floorteam">
-    <UserComp v-for="user of users" :key="user.userID" :user="user" />
-    <!-- <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/ydTz1C3h/guy9.webp"
-      alt=""
-      class="employee-img"
-    /> -->
+  <div
+    v-if="activeTab === 'floor worker'"
+    class="floorteam d-flex justify-content-center"
+  >
+    <UserComp
+      v-for="user in filteredUsers('floor worker')"
+      :key="user.userID"
+      :user="user"
+    />
   </div>
   <h2>IN PARTNERSHIP WITH:</h2>
 
@@ -161,6 +170,38 @@
     </div>
   </div>
 </template>
+
+<script>
+import UserComp from "@/components/UserComp.vue";
+
+export default {
+  data() {
+    return {
+      activeTab: "managers",
+    };
+  },
+  computed: {
+    users() {
+      return this.$store.state.users;
+    },
+  },
+  methods: {
+    filteredUsers(role) {
+      if (this.users) {
+        return this.users.filter((user) => user.userRole === role);
+      } else {
+        return [];
+      }
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch("getUsers");
+  },
+  components: { UserComp },
+};
+</script>
+
 <style scoped>
 .employees-img {
   height: 300px;
@@ -243,22 +284,3 @@ div.circle1,
   border-radius: 50%;
 }
 </style>
-<script>
-import UserComp from "@/components/UserComp.vue";
-export default {
-  data() {
-    return {
-      activeTab: "managers",
-    };
-  },
-  computed: {
-    users() {
-      return this.$store.state.users;
-    },
-  },
-  mounted() {
-    this.$store.dispatch("getUsers");
-  },
-  components: { UserComp },
-};
-</script>
