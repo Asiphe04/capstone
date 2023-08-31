@@ -32,7 +32,11 @@
       </form>
     </div>
     <div class="col-6 m-4">
-      <img src="https://i.postimg.cc/nhcxpbgY/l2.png" alt="" id="contact-img" />
+      <img
+        src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
+        alt=""
+        id="contact-img"
+      />
       <h3 class="m-2 text-center">FOLLOW US:</h3>
       <div class="social-icons">
         <a

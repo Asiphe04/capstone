@@ -36,11 +36,12 @@
 
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <img
-          src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-          alt=""
-          class="arrow ms-auto"
-        />
+        <router-link to="/history">
+          <img
+            src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+            alt=""
+            class="arrow ms-auto"
+        /></router-link>
       </div>
     </div>
     <div class="col-3">
@@ -53,11 +54,13 @@
 
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <img
-          src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-          alt=""
-          class="arrow ms-auto"
-        />
+        <router-link to="/values">
+          <img
+            src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+            alt=""
+            class="arrow ms-auto"
+          />
+        </router-link>
       </div>
     </div>
     <div class="col-3">
@@ -69,11 +72,13 @@
       />
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <img
-          src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-          alt=""
-          class="arrow ms-auto"
-        />
+        <router-link to="/mission">
+          <img
+            src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+            alt=""
+            class="arrow ms-auto"
+          />
+        </router-link>
       </div>
     </div>
   </div>
