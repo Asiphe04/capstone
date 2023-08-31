@@ -1,19 +1,19 @@
 <template>
   <div class="container d-flex" v-if="product">
-    <div class="col-6">
+    <div class="col-6 m-3">
       <img
         :src="product.prodURL"
         :alt="product.prodName"
         class="top-picks-img"
       />
-      <p class="desc text-start">
-        {{ product.description }}
-      </p>
     </div>
     <div class="col-6 mt-5">
       <h1 class="text-start uppercase">{{ product.prodName }}</h1>
       <h3 class="text-start uppercase">{{ product.category }}</h3>
       <br />
+      <p class="desc text-start">
+        {{ product.description }}
+      </p>
       <h4 class="text-start">R{{ product.amount }}</h4>
       <h5 class="text-end">SIZE GUIDE:</h5>
       <h6 class="text-end">NB: ONLY THIS SIZE IS AVAILABLE</h6>
@@ -44,7 +44,7 @@ export default {
 </script>
 <style scoped>
 .desc {
-  font-size: 34px;
+  font-size: 19px;
 }
 
 h6 {
@@ -64,8 +64,8 @@ button {
   margin: 14px;
 }
 .top-picks-img {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
 }
 h3 {
   text-transform: uppercase !important;
