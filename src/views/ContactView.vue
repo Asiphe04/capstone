@@ -109,9 +109,9 @@ export default {};
   font-size: 14px;
   color: white;
   position: absolute;
-  top: -10px;
+  top: -20px;
   left: 10px;
-  background-color: #fff;
+  background-color: transparent;
   transition: all 0.3s ease;
 }
 

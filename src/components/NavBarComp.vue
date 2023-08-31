@@ -96,6 +96,38 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
+
+        <div class="dropdown">
+          <router-link
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            to="/admin"
+            type="button"
+            class="link btn dropdown-toggle"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">User</span></router-link
+          >
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <router-link
+                to="/login"
+                class="text-decoration-none text-white text-center"
+              >
+                <a class="dropdown-item text-white" href="#">Login</a>
+              </router-link>
+            </li>
+            <router-link
+              to="/register"
+              class="text-decoration-none text-white text-center"
+            >
+              <a class="dropdown-item text-white" href="#">Sign Up</a>
+            </router-link>
+            <li></li>
+          </ul>
+        </div>
       </div>
     </ul>
     <div class="icons d-flex"></div>
@@ -107,6 +139,14 @@
 </template>
 
 <style scoped>
+.dropdown-item,
+#dropdownMenuButton1,
+:hover {
+  background-color: var(--secondary-color) !important;
+}
+.dropdown-menu {
+  background-color: var(--secondary-color) !important;
+}
 .link.active-link .fa-home,
 .link.active-link .fa-info-circle,
 .link.active-link .fa-shopping-cart,

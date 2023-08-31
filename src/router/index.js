@@ -49,6 +49,18 @@ const routes = [
     component: () => import("../views/AdminView.vue"),
     props: true,
   },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/LoginView.vue"),
+    props: true,
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("../views/RegisterView.vue"),
+    props: true,
+  },
 ];
 
 const router = createRouter({

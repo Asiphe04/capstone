@@ -1,5 +1,4 @@
 <template>
-
   <h1 class="text-center m-3">CLOUD 9 SUPERSTORE</h1>
   <div class="container">
     <div class="col-12">
@@ -11,8 +10,12 @@
     </div>
     <div class="d-flex justify-content-center">
       <h1 class="text-center">SHOP</h1>
-      <!-- <button class="btn-view-all ms-auto">View All</button> -->
     </div>
+    <button class="ms-auto">
+      <router-link class="text-white text-decoration-none" to="/products"
+        >View All</router-link
+      >
+    </button>
     <div class="shop row justify-content-center">
       <div class="col-4">
         <img
@@ -21,10 +24,15 @@
           class="hardware-display"
         />
         <div class="d-flex">
-    <h2 class="text-start category-name">HARDWARE</h2>
-       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+          <h2 class="text-start category-name">HARDWARE</h2>
+          <router-link to="/products">
+            <img
+              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+              alt=""
+              class="arrow ms-auto"
+            />
+          </router-link>
         </div>
-    
       </div>
       <div class="col-2"></div>
       <div class="col-4">
@@ -33,10 +41,16 @@
           alt=""
           class="hardware-display"
         />
-        <!-- <h2 class="text-start category-name">SKIN ROUTINE</h2> -->
-            <div class="d-flex">
-    <h2 class="text-start category-name">SKIN ROUTINE</h2>
-       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+
+        <div class="d-flex">
+          <h2 class="text-start category-name">SKIN ROUTINE</h2>
+          <router-link to="/products">
+            <img
+              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+              alt=""
+              class="arrow ms-auto"
+            />
+          </router-link>
         </div>
       </div>
       <div class="col-4">
@@ -45,11 +59,16 @@
           alt=""
           class="hardware-display"
         />
-            <div class="d-flex">
-    <h2 class="text-start category-name">BEVERAGES</h2>
-       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        <div class="d-flex">
+          <h2 class="text-start category-name">BEVERAGES</h2>
+          <router-link to="/products">
+            <img
+              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+              alt=""
+              class="arrow ms-auto"
+            />
+          </router-link>
         </div>
-        <!-- <h2 class="text-start category-name">BEVERAGES</h2> -->
       </div>
       <div class="col-2"></div>
       <div class="col-4">
@@ -58,21 +77,38 @@
           alt=""
           class="hardware-display"
         />
-            <div class="d-flex">
-    <h2 class="text-start category-name">SNACKS</h2>
-       <img src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png" alt="" class="arrow ms-auto">
+        <div class="d-flex">
+          <h2 class="text-start category-name">SNACKS</h2>
+          <router-link to="/products">
+            <img
+              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+              alt=""
+              class="arrow ms-auto"
+            />
+          </router-link>
         </div>
-        <!-- <h2 class="text-start category-name">SNACKS</h2> -->
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
 export default {};
 </script>
 <style scoped>
+button {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge var(--secondary-color);
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  margin: 14px;
+}
 .home-wallpaper {
   width: 100%;
   height: 475px;
@@ -96,7 +132,7 @@ export default {};
   color: var(--bgwhite);
   background-color: var(--secondary-color);
 } */
-.arrow{
+.arrow {
   width: 60px;
   height: 37px;
 }
