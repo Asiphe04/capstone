@@ -6,40 +6,24 @@
         :alt="product.prodName"
         class="top-picks-img"
       />
-      <p class="text-start">
-      {{product.description}}
+      <p class="desc text-start">
+        {{ product.description }}
       </p>
-   
     </div>
-    <div class="col-6 mt-3">
-      <h1 class="text-start uppercase">{{product.prodName}}</h1>
-      <h3 class="text-start uppercase">{{product.category}}</h3>
-      <br>
-       <h4 class="text-start">R{{product.amount}}</h4>
+    <div class="col-6 mt-5">
+      <h1 class="text-start uppercase">{{ product.prodName }}</h1>
+      <h3 class="text-start uppercase">{{ product.category }}</h3>
+      <br />
+      <h4 class="text-start">R{{ product.amount }}</h4>
       <h5 class="text-end">SIZE GUIDE:</h5>
       <h6 class="text-end">NB: ONLY THIS SIZE IS AVAILABLE</h6>
 
-       
-        <div class="buttons text-start">
-           <button >Add to Cart</button>
-           <button >Back</button>
-        </div>
+      <div class="buttons text-start">
+        <button>Add to Cart</button>
+        <button>Back</button>
+      </div>
     </div>
   </div>
-  <!-- <div v-if="product" class="employee-details">
-    <div class="img-container">
-      <img
-        :src="product.prodURL"
-        :alt="product.prodName"
-        class="top-picks-img"
-      />
-    </div>
-
-    <h1 class="text-white">
-      {{ product.prodName }}<br />R{{ product.amount }}
-    </h1>
-    <p class="text-white">{{ product.description }}</p>
-  </div> -->
   <div v-else class="text-white">Error</div>
 </template>
 
@@ -59,8 +43,12 @@ export default {
 };
 </script>
 <style scoped>
-h6{
-  color: #FF4C4C !important;
+.desc {
+  font-size: 34px;
+}
+
+h6 {
+  color: #ff4c4c !important;
 }
 button {
   width: 10em;
@@ -75,16 +63,16 @@ button {
   font-size: 16px;
   margin: 14px;
 }
-.top-picks-img{
-  width: 419px;
-  height: 419px;
+.top-picks-img {
+  width: 400px;
+  height: 400px;
 }
-h3{
+h3 {
   text-transform: uppercase !important;
-   font-size: 50px;
+  font-size: 50px;
 }
-h1{
-   text-transform: uppercase !important;
+h1 {
+  text-transform: uppercase !important;
   font-size: 100px;
 }
 </style>

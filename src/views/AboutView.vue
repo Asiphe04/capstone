@@ -108,110 +108,27 @@
     v-if="activeTab === 'managers'"
     class="managers d-flex justify-content-center"
   >
-    <div>
-      <img
-        width="150"
-        height="150"
-        src="https://i.postimg.cc/rsj9fQ0N/guy.webp"
-        alt=""
-        class="employee-img"
-      />
-      <p class="m-0">Asiphe Ndimlana</p>
-      <p style="color: #bec6d3 !important">Board of Directors</p>
-    </div>
-    <div>
-      <img
-        width="150"
-        height="150"
-        src="https://i.postimg.cc/rsj9fQ0N/guy.webp"
-        alt=""
-        class="employee-img"
-      />
-      <p class="m-0">Asiphe Ndimlana</p>
-      <p style="color: #bec6d3 !important">Board of Directors</p>
-    </div>
-    <div>
-      <img
-        width="150"
-        height="150"
-        src="https://i.postimg.cc/rsj9fQ0N/guy.webp"
-        alt=""
-        class="employee-img"
-      />
-      <p class="m-0">Asiphe Ndimlana</p>
-      <p style="color: #bec6d3 !important">Board of Directors</p>
-    </div>
-    <div>
-      <img
-        width="150"
-        height="150"
-        src="https://i.postimg.cc/rsj9fQ0N/guy.webp"
-        alt=""
-        class="employee-img"
-      />
-      <p class="m-0">Asiphe Ndimlana</p>
-      <p style="color: #bec6d3 !important">Board of Directors</p>
-    </div>
+    <UserComp v-for="user of users" :key="user.userID" :user="user" />
   </div>
   <div v-else-if="activeTab === 'supervisers'" class="supervisers">
-    <img
+    <UserComp v-for="user of users" :key="user.userID" :user="user" />
+    <!-- <img
       width="150"
       height="150"
       src="https://i.postimg.cc/j57fWv4S/guy3.webp"
       alt=""
       class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/j57fWv4S/guy3.webp"
-      alt=""
-      class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/j57fWv4S/guy3.webp"
-      alt=""
-      class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/j57fWv4S/guy3.webp"
-      alt=""
-      class="employee-img"
-    />
+    /> -->
   </div>
   <div v-if="activeTab === 'floorteam'" class="floorteam">
-    <img
+    <UserComp v-for="user of users" :key="user.userID" :user="user" />
+    <!-- <img
       width="150"
       height="150"
       src="https://i.postimg.cc/ydTz1C3h/guy9.webp"
       alt=""
       class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/cC9y37mr/guy8.webp"
-      alt=""
-      class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/fyTQkqYG/guy7.webp"
-      alt=""
-      class="employee-img"
-    />
-    <img
-      width="150"
-      height="150"
-      src="https://i.postimg.cc/Kvpx3bqJ/guy15.webp"
-      alt=""
-      class="employee-img"
-    />
+    /> -->
   </div>
   <h2>IN PARTNERSHIP WITH:</h2>
 
@@ -327,11 +244,21 @@ div.circle1,
 }
 </style>
 <script>
+import UserComp from "@/components/UserComp.vue";
 export default {
   data() {
     return {
       activeTab: "managers",
     };
   },
+  computed: {
+    users() {
+      return this.$store.state.users;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getUsers");
+  },
+  components: { UserComp },
 };
 </script>
