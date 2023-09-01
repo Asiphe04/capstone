@@ -53,5 +53,23 @@ router.delete("/users/:id", deleteUser);
 // Update a user
 router.put("/users/:id", updateUser);
 
+//orders
+const controller = require("../controllers/orders");
+
+router.get("/orders/:userID", (req, res) => {
+  controller.getOrders(req, res);
+});
+router.post("/orders", (req, res) => {
+  controller.createOrder(req, res);
+});
+router.patch("/orders/:id", (req, res) => {
+  controller.updateOrder(req, res);
+});
+router.delete("/orders/:id", (req, res) => {
+  controller.deleteOrder(req, res);
+});
+router.delete("/orders/", (req, res) => {
+  controller.deleteOrders(req, res);
+});
 // export default router
 module.exports = router;
