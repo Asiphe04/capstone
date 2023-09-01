@@ -2,7 +2,7 @@
   <div>
     <h1>YOUR ITEMS</h1>
     <div v-if="cart && cart.length > 0">
-      <!-- <ul> -->
+     
       <div v-for="(item, index) in cart" :key="index">
         <h1>{{ item.prodName }}</h1>
         <img :src="item.prodURL" alt="" class="w-25" />
@@ -11,7 +11,7 @@
 
         <button @click="removeFromCart(index)">Remove</button>
       </div>
-      <!-- </ul> -->
+    
     </div>
     <div v-else>
       <p>Your cart is empty</p>

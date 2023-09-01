@@ -14,7 +14,8 @@
         {{ product.prodName }} <br />
         R{{ product.amount }}
       </h4>
-      <button @click="addToCart(product)" class="btn-see-more btn m-2">
+      <button @click="addToCart(product)" class="btn-add-to-cart
+       btn m-2">
         Add to cart
       </button>
 
