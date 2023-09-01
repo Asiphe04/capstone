@@ -1,5 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const {
+  createCart,
+  deleteAllCartItems,
+  deleteCart,
+  showCart,
+  updateCart,
+} = require("../controllers/orders");
 // import functions from controller
 const {
   showProducts,
@@ -54,22 +61,15 @@ router.delete("/users/:id", deleteUser);
 router.put("/users/:id", updateUser);
 
 //orders
-const controller = require("../controllers/orders");
+router.get("/users/:id/cart", showCart);
 
-router.get("/orders/:userID", (req, res) => {
-  controller.getOrders(req, res);
-});
-router.post("/orders", (req, res) => {
-  controller.createOrder(req, res);
-});
-router.patch("/orders/:id", (req, res) => {
-  controller.updateOrder(req, res);
-});
-router.delete("/orders/:id", (req, res) => {
-  controller.deleteOrder(req, res);
-});
-router.delete("/orders/", (req, res) => {
-  controller.deleteOrders(req, res);
-});
+router.post("/users/:id/cart", createCart);
+
+router.delete("/users/:id/cart", deleteAllCartItems);
+
+router.delete("/users/:id/cart/:id", deleteCart);
+
+router.put("/users/:id/cart/:id", updateCart);
+
 // export default router
 module.exports = router;

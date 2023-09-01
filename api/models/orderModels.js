@@ -1,52 +1,77 @@
-const con = require("../config/db");
+//Import database connection
+const db = require("../config/db");
+
+const getCart = (id, result) => {
+  db.query(
+    `SELECT prodName,description ,amount ,prodUrl
+     FROM users
+     INNER JOIN cart ON users.userID = cart.userID
+    INNER JOIN products ON cart.prodID = products.prodID
+    WHERE cart.userID = ? `,
+    [id],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
+
+const insertCart = (data, result) => {
+  db.query("INSERT INTO cart SET ?;", data, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
+    }
+  });
+};
+
+const updateCartbyId = (data, id, result) => {
+  db.query(
+    `UPDATE cart SET ? WHERE cartID = ? `,
+    [data, id],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
+
+const removeCart = (id, result) => {
+  db.query(`DELETE FROM cart WHERE cartID = ?`, id, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
+    }
+  });
+};
+
+const removeAllcartItems = (id, result) => {
+  db.query(`DELETE FROM cart WHERE userID = ?`, id, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
+    }
+  });
+};
 
 module.exports = {
-  getOrders(req, res) {
-    con.query(
-      `SELECT * FROM orders AS o JOIN products AS p ON o.prodID = p.prodID WHERE userID = ?;`,
-      [req.params.userID],
-      (err, result) => {
-        if (err) throw err;
-        res.status(200);
-        res.send(result);
-      }
-    );
-  },
-  createOrder(req, res) {
-    let orderData = req.body;
-    con.query("INSERT INTO orders SET ?", [orderData], (err) => {
-      if (err) throw err;
-      res.send({ msg: "Order Added successfully!" });
-    });
-  },
-  updateOrder(req, res) {
-    con.query(
-      "UPDATE orders SET ? WHERE orderID = ?",
-      [req.body, req.params.id],
-      (err) => {
-        if (err) throw err;
-        res.send([req.body, { msg: "Order Updated Successfully" }]);
-      }
-    );
-  },
-  deleteOrder(req, res) {
-    con.query(
-      "DELETE FROM orders WHERE orderID = ?;",
-      [req.params.id],
-      (err) => {
-        if (err) throw err;
-        res.send([req.body, { msg: "Order Deleted Successfully" }]);
-      }
-    );
-  },
-  deleteOrders(req, res) {
-    con.query(
-      "DELETE FROM orders WHERE userID = ?;",
-      [req.params.id],
-      (err) => {
-        if (err) throw err;
-        res.send([req.body, { msg: "Product Deleted Successfully" }]);
-      }
-    );
-  },
+  getCart,
+  insertCart,
+  updateCartbyId,
+  removeCart,
+  removeAllcartItems,
 };
