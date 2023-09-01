@@ -14,11 +14,8 @@
         {{ product.prodName }} <br />
         R{{ product.amount }}
       </h4>
-      <router-link :to="{ name: 'product', params: { id: product.prodID } }">
-        <button class="btn-add-to-cart btn m-2">
-          Add to cart
-        </button></router-link
-      >
+      <button @click="addToCart(product)">Add to cart</button>
+
       <router-link :to="{ name: 'product', params: { id: product.prodID } }">
         <button class="btn-see-more btn">See more</button></router-link
       >
@@ -28,6 +25,16 @@
 <script>
 export default {
   props: ["product"],
+  methods: {
+    addToCart(product) {
+      // Check if the addToCart method is being called
+      console.log("Adding to cart:", product);
+
+      // Dispatch the addToCart action
+      this.$store.dispatch("addToCart", product);
+    },
+    // ... other methods
+  },
 };
 </script>
 <style scoped>

@@ -9,7 +9,7 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    cart: null,
+    cart: [],
   },
 
   mutations: {
@@ -25,8 +25,12 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
     },
-    setCart: (state, cart) => {
-      state.cart = cart;
+    // setCart: (state, cart) => {
+    //   state.cart = cart;
+    // },
+    addItemToCart(state, product) {
+      // Add the product to the cart
+      state.cart.push(product);
     },
   },
   actions: {
@@ -90,16 +94,22 @@ export default createStore({
         context.commit("setCart", data);
       }
     },
-    async addToCart(context, orderData) {
-      const res = await axios.post(`${URL}cart`, orderData);
-      let { msg } = await res.data;
+    addToCart({ commit, state }, product) {
+      // Check if the product is being passed correctly
+      console.log("Adding to cart:", product);
+
+      // Check the state.cart before adding
+      console.log("Cart before add:", state.cart);
+
+      // Add the product to the cart
+      commit("addItemToCart", product);
+
+      // Check the state.cart after adding
+      console.log("Cart after add:", state.cart);
     },
-    async deleteOrder(context, orderID, userID) {
-      const res = await axios.delete(`${URL}cart/${orderID}`);
-      let msg = res.data;
-      if (msg) {
-        context.dispatch("fetchCart", userID);
-      }
+    removeFromCart({ commit, state }, index) {
+      // Remove item from cart based on index
+      commit("removeItemFromCart", index);
     },
   },
 });
