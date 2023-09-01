@@ -14,7 +14,9 @@
         {{ product.prodName }} <br />
         R{{ product.amount }}
       </h4>
-      <button @click="addToCart(product)">Add to cart</button>
+      <button @click="addToCart(product)" class="btn-see-more btn m-2">
+        Add to cart
+      </button>
 
       <router-link :to="{ name: 'product', params: { id: product.prodID } }">
         <button class="btn-see-more btn">See more</button></router-link

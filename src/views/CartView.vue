@@ -1,16 +1,17 @@
 <template>
   <div>
-    <h1>This is a cart</h1>
+    <h1>YOUR ITEMS</h1>
     <div v-if="cart && cart.length > 0">
-      <ul>
-        <li v-for="(item, index) in cart" :key="index">
-          <p>{{ item.prodName }}</p>
-          <p>Quantity: {{ item.quantity }}</p>
-          <p>Price: R{{ item.amount }}</p>
-          <!-- Add a button to remove item from cart -->
-          <button @click="removeFromCart(index)">Remove</button>
-        </li>
-      </ul>
+      <!-- <ul> -->
+      <div v-for="(item, index) in cart" :key="index">
+        <h1>{{ item.prodName }}</h1>
+        <img :src="item.prodURL" alt="" class="w-25" />
+        <h2>Quantity: {{ item.quantity }}</h2>
+        <h3>Price: R{{ item.amount }}</h3>
+
+        <button @click="removeFromCart(index)">Remove</button>
+      </div>
+      <!-- </ul> -->
     </div>
     <div v-else>
       <p>Your cart is empty</p>
@@ -27,9 +28,7 @@ export default {
   },
   methods: {
     removeFromCart(index) {
-      // Ensure that index is within the valid range
       if (index >= 0 && index < this.cart.length) {
-        // Remove the item at the specified index from the cart
         this.$store.commit("removeItemFromCart", index);
       }
     },
