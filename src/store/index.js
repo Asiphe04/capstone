@@ -1,11 +1,15 @@
 import { createStore } from "vuex";
 const URL = "https://capstone-2z3t.onrender.com/";
+import { useCookies, globalCookiesConfig } from "vue3-cookies";
+import axios from "axios";
+const { cookies } = useCookies();
 export default createStore({
   state: {
     users: null,
     user: null,
     products: null,
     product: null,
+    cart: null,
   },
 
   mutations: {
@@ -20,6 +24,9 @@ export default createStore({
     },
     setUser: (state, user) => {
       state.user = user;
+    },
+    setCart: (state, cart) => {
+      state.cart = cart;
     },
   },
   actions: {
@@ -74,6 +81,24 @@ export default createStore({
         context.commit("setProduct", product);
       } catch (error) {
         console.error(error);
+      }
+    },
+    async fetchCart(context, userID) {
+      const res = await axios.get(`${URL}cart/${userID}`);
+      const data = await res.data;
+      if (data) {
+        context.commit("setCart", data);
+      }
+    },
+    async addToCart(context, orderData) {
+      const res = await axios.post(`${URL}cart`, orderData);
+      let { msg } = await res.data;
+    },
+    async deleteOrder(context, orderID, userID) {
+      const res = await axios.delete(`${URL}cart/${orderID}`);
+      let msg = res.data;
+      if (msg) {
+        context.dispatch("fetchCart", userID);
       }
     },
   },

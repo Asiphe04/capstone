@@ -77,7 +77,7 @@
             <span class="tooltip">User</span></router-link
           >
         </li>
-        <li>
+        <!-- <li>
           <router-link
             to="/wishlist"
             class="link"
@@ -85,7 +85,7 @@
             ><i class="fa fa-heart fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Wishlist</span></router-link
           >
-        </li>
+        </li> -->
         <li>
           <router-link
             to="/cart"
@@ -154,7 +154,7 @@
 .link.active-link .fa-address-book,
 .link.active-link .fa-user,
 .link.active-link .fa-product-hunt {
-  color: var(--primary-color); /* Change this to your desired green color */
+  color: var(--primary-color);
 }
 
 .link {
