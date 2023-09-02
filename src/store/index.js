@@ -9,7 +9,7 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    cart: [],
+   
   },
 
   mutations: {
@@ -24,13 +24,6 @@ export default createStore({
     },
     setUser: (state, user) => {
       state.user = user;
-    },
-    // setCart: (state, cart) => {
-    //   state.cart = cart;
-    // },
-    addItemToCart(state, product) {
-      // Add the product to the cart
-      state.cart.push(product);
     },
   },
   actions: {
@@ -94,22 +87,7 @@ export default createStore({
         context.commit("setCart", data);
       }
     },
-    addToCart({ commit, state }, product) {
-      // Check if the product is being passed correctly
-      console.log("Adding to cart:", product);
-
-      // Check the state.cart before adding
-      console.log("Cart before add:", state.cart);
-
-      // Add the product to the cart
-      commit("addItemToCart", product);
-
-      // Check the state.cart after adding
-      console.log("Cart after add:", state.cart);
-    },
-    removeFromCart({ commit, state }, index) {
-      // Remove item from cart based on index
-      commit("removeItemFromCart", index);
-    },
+   
+    
   },
 });
