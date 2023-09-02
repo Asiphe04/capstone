@@ -1,16 +1,37 @@
 <template>
-  <NavBarComp />
+  <NavBarComp v-if="!atLoginRegister"/>
   <router-view />
-  <FooterComp />
+  <FooterComp v-if="!atLoginRegister" />
 </template>
 
 <script>
+import {useCookies} from 'vue3-cookies'
 import NavBarComp from "./components/NavBarComp.vue";
 import FooterComp from "./components/FooterComp.vue";
 
 export default {
   components: { NavBarComp, FooterComp },
-};
+
+    created() {
+    let {cookies} = useCookies();
+    if (cookies.get("login_cookie")) {
+      this.$store.commit('setUser', cookies.get("login_cookie").result)
+    }
+  },
+  computed: {
+    atLoginRegister() {
+      return (this.$route.name === "login" || this.$route.name === "register")
+    },
+    user(){
+      return this.$store.state.user
+    },
+    userCookie(){
+      let loginCookie = cookies.get("login_cookie");
+      return loginCookie
+    },
+  }
+}
+
 </script>
 
 <style>

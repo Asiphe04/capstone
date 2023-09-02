@@ -1,24 +1,31 @@
 <template>
   <div class="container d-flex p-4">
-    <div class="col-6">
+   
+    <div class="col-6" >
       <img
         src="https://i.postimg.cc/YCJbkvPZ/c9bl-removebg-preview.png"
         alt=""
       />
     </div>
-    <div class="col-6">
+      <SpinnerComp v-if="showSpinner" />
+    <div class="col-6" v-else>
+        <!-- <button onclick="history.back()" class="back-btn"> -->
       <h1>WELCOME BACK !</h1>
+      
 
-      <form>
+      <form @submit.prevent="login"  >
         <label for="email" class="text-start">ENTER YOUR EMAIL</label>
         <br />
-        <input type="email" placeholder="eg. asiphendimlana40@gmail.com" />
+        <input type="email" placeholder="eg. asiphendimlana40@gmail.com"
+        v-model="payload.emailAdd"
+         />
         <br />
         <label for="password" class="text-start">PASSWORD</label>
         <br />
-        <input type="password" />
+        <input type="password"
+          v-model="payload.userPass" />
 
-        <button>Log In</button>
+        <button type="submit" >Log In</button>
         <p>
           Dont have an account?
           <router-link
@@ -34,6 +41,42 @@
   <br />
   <br />
 </template>
+
+<script>
+import SpinnerComp from '@/components/SpinnerComp.vue';
+export default {
+  // SethJKallis
+  // uiverse.io
+  components: {
+    SpinnerComp
+  },
+  data() {
+    return {
+      payload: {
+        emailAdd: '',
+        userPass: '',
+      }
+    }
+  },
+  methods: {
+    async login(){
+      await this.$store.commit('setSpinner', true)
+      await this.$store.dispatch('login', this.payload)
+      await this.$store.dispatch('getUsers')
+      history.back();
+    }
+  },
+  mounted(){
+    this.$store.commit('setSpinner', false)
+  },
+  computed: {
+    showSpinner() {
+      return this.$store.state.showSpinner
+    }
+  }
+}
+</script>
+
 <style scoped>
 .register-link {
   color: var(--secondary-color) !important;
