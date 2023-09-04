@@ -76,5 +76,6 @@ export default createStore({
         console.error(error);
       }
     },
+    
   },
 });

@@ -2,7 +2,7 @@
   <br />
   <br />
   <br />
-  <UserEditComp />
+  <UserEditComp :id="product.prodID" />
 </template>
 
 <script>

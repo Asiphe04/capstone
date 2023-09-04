@@ -13,7 +13,7 @@
       <div class="action">
         <button class="btn-edit">
           <router-link
-            :to="{ name: 'productEdit', params: { id: product.prodID } }"
+            :to="{ name: 'product-edit', params: { id: product.prodID } }"
           >
             Edit
           </router-link>

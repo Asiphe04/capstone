@@ -101,7 +101,7 @@ export default {
       firstName: "",
       lastName: "",
       userAge: "",
-      Gender: "",
+      gender: "",
       userRole: "",
       emailAdd: "",
       userPass: "",
@@ -117,7 +117,7 @@ export default {
             firstName: this.user.firstName,
             lastName: this.user.lastName,
             userAge: this.user.userAge,
-            Gender: this.user.Gender,
+            gender: this.user.gender,
             userRole: this.user.userRole,
             emailAdd: this.user.emailAdd,
             userPass: this.user.userPass,
@@ -127,7 +127,7 @@ export default {
         this.firstName = "";
         this.lastName = "";
         this.userAge = "";
-        this.Gender = "";
+        this.gender = "";
         this.userRole = "";
         this.emailAdd = "";
         this.userPass = "";

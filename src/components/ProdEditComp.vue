@@ -130,8 +130,10 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch("getProduct", this.id),
-      this.$store.dispatch("getProducts");
+    // Reset the product state
+    this.$store.commit("setProduct", null);
+    // Then fetch the product
+    this.$store.dispatch("getProduct", this.$route.params.id);
   },
 };
 </script>
