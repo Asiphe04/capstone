@@ -9,11 +9,7 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    posts: null,
-    token: null,
-    isVerified: false,
-    message: null,
-    showSpinner: true,
+    cart: [],
   },
 
   mutations: {
@@ -29,20 +25,12 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
     },
-    setPosts(state, data) {
-      state.posts = data
-    },
-    setToken(state, data) {
-      state.token = data
-    },
-    setMessage(state, data) {
-      state.message = data
-    },
-    setVerified(state, data) {
-      state.isVerified = data
-    },
-    setSpinner(state, data) {
-      state.showSpinner = data
+    // setCart: (state, cart) => {
+    //   state.cart = cart;
+    // },
+    addItemToCart(state, product) {
+      // Add the product to the cart
+      state.cart.push(product);
     },
   },
   actions: {
@@ -73,26 +61,6 @@ export default createStore({
       }
     },
 
-    async login(context, payload) {
-      try {
-        const res = await axios.post(`${URL}users/login`, payload);
-        const { result, jwToken, msg, err } = await res.data;
-        
-        if (result) {
-          context.commit('setUser', result);
-          context.commit('setToken', jwToken);
-          cookies.set('login_cookie', res.data);
-          context.commit('setMessage', msg);
-        } else {
-          // Handle server-side validation errors here
-          context.commit('setMessage', err);
-        }
-      } catch (error) {
-        console.error('Error during login:', error);
-        // Handle other errors (e.g., network issues) here
-      }
-    },
-    
     getProducts: async (context) => {
       try {
         const res = await fetch(`${URL}products`);
@@ -126,7 +94,22 @@ export default createStore({
         context.commit("setCart", data);
       }
     },
-   
-    
+    addToCart({ commit, state }, product) {
+      // Check if the product is being passed correctly
+      console.log("Adding to cart:", product);
+
+      // Check the state.cart before adding
+      console.log("Cart before add:", state.cart);
+
+      // Add the product to the cart
+      commit("addItemToCart", product);
+
+      // Check the state.cart after adding
+      console.log("Cart after add:", state.cart);
+    },
+    removeFromCart({ commit, state }, index) {
+      // Remove item from cart based on index
+      commit("removeItemFromCart", index);
+    },
   },
 });
