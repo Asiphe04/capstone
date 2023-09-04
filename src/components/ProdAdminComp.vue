@@ -6,17 +6,17 @@
     <td class="text-white">R{{ product.amount }}</td>
     <td class="text-white">{{ product.category }}</td>
     <td><img :src="product.prodURL" alt="" class="prodImg" /></td>
-    <td class="text-white text-start">
+    <td class="text-white">
       {{ product.description }}
     </td>
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
-          <!-- <router-link
-            :to="{ name: 'admin edit', params: { id: product.prodID } }"
+          <router-link
+            :to="{ name: 'productEdit', params: { id: product.prodID } }"
           >
             Edit
-          </router-link> -->
+          </router-link>
         </button>
         <button class="btn-delete" @click="deleteProduct(product.prodID)">
           Delete
@@ -34,7 +34,7 @@ export default {
   methods: {
     async deleteProduct(id) {
       try {
-        await axios.delete(`https://nodejseomp.onrender.com/products/${id}`);
+        await axios.delete(`https://capstone-2z3t.onrender.com/products/${id}`);
         this.$store.dispatch("getProducts");
         alert("Product has been deleted");
       } catch (err) {
