@@ -1,15 +1,11 @@
 import { createStore } from "vuex";
 const URL = "https://capstone-2z3t.onrender.com/";
-import { useCookies, globalCookiesConfig } from "vue3-cookies";
-import axios from "axios";
-const { cookies } = useCookies();
 export default createStore({
   state: {
     users: null,
     user: null,
     products: null,
     product: null,
-    cart: [],
   },
 
   mutations: {
@@ -24,13 +20,6 @@ export default createStore({
     },
     setUser: (state, user) => {
       state.user = user;
-    },
-    // setCart: (state, cart) => {
-    //   state.cart = cart;
-    // },
-    addItemToCart(state, product) {
-      // Add the product to the cart
-      state.cart.push(product);
     },
   },
   actions: {
@@ -86,30 +75,6 @@ export default createStore({
       } catch (error) {
         console.error(error);
       }
-    },
-    async fetchCart(context, userID) {
-      const res = await axios.get(`${URL}cart/${userID}`);
-      const data = await res.data;
-      if (data) {
-        context.commit("setCart", data);
-      }
-    },
-    addToCart({ commit, state }, product) {
-      // Check if the product is being passed correctly
-      console.log("Adding to cart:", product);
-
-      // Check the state.cart before adding
-      console.log("Cart before add:", state.cart);
-
-      // Add the product to the cart
-      commit("addItemToCart", product);
-
-      // Check the state.cart after adding
-      console.log("Cart after add:", state.cart);
-    },
-    removeFromCart({ commit, state }, index) {
-      // Remove item from cart based on index
-      commit("removeItemFromCart", index);
     },
   },
 });

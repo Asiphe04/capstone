@@ -13,9 +13,9 @@
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
-          <!-- <router-link :to="{ name: 'user edit', params: { id: user.userID } }">
+          <router-link :to="{ name: 'user edit', params: { id: user.userID } }">
             Edit
-          </router-link> -->
+          </router-link>
         </button>
         <button class="btn-delete" @click="deleteUser(user.userID)">
           Delete

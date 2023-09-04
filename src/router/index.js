@@ -57,7 +57,7 @@ const routes = [
   },
 
   {
-    path: "/products/edit/:id",
+    path: "/product/edit/:id",
     name: "productEdit",
     component: () => import("../views/ProdEdit.vue"),
     props: true,
@@ -68,7 +68,17 @@ const routes = [
     component: () => import("../views/ProdAdd.vue"),
     props: true,
   },
-
+  {
+    path: "/user/edit/:id",
+    name: "user edit",
+    component: () => import("../views/UserEdit.vue"),
+    props: true,
+  },
+  {
+    path: "/users/add",
+    name: "userAdd",
+    component: () => import("../views/UserAdd.vue"),
+  },
   {
     path: "/login",
     name: "login",
