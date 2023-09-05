@@ -84,17 +84,9 @@ export default createStore({
   },
   actions: {
     addToCart({ commit, state }, product) {
-      // Check if the product is being passed correctly
-      console.log("Adding to cart:", product);
-
-      // Check the state.cart before adding
-      console.log("Cart before add:", state.cart);
-
-      // Add the product to the cart
+     
       commit("addItemToCart", product);
 
-      // Check the state.cart after adding
-      console.log("Cart after add:", state.cart);
     },
     removeFromCart({ commit, state }, index) {
       // Remove item from cart based on index
