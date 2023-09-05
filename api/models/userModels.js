@@ -53,9 +53,10 @@ const userLogin = (req, res) => {
   db.query(query, async (err, result) => {
     if (err) throw err;
     if (!result?.length) {
-      res.json({
-        status: res.statusCode,
-        message: "Incorrect email address!",
+      // Send an error response with 401 status code (Unauthorized)
+      return res.status(401).json({
+        success: false,
+        message: "Incorrect email address or password",
       });
     } else {
       await compare(userPass, result[0].userPass, (cErr, cResult) => {
@@ -65,24 +66,62 @@ const userLogin = (req, res) => {
           emailAdd,
           userPass,
         });
-   
 
         if (cResult) {
-          res.json({
-            message: "You can now enter another time",
+          // Send a success response with user data and token
+          return res.json({
+            success: true,
+            message: "Logged in successfully",
             token,
-            result: result[0],
+            userData: result[0],
           });
         } else {
-          res.json({
-            status: res.statusCode,
-            message: "Unregistered user or incorrect password!",
+          // Send an error response with 401 status code (Unauthorized)
+          return res.status(401).json({
+            success: false,
+            message: "Incorrect email address or password",
           });
         }
       });
     }
   });
 };
+
+// const userLogin = (req, res) => {
+//   const { emailAdd, userPass } = req.body;
+//   const query = `SELECT firstName, lastName, userAge, gender, userRole, emailAdd, userPass FROM users WHERE emailAdd = '${emailAdd}'`;
+//   db.query(query, async (err, result) => {
+//     if (err) throw err;
+//     if (!result?.length) {
+//       res.json({
+//         status: res.statusCode,
+//         message: "Incorrect email address!",
+//       });
+//     } else {
+//       await compare(userPass, result[0].userPass, (cErr, cResult) => {
+//         if (cErr) throw cErr;
+//         // create token
+//         const token = createToken({
+//           emailAdd,
+//           userPass,
+//         });
+
+//         if (cResult) {
+//           res.json({
+//             message: "You can now enter another time",
+//             token,
+//             result: result[0],
+//           });
+//         } else {
+//           res.json({
+//             status: res.statusCode,
+//             message: "Unregistered user or incorrect password!",
+//           });
+//         }
+//       });
+//     }
+//   });
+// };
 
 // Update an existing user
 const updateUserByID = (id, data, result) => {
