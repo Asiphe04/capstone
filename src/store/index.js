@@ -122,7 +122,7 @@ export default createStore({
     async register(context, payload) {
       console.log("Reached");
       try {
-        const res = await axios.post(`${URL}register`, payload);
+        const res = await axios.post(`${URL}users`, payload);
         console.log("Res: ", res.data);
         const { msg, err, token } = res.data;
         if (msg === "An error occured") {
@@ -157,7 +157,7 @@ export default createStore({
         if (token) {
           context.commit("setUser", userData);
           context.commit("setToken", token);
-          // context.commit("setUserData", userData);
+
           context.commit("setLogStatus", res.data.message);
           Cookies.set("userToken", token, {
             expires: 1,

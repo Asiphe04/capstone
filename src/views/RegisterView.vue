@@ -9,36 +9,69 @@
     <div class="col-6">
       <h1>WELCOME TO CLOUD 9 SUPERSTORE!</h1>
 
-      <form class="row d-flex">
+      <form class="row d-flex" @submit.prevent="register">
         <div class="col-6">
           <label for="firstName" class="text-start">First Name:</label>
-          <input type="text" placeholder="eg. Asiphe" />
+          <input
+            type="text"
+            placeholder="eg. Asiphe"
+            v-model="firstName"
+            required
+          />
           <label for="lastname" class="text-start">Surname:</label>
-          <input type="text" placeholder="eg. Ndimlana" />
+          <input
+            type="text"
+            placeholder="eg. Ndimlana"
+            v-model="lastName"
+            required
+          />
           <label for="role" class="text-start">Role:</label>
-          <input type="text" placeholder="eg. Admin" />
+          <input
+            type="text"
+            placeholder="eg. Admin"
+            v-model="userRole"
+            required
+          />
           <label for="text" class="text-start">Profile URL</label>
 
           <input
             type="text"
             placeholder="https://i.postimg.cc/Cx0fdCZw/C12-Asiphe-Ndimlana-3.jpg"
+            v-model="userProfile"
+            required
           />
         </div>
         <div class="col-6">
           <label for="gender" class="text-start">Gender:</label>
-          <input type="gender" placeholder="eg. Male" />
+          <input
+            type="gender"
+            placeholder="eg. Male"
+            v-model="gender"
+            required
+          />
           <label for="email" class="text-start">EMAIL:</label>
 
-          <input type="email" placeholder="eg. asiphendimlana40@gmail.com" />
+          <input
+            type="email"
+            placeholder="eg. asiphendimlana40@gmail.com"
+            v-model="emailAdd"
+            required
+          />
 
           <label for="age" class="text-start">Age:</label>
-          <input type="number" placeholder="eg. 19" />
+          <input
+            type="number"
+            placeholder="eg. 19"
+            v-model="userAge"
+            required
+          />
           <label for="password" class="text-start">PASSWORD</label>
 
-          <input type="password" />
+          <input type="password" v-model="userPass" required />
         </div>
+        <button class="submit">Sign Up</button>
       </form>
-      <button>Sign Up</button>
+
       <p>
         Have an account?
         <router-link
@@ -50,6 +83,58 @@
     </div>
   </div>
 </template>
+
+<script>
+import Swal from "sweetalert2";
+
+export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      userAge: "",
+      gender: "",
+      userRole: "",
+      emailAdd: "",
+      userPass: "",
+      userProfile: "",
+    };
+  },
+  methods: {
+    async register() {
+      try {
+        const resp = await this.$store.dispatch("register", {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          userAge: this.userAge,
+          gender: this.gender,
+          userRole: this.userRole,
+          emailAdd: this.emailAdd,
+          userPass: this.userPass,
+          userProfile: this.userProfile,
+        });
+        if (resp.success) {
+          await Swal.fire({
+            icon: "success",
+            title: "Registration successful",
+            text: "You are now registered, please log in",
+          });
+        } else {
+          await Swal.fire({
+            icon: "error",
+            title: "Registration failed",
+            text: resp.error || "Unexpected error",
+          });
+        }
+        this.$router.push("/login");
+      } catch (e) {
+        console.error("Registration error: ", e);
+      }
+    },
+  },
+};
+</script>
+
 <style scoped>
 .register-link {
   color: var(--secondary-color) !important;
