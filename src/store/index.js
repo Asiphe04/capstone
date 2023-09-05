@@ -6,7 +6,7 @@ export default createStore({
   state: {
     users: null,
     user: null,
-    products: null,
+    products: null, 
     product: null,
     token: null,
     userData: null,
