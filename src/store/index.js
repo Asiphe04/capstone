@@ -60,6 +60,9 @@ export default createStore({
     setMsg(state, msg) {
       state.msg = msg;
     },
+    setError(state, error) {
+      state.error = error;
+    },
   },
   actions: {
     getUsers: async (context) => {
@@ -143,7 +146,7 @@ export default createStore({
 
     async login(context, payload) {
       try {
-        const res = await axios.post(`${URL}login`, payload);
+        const res = await axios.post(`${URL}users/login`, payload);
         console.log("Res: ", res.data);
         const { msg, err, token, userData } = res.data;
         console.log(userData);
