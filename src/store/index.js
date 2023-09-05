@@ -147,24 +147,24 @@ export default createStore({
     async login(context, payload) {
       try {
         const res = await axios.post(`${URL}users/login`, payload);
-        console.log("Res: ", res.data);
         const { msg, err, token, userData } = res.data;
-        console.log(userData);
         if (msg === "You are providing the wrong email or password") {
+          console.log(msg);
           context.commit("setError", msg);
           context.commit("setLogStatus", "Not logged in");
           return { success: false, error: msg };
         }
-        if (msg) {
+        if (token) {
           context.commit("setUser", userData);
           context.commit("setToken", token);
-          context.commit("setUserData", userData);
-          context.commit("setLogStatus", "Logged in!");
+          // context.commit("setUserData", userData);
+          context.commit("setLogStatus", res.data.message);
           Cookies.set("userToken", token, {
             expires: 1,
           });
-          return { success: true, token };
+          return { success: res.data.success, token };
         } else if (err) {
+          context.commit("setToken", null);
           context.commit("setError", err);
           return { success: false, error: err };
         } else {
