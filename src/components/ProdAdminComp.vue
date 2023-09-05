@@ -6,19 +6,20 @@
     <td class="text-white">R{{ product.amount }}</td>
     <td class="text-white">{{ product.category }}</td>
     <td><img :src="product.prodURL" alt="" class="prodImg" /></td>
-    <td class="text-white">
+    <td class="text-white text-start w-25">
       {{ product.description }}
     </td>
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
           <router-link
+            class="text-white text-decoration-none"
             :to="{ name: 'product-edit', params: { id: product.prodID } }"
           >
             Edit
           </router-link>
         </button>
-        <button class="btn-delete" @click="deleteProduct(product.prodID)">
+        <button class="btn-delete text-white" @click="deleteProduct(product.prodID)">
           Delete
         </button>
       </div>

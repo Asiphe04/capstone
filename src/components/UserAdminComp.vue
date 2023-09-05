@@ -7,17 +7,17 @@
     <!-- <td class="text-white">{{ user.Gender }}</td> -->
     <td class="text-white">{{ user.userRole }}</td>
     <td class="text-white emailAdd">{{ user.emailAdd }}</td>
-    <td class="text-white password">{{ user.userPass }}</td>
+    <td class="text-white password w-25">{{ user.userPass }}</td>
     <!-- <td><img :src="user.userProfile" alt="" class="prodImg" /></td> -->
 
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
-          <router-link :to="{ name: 'user edit', params: { id: user.userID } }">
+          <router-link class="text-white text-decoration-none" :to="{ name: 'user edit', params: { id: user.userID } }">
             Edit
           </router-link>
         </button>
-        <button class="btn-delete" @click="deleteUser(user.userID)">
+        <button class="btn-delete text-white" @click="deleteUser(user.userID)">
           Delete
         </button>
       </div>

@@ -10,6 +10,12 @@ import FooterComp from "./components/FooterComp.vue";
 
 export default {
   components: { NavBarComp, FooterComp },
+  created() {
+    const userData = localStorage.getItem("userData");
+    if (userData) {
+      this.$store.commit("setUserData", JSON.parse(userData));
+    }
+  },
 };
 </script>
 

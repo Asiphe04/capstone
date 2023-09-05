@@ -2,7 +2,9 @@
   <div class="container">
     <h1 class="text-white">Products</h1>
     <button class="btn-add">
-      <router-link to="/prod/add"> Add Product </router-link>
+      <router-link to="/prod/add" class="text-white text-decoration-none">
+        Add Product
+      </router-link>
     </button>
     <table>
       <thead class="table-header">
@@ -31,7 +33,9 @@
   <div class="container">
     <h1 class="text-white">Users</h1>
     <button class="btn-add">
-      <router-link to="/users/add"> Add User </router-link>
+      <router-link to="/users/add" class="text-white text-decoration-none">
+        Add User
+      </router-link>
     </button>
     <table>
       <thead class="table-header">

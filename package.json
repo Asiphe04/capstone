@@ -12,6 +12,7 @@
     "cookies": "^0.8.0",
     "core-js": "^3.8.3",
     "js-cookie": "^3.0.5",
+    "sweetalert2": "^11.7.27",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6",

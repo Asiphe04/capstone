@@ -11,14 +11,19 @@
       <!-- <button onclick="history.back()" class="back-btn"> -->
       <h1>WELCOME BACK !</h1>
 
-      <form>
+      <form @submit.prevent="userLogin">
         <label for="email" class="text-start">ENTER YOUR EMAIL</label>
         <br />
-        <input type="email" placeholder="eg. asiphendimlana40@gmail.com" />
+        <input
+          type="email"
+          name="email"
+          v-model="emailAdd"
+          placeholder="eg. asiphendimlana40@gmail.com"
+        />
         <br />
         <label for="password" class="text-start">PASSWORD</label>
         <br />
-        <input type="password" />
+        <input type="password" v-model="userPass" name="password" />
 
         <button type="submit">Log In</button>
         <p>
@@ -36,6 +41,51 @@
   <br />
   <br />
 </template>
+
+<script>
+import Swal from "sweetalert2";
+export default {
+  data() {
+    return {
+      emailAdd: "",
+      userPass: "",
+    };
+  },
+  beforeCreate() {
+    this.$store.dispatch("cookieCheck");
+  },
+  methods: {
+    async userLogin() {
+      console.log("Reached");
+      try {
+        const payload = {
+          emailAdd: this.emailAdd,
+          userPass: this.userPass,
+        };
+        const resp = await this.$store.dispatch("login", payload);
+        console.log("Login Response:", resp);
+        if (resp.success && resp.token) {
+          await Swal.fire({
+            icon: "success",
+            title: "Logged in Successfully",
+            text: "You are now logged in!",
+          });
+          this.$router.push("/");
+        } else {
+          const errMsg = resp.error || "Unexpected error";
+          await Swal.fire({
+            icon: "error",
+            title: "Login failed",
+            text: errMsg,
+          });
+        }
+      } catch (e) {
+        console.error("Error while logging in: ", e);
+      }
+    },
+  },
+};
+</script>
 
 <style scoped>
 .register-link {
