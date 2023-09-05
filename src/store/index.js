@@ -15,9 +15,27 @@ export default createStore({
     error: null,
     regStatus: null,
     logStatus: null,
+    cart: [],
   },
 
   mutations: {
+    setCart(state, cartData) {
+      state.cart = cartData;
+    },
+    // Remove item from cart mutation
+    removeItemFromCart(state, index) {
+      // Remove item from cart based on index
+      state.cart.splice(index, 1);
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    addItemToCart(state, product) {
+      // Add the product to the cart
+      state.cart.push(product);
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+
     setProducts: (state, products) => {
       state.products = products;
     },
@@ -65,6 +83,23 @@ export default createStore({
     },
   },
   actions: {
+    addToCart({ commit, state }, product) {
+      // Check if the product is being passed correctly
+      console.log("Adding to cart:", product);
+
+      // Check the state.cart before adding
+      console.log("Cart before add:", state.cart);
+
+      // Add the product to the cart
+      commit("addItemToCart", product);
+
+      // Check the state.cart after adding
+      console.log("Cart after add:", state.cart);
+    },
+    removeFromCart({ commit, state }, index) {
+      // Remove item from cart based on index
+      commit("removeItemFromCart", index);
+    },
     getUsers: async (context) => {
       try {
         const res = await fetch(`${URL}users`);
@@ -199,8 +234,16 @@ export default createStore({
       }
     },
     init(context) {
-      context.dispatch("cookieCheck");
+      // Load cart data from localStorage when initializing the store
+      const cartData = localStorage.getItem("cart");
+      if (cartData) {
+        context.commit("setCart", JSON.parse(cartData));
+      }
+      // ...other initialization logic
     },
+    // init(context) {
+    //   context.dispatch("cookieCheck");
+    // },
     async logout(context) {
       context.commit("setToken", null);
       context.commit("setUser", null);
