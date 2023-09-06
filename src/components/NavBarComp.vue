@@ -70,6 +70,11 @@
         </li>
         <li>
           <router-link
+            v-if="
+              userRole === 'Manager' ||
+              userRole === 'Admin' ||
+              userRole === 'Supervisor'
+            "
             to="/admin"
             class="link"
             :exact-active-class="'active-link'"
@@ -96,6 +101,19 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
+        <li>
+          <router-link
+            @click="logout"
+            class="link"
+            :exact-active-class="'active-link'"
+          >
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Log Out</span></router-link
+          >
+        </li>
+        <!-- <li>
+          <i class="fa fa-sign-out" aria-hidden="true" @click="logout"></i>
+        </li> -->
 
         <div class="dropdown">
           <router-link
@@ -125,7 +143,6 @@
             >
               <a class="dropdown-item text-white" href="#">Sign Up</a>
             </router-link>
-            <li></li>
           </ul>
         </div>
       </div>
@@ -137,6 +154,28 @@
   <br />
   <br />
 </template>
+<script>
+export default {
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.push("/login");
+    },
+  },
+};
+</script>
 
 <style scoped>
 .dropdown-item,

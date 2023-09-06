@@ -6,7 +6,7 @@ export default createStore({
   state: {
     users: null,
     user: null,
-    products: null, 
+    products: null,
     product: null,
     token: null,
     userData: null,
@@ -83,15 +83,15 @@ export default createStore({
     },
   },
   actions: {
-    addToCart({ commit, state }, product) {
-     
-      commit("addItemToCart", product);
+    // addToCart({ commit, state }, product) {
 
-    },
-    removeFromCart({ commit, state }, index) {
-      // Remove item from cart based on index
-      commit("removeItemFromCart", index);
-    },
+    //   commit("addItemToCart", product);
+
+    // },
+    // removeFromCart({ commit, state }, index) {
+    //   // Remove item from cart based on index
+    //   commit("removeItemFromCart", index);
+    // },
     getUsers: async (context) => {
       try {
         const res = await fetch(`${URL}users`);
@@ -233,9 +233,9 @@ export default createStore({
       }
       // ...other initialization logic
     },
-    // init(context) {
-    //   context.dispatch("cookieCheck");
-    // },
+    init(context) {
+      context.dispatch("cookieCheck");
+    },
     async logout(context) {
       context.commit("setToken", null);
       context.commit("setUser", null);

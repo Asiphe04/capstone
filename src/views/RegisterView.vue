@@ -117,7 +117,7 @@ export default {
           await Swal.fire({
             icon: "success",
             title: "Registration successful",
-            text: "You are now registered, please log in",
+            text: "CONGRATULATIONS ,YOU ARE NOW REGISTERED ! Please Login",
           });
         } else {
           await Swal.fire({
