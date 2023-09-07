@@ -57,7 +57,7 @@ export default {
         // Call the addToCart action with userID and prodID
         this.$store.dispatch("addToCart", {
           userID: this.userData.userID,
-          prodID,
+          prodID: prodID, // Pass the product ID
         });
       } else {
         // Handle the case where the user is not logged in, prompt for login, etc.
