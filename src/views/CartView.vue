@@ -2,14 +2,17 @@
 
 <template>
   <div>
-    <!-- Display cart contents and total price -->
     <div v-if="products && products.length > 0">Your cart is empty.</div>
     <div v-else>
       <div v-for="product in getCart" :key="product.prodID">
-        Name: {{ product.prodName }} - Price: {{ product.amount }} - Quantity:
-        {{ product.quantity }}
+        <h1>YOUR ITEMS</h1>
+        <img :src="product.prodURL" alt="" />
+        <h4>Name: {{ product.prodName }}</h4>
+        <p>Price: R{{ product.amount }}</p>
+        <p>Quantity: {{ product.quantity }}</p>
+        <!-- <h6>Total Price: R{{ cartTotalPrice }}</h6> -->
         <button @click="removeFromCart(product.prodID)">Remove</button>
-        <div>Total Price: R{{ cartTotalPrice }}</div>
+
         <button @click="checkout">Checkout</button>
         <!-- Total Price: ${{ cartTotalPrice }} -->
         <!-- Total Price: ${{ calculateTotalPrice() }} -->
