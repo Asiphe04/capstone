@@ -1,76 +1,39 @@
-// cart models
+//Import database connection
+const db = require("../config/db");
 
-const db = require("../config/db.js");
-const { createToken } = require("../middleware/AuthenticateUser.js")
-const { compare } = require("bcrypt")
-
-
-// Get everything from users cart
-const getCart = (id, result,) => {
-  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount, Products.quantity FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
-   [id], (err, results) => {             
-      if(err) {
-          console.log(err);
-          result(err, null);
-      } else {
-          result(null, results);
-      }
-  });   
-}
-
-//add something to cart
-
-const insertCart = (userID, prodID, callback) => {
+const getCart = (id, result) => {
   db.query(
-    'INSERT INTO Cart (userID, prodID) VALUES (?, ?)',
-    [userID, prodID],
+    `SELECT prodName,description ,amount ,prodUrl
+     FROM users
+     INNER JOIN cart ON users.userID = cart.userID
+    INNER JOIN products ON cart.prodID = products.prodID
+    WHERE cart.userID = ? `,
+    [id],
     (err, results) => {
       if (err) {
-        console.log('Database error');
-        callback(err, null);
+        console.log(err);
+        result(err, null);
       } else {
-        callback(null, results);
+        result(null, results);
       }
     }
   );
 };
 
-
-// delete specific item 
-const deleteCartItem = ( cartID, callback) => {
-  db.query(
-    'DELETE FROM Cart WHERE cartID = ?',
-    [cartID],
-    (err, result) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, result);
-      }
+const insertCart = (data, result) => {
+  db.query("INSERT INTO cart SET ?;", data, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
     }
-  );
+  });
 };
 
-
-const deleteAllItems = ( userID, callback) => {
+const updateCartbyId = (data, id, result) => {
   db.query(
-    'DELETE FROM Cart WHERE userID = ?',
-    [userID],
-    (err, result) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, result);
-      }
-    }
-  );
-};
-
-//update cart
-
-const updateCartById = (data, id, result) => {
-  db.query(
-    `UPDATE Cart SET ? WHERE cartID = ? `,
+    `UPDATE cart SET ? WHERE cartID = ? `,
     [data, id],
     (err, results) => {
       if (err) {
@@ -83,24 +46,32 @@ const updateCartById = (data, id, result) => {
   );
 };
 
+const removeCart = (id, result) => {
+  db.query(`DELETE FROM cart WHERE cartID = ?`, id, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
+    }
+  });
+};
+
+const removeAllcartItems = (id, result) => {
+  db.query(`DELETE FROM cart WHERE userID = ?`, id, (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results);
+    }
+  });
+};
+
 module.exports = {
-    getCart,
-    insertCart,
-    deleteCartItem,
-    deleteAllItems,
-    updateCartById,
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  getCart,
+  insertCart,
+  updateCartbyId,
+  removeCart,
+  removeAllcartItems,
+};
