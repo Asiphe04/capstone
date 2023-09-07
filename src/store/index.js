@@ -281,7 +281,7 @@ export default createStore({
 
         // Optionally, update the cart's total price or perform other operations
       } catch (error) {
-        console.error("Error removing product from cart:", error);
+        console.error(error);
         // Handle network errors or other exceptions
       }
     },
