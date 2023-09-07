@@ -40,6 +40,7 @@ export default {
   font-family: Sarabun, Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
+  
   text-align: center;
   background-color: var(--primary-color);
 }

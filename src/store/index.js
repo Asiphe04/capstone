@@ -15,27 +15,10 @@ export default createStore({
     error: null,
     regStatus: null,
     logStatus: null,
-    cart: [],
+    cart: null,
   },
 
   mutations: {
-    setCart(state, cartData) {
-      state.cart = cartData;
-    },
-    // Remove item from cart mutation
-    removeItemFromCart(state, index) {
-      // Remove item from cart based on index
-      state.cart.splice(index, 1);
-      // Save the updated cart to localStorage
-      localStorage.setItem("cart", JSON.stringify(state.cart));
-    },
-    addItemToCart(state, product) {
-      // Add the product to the cart
-      state.cart.push(product);
-      // Save the updated cart to localStorage
-      localStorage.setItem("cart", JSON.stringify(state.cart));
-    },
-
     setProducts: (state, products) => {
       state.products = products;
     },
@@ -81,17 +64,12 @@ export default createStore({
     setError(state, error) {
       state.error = error;
     },
+    setCart(state, value) {
+      state.cart = value
+    },
   },
   actions: {
-    // addToCart({ commit, state }, product) {
-
-    //   commit("addItemToCart", product);
-
-    // },
-    // removeFromCart({ commit, state }, index) {
-    //   // Remove item from cart based on index
-    //   commit("removeItemFromCart", index);
-    // },
+    
     getUsers: async (context) => {
       try {
         const res = await fetch(`${URL}users`);
@@ -225,14 +203,7 @@ export default createStore({
         context.commit("setToken", token);
       }
     },
-    init(context) {
-      // Load cart data from localStorage when initializing the store
-      const cartData = localStorage.getItem("cart");
-      if (cartData) {
-        context.commit("setCart", JSON.parse(cartData));
-      }
-      // ...other initialization logic
-    },
+  
     init(context) {
       context.dispatch("cookieCheck");
     },
@@ -242,6 +213,23 @@ export default createStore({
       context.commit("setUserData", null);
       Cookies.remove("userToken");
     },
+    async getCart(context, id) {
+      const res = await axios.get(`${URL}/users/${id}/cart`);
+      context.commit('setCart', res.data)
+      console.log(id);
+    },
+    async addToCart(context, { userId, productId }) {
+      try {
+       
+        const res = await axios.post(`${URL}/users/${userId}/cart/add`, { productId });
+        
+        // Assuming the response contains the updated cart data
+        context.commit('setCart', res.data);
+      } catch (error) {
+        console.error('Error adding product to cart:', error);
+      }
+    }
+    
   },
   modules: {},
 });

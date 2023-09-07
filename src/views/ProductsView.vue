@@ -1,4 +1,5 @@
 <template>
+
   <input
     class="m-2"
     v-model="searchTerm"
@@ -67,6 +68,7 @@
     />
   </div>
   <SpinnerComp v-else />
+  
 </template>
 
 <script>
@@ -123,6 +125,7 @@ export default {
 };
 </script>
 <style scoped>
+
 option {
   color: black;
 }
