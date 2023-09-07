@@ -2,10 +2,11 @@
 
 <template>
   <div>
+     <h1>YOUR ITEMS</h1>
     <div v-if="products && products.length > 0">Your cart is empty.</div>
     <div v-else>
       <div v-for="product in getCart" :key="product.prodID">
-        <h1>YOUR ITEMS</h1>
+       
         <img :src="product.prodUrl" alt="" class="w-25" />
         <h4>Name: {{ product.prodName }}</h4>
         <p>Price: R{{ product.amount }}</p>
@@ -42,22 +43,14 @@ export default {
     this.$store.dispatch("getCart", this.user.userID);
   },
   methods: {
+    removeFromCart(prodID) {
+      this.$store.dispatch('removeFromCart', prodID);
+    },
     checkout() {
       // Redirect to the login page
       this.$router.push("/login");
     },
-    removeFromCart(prodID) {
-      // Ensure the user is logged in
-      if (this.userData && this.userData.userID) {
-        // Call the removeFromCart action with userID and prodID
-        this.$store.dispatch("removeFromCart", {
-          userID: this.userData.userID,
-          prodID,
-        });
-      } else {
-        // Handle the case where the user is not logged in, prompt for login, etc.
-      }
-    },
+
   },
 };
 </script>

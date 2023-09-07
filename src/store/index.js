@@ -78,6 +78,14 @@ export default createStore({
     addProductToCart(state, product) {
       state.cart.push(product);
     },
+  //remove from cart
+  REMOVE_FROM_CART(state, prodID) {
+    const itemIndex = state.cart.findIndex(item => item.prodID === prodID);
+    if (itemIndex !== -1) {
+      state.cart.splice(itemIndex, 1);
+    }
+  },
+
     // decrementProductQuantity(state, productId) {
     //   const product = state.products.find(
     //     (product) => product.id === productId
@@ -87,11 +95,7 @@ export default createStore({
     //   }
     // },
 
-    //remove from cart
-    removeFromCart(state, prodID) {
-      // Remove the item from the cart state
-      state.cart = state.cart.filter((product) => product.prodID !== prodID);
-    },
+  
     clearCart(state) {
       state.cartItems = [];
     },
@@ -274,20 +278,11 @@ export default createStore({
       }
     },
     //remove from cart function
-    async removeFromCart({ commit }, { userID, prodID }) {
-      try {
-        // Send a DELETE request to your server's API endpoint
-        await axios.delete(`${URL}users/${userID}/cart/${prodID}`);
-
-        // Commit the mutation to remove the item from the cart in the store
-        commit("removeFromCart", prodID);
-
-        // Optionally, update the cart's total price or perform other operations
-      } catch (error) {
-        console.error(error);
-        // Handle network errors or other exceptions
-      }
+    //remove from cart function
+    removeFromCart({ commit }, prodID) {
+      commit('REMOVE_FROM_CART', prodID);
     },
+
   },
   modules: {},
 });
