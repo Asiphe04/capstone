@@ -75,14 +75,14 @@ export default createStore({
     addProductToCart(state, product) {
       state.cart.push(product);
     },
-    decrementProductQuantity(state, productId) {
-      const product = state.products.find(
-        (product) => product.id === productId
-      );
-      if (product) {
-        product.quantity--;
-      }
-    },
+    // decrementProductQuantity(state, productId) {
+    //   const product = state.products.find(
+    //     (product) => product.id === productId
+    //   );
+    //   if (product) {
+    //     product.quantity--;
+    //   }
+    // },
 
     //remove from cart
     removeFromCart(state, prodID) {
@@ -251,7 +251,7 @@ export default createStore({
     async addToCart({ commit }, { userID, prodID }) {
       try {
         // Send a POST request to your server's API endpoint
-        const response = await axios.post(`${URL}users/${userID}/cart`, {
+        const response = await axios.post(`https://capstone-2z3t.onrender.com/users/${userID}/cart`, {
           userID,
           prodID,
         });
