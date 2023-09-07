@@ -36,7 +36,7 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch("getCart", this.userData.userID);
+    this.$store.dispatch("getCart", this.user.userID);
   },
   methods: {
     checkout() {
