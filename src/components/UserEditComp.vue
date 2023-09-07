@@ -40,8 +40,8 @@
         required
         id="Gender"
         name="Gender"
-        v-model="user.Gender"
-        :placeholder="user.Gender"
+        v-model="user.gender"
+        :placeholder="user.gender"
       />
 
       <label for="userRole">Role</label>
@@ -147,7 +147,8 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch("getUser", this.id), this.$store.dispatch("getUsers");
+    this.$store.dispatch("getUser", this.$route.params.id),
+      this.$store.dispatch("getUsers");
   },
 };
 </script>
