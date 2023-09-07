@@ -14,7 +14,10 @@
         {{ product.prodName }} <br />
         R{{ product.amount }}
       </h4>
-      <button @click="addToCart(product)" class="btn-add-to-cart btn m-2">
+      <button
+        @click="addToCart(product.prodID)"
+        class="btn-add-to-cart btn m-2"
+      >
         Add to cart
       </button>
 
@@ -27,16 +30,8 @@
 <script>
 export default {
   props: ["product"],
-  methods: {
-    addToCart(product) {
-      // Check if the addToCart method is being called
-      console.log("Adding to cart:", product);
 
-      // Dispatch the addToCart action
-       this.$store.dispatch('addToCart', { userId: this.user.userID, productId: product.prodID });
-    },
-    // ... other methods
-  },
+
 };
 </script>
 <style scoped>

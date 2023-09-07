@@ -245,24 +245,12 @@ export default createStore({
       context.commit("setCart", res.data);
       console.log(id);
     },
-    async addToCart(context, { userId, productId }) {
-      try {
-        const res = await axios.post(`${URL}/users/${userId}/cart/add`, {
-          productId,
-        });
-
-        // Assuming the response contains the updated cart data
-        context.commit("setCart", res.data);
-      } catch (error) {
-        console.error("Error adding product to cart:", error);
-      }
-    },
 
     // cart crud
 
     //show cart
     async getCart(context, id) {
-      const res = await axios.get(`${URL}${id}/carts`);
+      const res = await axios.get(`${URL}/users${id}/cart`);
       context.commit("setCart", res.data);
       console.log(id);
     },
@@ -271,13 +259,10 @@ export default createStore({
     async addToCart({ commit }, { userID, prodID }) {
       try {
         // Send a POST request to your server's API endpoint
-        const response = await axios.post(
-          `https://capstone-sb96.onrender.com/user/${userID}/cart`,
-          {
-            userID,
-            prodID,
-          }
-        );
+        const response = await axios.post(`${URL}/userS/${userID}/cart`, {
+          userID,
+          prodID,
+        });
 
         // Handle the response as needed
         if (response.status === 200) {
@@ -297,7 +282,7 @@ export default createStore({
     async removeFromCart({ commit }, { userID, prodID }) {
       try {
         // Send a DELETE request to your server's API endpoint
-        await axios.delete(`${URL}${userID}/cart/${prodID}`);
+        await axios.delete(`${URL}users/${userID}/cart/${prodID}`);
 
         // Commit the mutation to remove the item from the cart in the store
         commit("removeFromCart", prodID);

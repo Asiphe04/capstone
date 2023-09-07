@@ -1,5 +1,10 @@
 <template>
-  <div class="container d-flex" v-if="product">
+  <div
+    class="container d-flex"
+    v-if="product"
+    :key="product.prodID"
+    :product="product"
+  >
     <div class="col-6 m-3">
       <img
         :src="product.prodURL"
@@ -19,15 +24,46 @@
       <h6 class="text-end">NB: ONLY THIS SIZE IS AVAILABLE</h6>
 
       <div class="buttons text-start">
-        <button>Add to Cart</button>
+        <button @click="addToCart(product.prodID)">Add to Cart</button>
         <button>Back</button>
       </div>
     </div>
   </div>
   <div v-else class="text-white">Error</div>
 </template>
-
 <script>
+export default {
+  computed: {
+    product() {
+      return this.$store.state.product;
+    },
+    id() {
+      return this.$route.params.id;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getProduct", this.id);
+  },
+  methods: {
+    addToCart(prodID) {
+      // Ensure the user is logged in
+      if (this.userData && this.userData.userID) {
+        // Call the addToCart action with userID and prodID
+        this.$store.dispatch("addToCart", {
+          userID: this.userData.userID,
+          prodID,
+        });
+      } else {
+        // Handle the case where the user is not logged in, prompt for login, etc.
+      }
+    },
+  },
+};
+</script>
+<!-- <script>
 export default {
   computed: {
     product() {
@@ -41,7 +77,7 @@ export default {
     this.$store.dispatch("getProduct", this.id);
   },
 };
-</script>
+</script> -->
 <style scoped>
 .desc {
   font-size: 19px;

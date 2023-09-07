@@ -34,7 +34,11 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch("getCart", this.user.userID);
+    if (this.user && this.user.userID) {
+      this.$store.dispatch("getCart", this.user.userID);
+    } else {
+      // Handle the case where user is null or userID is not available
+    }
   },
   methods: {
     checkout() {
