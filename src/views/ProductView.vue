@@ -24,7 +24,8 @@
       <h6 class="text-end">NB: ONLY THIS SIZE IS AVAILABLE</h6>
 
       <div class="buttons text-start">
-        <button @click="addToCart(product.prodID)">Add to Cart</button>
+        <button @click="addToCart(id)">Add to Cart</button>
+        <!-- <button @click="addToCart(product.prodID)">Add to Cart</button> -->
         <button>Back</button>
       </div>
     </div>
@@ -63,21 +64,7 @@ export default {
   },
 };
 </script>
-<!-- <script>
-export default {
-  computed: {
-    product() {
-      return this.$store.state.product;
-    },
-    id() {
-      return this.$route.params.id;
-    },
-  },
-  mounted() {
-    this.$store.dispatch("getProduct", this.id);
-  },
-};
-</script> -->
+
 <style scoped>
 .desc {
   font-size: 19px;

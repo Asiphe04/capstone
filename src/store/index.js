@@ -18,12 +18,6 @@ export default createStore({
     cart: null,
   },
 
-  getters: {
-    cartTotalPrice(state) {
-      return state.cart.reduce((total, product) => total + product.amount, 0);
-    },
-  },
-
   mutations: {
     setProducts: (state, products) => {
       state.products = products;
@@ -72,28 +66,6 @@ export default createStore({
     },
     setCart(state, value) {
       state.cart = value;
-    },
-    //add to cart
-
-    addProductToCart(state, product) {
-      state.cart.push(product);
-    },
-    decrementProductQuantity(state, productId) {
-      const product = state.products.find(
-        (product) => product.id === productId
-      );
-      if (product) {
-        product.quantity--;
-      }
-    },
-    //remove from cart
-    removeFromCart(state, prodID) {
-      // Remove the item from the cart state
-      state.cart = state.cart.filter((product) => product.prodID !== prodID);
-    },
-
-    clearCart(state) {
-      state.cart = [];
     },
   },
   actions: {
@@ -175,7 +147,6 @@ export default createStore({
         throw e;
       }
     },
-
     async login(context, payload) {
       try {
         const res = await axios.post(`${URL}users/login`, payload);
@@ -187,13 +158,20 @@ export default createStore({
           return { success: false, error: msg };
         }
         if (token) {
+          // Save the token in local storage
+          localStorage.setItem("userToken", token);
+    
+          // Save the user data in local storage
+          localStorage.setItem("userData", JSON.stringify(userData));
+    
           context.commit("setUser", userData);
           context.commit("setToken", token);
-
+    
+          // Log user details here
+          console.log("User logged in:", userData);
+    
           context.commit("setLogStatus", res.data.message);
-          Cookies.set("userToken", token, {
-            expires: 1,
-          });
+    
           return { success: res.data.success, token };
         } else if (err) {
           context.commit("setToken", null);
@@ -216,13 +194,15 @@ export default createStore({
             "No response from the server. Check your internet connection"
           );
         } else {
-          console.log("An error occured: ", err);
+          console.log("An error occurred: ", err);
         }
-        context.commit("setError", "An error occured while trying to log in");
+        context.commit("setError", "An error occurred while trying to log in");
         context.commit("setLogStatus", "Not logged in");
         return { success: false, error: "Network error" };
       }
     },
+    
+    
 
     cookieCheck(context) {
       const token = Cookies.get("userToken");
@@ -245,58 +225,17 @@ export default createStore({
       context.commit("setCart", res.data);
       console.log(id);
     },
-
-    // cart crud
-
-    //show cart
-    async getCart(context, id) {
-      const res = await axios.get(`${URL}/users${id}/cart`);
-      context.commit("setCart", res.data);
-      console.log(id);
-    },
-    //add to cart
-
-    async addToCart({ commit }, { userID, prodID }) {
+    async addToCart(context, { userId, productId }) {
       try {
-        // Send a POST request to your server's API endpoint
-        const response = await axios.post(`${URL}/userS/${userID}/cart`, {
-          userID,
-          prodID,
+        const res = await axios.post(`${URL}/users/${userId}/cart/add`, {
+          productId,
         });
 
-        // Handle the response as needed
-        if (response.status === 200) {
-          // The item was added to the cart successfully
-          // You can commit a mutation to update the cart in your store if needed
-          commit("addProductToCart", response.data); // Assuming the response contains the added product
-        } else {
-          // Handle other response statuses or errors
-          // You can also use try-catch blocks to handle errors more precisely
-        }
+        // Assuming the response contains the updated cart data
+        context.commit("setCart", res.data);
       } catch (error) {
-        console.error(error);
-        // Handle network errors or other exceptions
+        console.error("Error adding product to cart:", error);
       }
-    },
-    //remove from cart function
-    async removeFromCart({ commit }, { userID, prodID }) {
-      try {
-        // Send a DELETE request to your server's API endpoint
-        await axios.delete(`${URL}users/${userID}/cart/${prodID}`);
-
-        // Commit the mutation to remove the item from the cart in the store
-        commit("removeFromCart", prodID);
-
-        // Optionally, update the cart's total price or perform other operations
-      } catch (error) {
-        console.error(error);
-        // Handle network errors or other exceptions
-      }
-    },
-    // checkout
-    clearCart({ commit }) {
-      // Clear the cart in the store
-      commit("clearCart");
     },
   },
   modules: {},

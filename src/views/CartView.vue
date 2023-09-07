@@ -1,3 +1,5 @@
+//cart view
+
 <template>
   <div>
     <!-- Display cart contents and total price -->
@@ -34,11 +36,7 @@ export default {
   },
 
   mounted() {
-    if (this.user && this.user.userID) {
-      this.$store.dispatch("getCart", this.user.userID);
-    } else {
-      // Handle the case where user is null or userID is not available
-    }
+    this.$store.dispatch("getCart", this.userData.userID);
   },
   methods: {
     checkout() {
