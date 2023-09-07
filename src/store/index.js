@@ -281,22 +281,10 @@ export default createStore({
 
         // Optionally, update the cart's total price or perform other operations
       } catch (error) {
-        console.error(error);
+        console.error("Error removing product from cart:", error);
         // Handle network errors or other exceptions
       }
     },
-    // async addToCart(context, { userId, productId }) {
-    //   try {
-    //     const res = await axios.post(`${URL}/users/${userId}/cart/add`, {
-    //       productId,
-    //     });
-
-    //     // Assuming the response contains the updated cart data
-    //     context.commit("setCart", res.data);
-    //   } catch (error) {
-    //     console.error("Error adding product to cart:", error);
-    //   }
-    // },
   },
   modules: {},
 });
