@@ -1,5 +1,10 @@
 <template>
   <div>
+    <h1>Heloo</h1>
+  </div>
+</template>
+<!-- <template>
+  <div>
     <h1>YOUR ITEMS</h1>
     <div v-if="cart && cart.length > 0">
       <div v-for="(item, index) in cart" :key="index">
@@ -32,4 +37,4 @@ export default {
     },
   },
 };
-</script>
+</script> -->
