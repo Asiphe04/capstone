@@ -1,13 +1,13 @@
 //Import database connection
 const db = require("../config/db");
-
 const getCart = (id, result) => {
   db.query(
-    `SELECT prodName,description ,amount ,prodUrl
-     FROM users
-     INNER JOIN cart ON users.userID = cart.userID
-    INNER JOIN products ON cart.prodID = products.prodID
-    WHERE cart.userID = ? `,
+    `SELECT cart.cartID, products.prodID, products.prodName, products.description, products.amount, products.prodUrl
+FROM users
+INNER JOIN cart ON users.userID = cart.userID
+INNER JOIN products ON cart.prodID = products.prodID
+WHERE cart.userID = ?
+ `,
     [id],
     (err, results) => {
       if (err) {
@@ -19,6 +19,25 @@ const getCart = (id, result) => {
     }
   );
 };
+
+// const getCart = (id, result) => {
+//   db.query(
+//     `SELECT prodName,description ,amount ,prodUrl
+//      FROM users
+//      INNER JOIN cart ON users.userID = cart.userID
+//     INNER JOIN products ON cart.prodID = products.prodID
+//     WHERE cart.userID = ? `,
+//     [id],
+//     (err, results) => {
+//       if (err) {
+//         console.log(err);
+//         result(err, null);
+//       } else {
+//         result(null, results);
+//       }
+//     }
+//   );
+// };
 const insertCart = (data, result) => {
   db.query("INSERT INTO cart SET ?;", data, (err, results) => {
     if (err) {
