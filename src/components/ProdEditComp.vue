@@ -91,7 +91,7 @@ export default {
       quantity: "",
       amount: "",
       category: "",
-      prodURL: "",
+      prodURL: "https://i.postimg.cc/43GzNPSc/img1.jpg",
       description: "",
     };
   },
