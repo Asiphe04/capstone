@@ -79,11 +79,8 @@ export default createStore({
       state.cart.push(product);
     },
   //remove from cart
-  REMOVE_FROM_CART(state, prodID) {
-    const itemIndex = state.cart.findIndex(item => item.prodID === prodID);
-    if (itemIndex !== -1) {
-      state.cart.splice(itemIndex, 1);
-    }
+  removeProductFromCart(state, prodID) {
+    state.cart = state.cart.filter(product => product.prodID !== prodID);
   },
 
     // decrementProductQuantity(state, productId) {
@@ -277,11 +274,35 @@ export default createStore({
         // Handle network errors or other exceptions
       }
     },
+
+
+// router.delete("/users/:id/cart/:id", deleteCart);
+
     //remove from cart function
-    //remove from cart function
-    removeFromCart({ commit }, prodID) {
-      commit('REMOVE_FROM_CART', prodID);
-    },
+    async removeFromCart({ commit }, product) {
+      const { cartID, userID } = product; // Use cartID instead of prodID
+      try {
+        // Send a DELETE request to your server's API endpoint with cartID
+        const response = await axios.delete(`${URL}users/${userID}/cart/${cartID}`);
+    
+        // Handle the response as needed
+        if (response.status === 204) {
+          // The item was removed from the cart successfully
+          // Commit the mutation to update the cart in your store
+          commit("removeProductFromCart", cartID);
+        } else {
+          // Handle other response statuses or errors
+          // You can also use try-catch blocks to handle errors more precisely
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle network errors or other exceptions
+      }
+    }
+    
+    
+    
+    
 
   },
   modules: {},

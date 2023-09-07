@@ -3,16 +3,26 @@
 <template>
   <div>
      <h1>YOUR ITEMS</h1>
-    <div v-if="products && products.length > 0">Your cart is empty.</div>
+    <div v-if="products && products.length > 0" >Your cart is empty.</div>
     <div v-else>
       <div v-for="product in getCart" :key="product.prodID">
+      
        
         <img :src="product.prodUrl" alt="" class="w-25" />
         <h4>Name: {{ product.prodName }}</h4>
         <p>Price: R{{ product.amount }}</p>
         <p>Quantity: {{ product.quantity }}</p>
         <!-- <h6>Total Price: R{{ cartTotalPrice }}</h6> -->
-        <button @click="removeFromCart(product.prodID)">Remove</button>
+      <!-- <button @click="removeFromCart(product)">Debug Product</button> -->
+      <!-- <button @click="console.log(product)">Debug Product</button> -->
+      <button @click="removeFromCart(product)">Remove</button>
+
+    <!-- <button @click="removeFromCart({ prodID: product.prodID, userID: user.userID })">Remove</button> -->
+
+
+
+
+
 
         <button @click="checkout">Checkout</button>
         <!-- Total Price: ${{ cartTotalPrice }} -->
@@ -41,11 +51,16 @@ export default {
 
   mounted() {
     this.$store.dispatch("getCart", this.user.userID);
+   
+
   },
   methods: {
-    removeFromCart(prodID) {
-      this.$store.dispatch('removeFromCart', prodID);
-    },
+removeFromCart(product) {
+  console.log("Product:", product);
+  console.log("Product's prodID:", product.prodID);
+    this.$store.dispatch('removeFromCart', { prodID: product.prodID, userID: this.user.userID });
+  },
+
     checkout() {
       // Redirect to the login page
       this.$router.push("/login");
