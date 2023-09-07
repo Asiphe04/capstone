@@ -29,10 +29,13 @@ export default {
   props: ["product"],
   methods: {
     addToCart(product) {
+      // Check if the addToCart method is being called
+      console.log("Adding to cart:", product);
 
-      this.$store.dispatch("addToCart", product);
+      // Dispatch the addToCart action
+       this.$store.dispatch('addToCart', { userId: this.user.userID, productId: product.prodID });
     },
-  
+    // ... other methods
   },
 };
 </script>
