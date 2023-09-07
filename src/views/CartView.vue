@@ -49,7 +49,7 @@ export default {
         // Call the removeFromCart action with userID and prodID
         this.$store.dispatch("removeFromCart", {
           userID: this.userData.userID,
-          prodID: product.prodID, // Use product.prodID
+          prodID,
         });
       } else {
         // Handle the case where the user is not logged in, prompt for login, etc.

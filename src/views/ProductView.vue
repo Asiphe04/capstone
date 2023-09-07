@@ -26,7 +26,9 @@
       <div class="buttons text-start">
         <button @click="addToCart(id)">Add to Cart</button>
         <!-- <button @click="addToCart(product.prodID)">Add to Cart</button> -->
-        <button>Back</button>
+        <router-link to="/products">
+          <button>Back</button>
+        </router-link>
       </div>
     </div>
   </div>
