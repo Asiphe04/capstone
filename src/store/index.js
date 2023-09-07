@@ -72,6 +72,9 @@ export default createStore({
     setCart(state, value) {
       state.cart = value;
     },
+    // addProduct(state, product) {
+    //   state.products.push(product); // Add the new product to the list.
+    // },
     addProductToCart(state, product) {
       state.cart.push(product);
     },
@@ -90,7 +93,7 @@ export default createStore({
       state.cart = state.cart.filter((product) => product.prodID !== prodID);
     },
     clearCart(state) {
-      state.cart = [];
+      state.cartItems = [];
     },
   },
   actions: {
@@ -251,7 +254,7 @@ export default createStore({
     async addToCart({ commit }, { userID, prodID }) {
       try {
         // Send a POST request to your server's API endpoint
-        const response = await axios.post(`https://capstone-2z3t.onrender.com/users/${userID}/cart`, {
+        const response = await axios.post(`${URL}users/${userID}/cart`, {
           userID,
           prodID,
         });

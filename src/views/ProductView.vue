@@ -47,6 +47,9 @@ export default {
       return this.$store.state.userData;
     },
   },
+  // mounted() {
+  //   this.$store.dispatch("getProduct", this.$route.params.id);
+  // },
   mounted() {
     this.$store.dispatch("getProduct", this.id);
   },
@@ -57,7 +60,7 @@ export default {
         // Call the addToCart action with userID and prodID
         this.$store.dispatch("addToCart", {
           userID: this.userData.userID,
-          prodID: prodID, // Pass the product ID
+          prodID,
         });
       } else {
         // Handle the case where the user is not logged in, prompt for login, etc.
