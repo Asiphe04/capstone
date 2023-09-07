@@ -6,7 +6,7 @@
     <div v-else>
       <div v-for="product in getCart" :key="product.prodID">
         <h1>YOUR ITEMS</h1>
-        <img :src="product.prodURL" alt="" />
+        <img :src="product.prodUrl" alt="" class="w-25" />
         <h4>Name: {{ product.prodName }}</h4>
         <p>Price: R{{ product.amount }}</p>
         <p>Quantity: {{ product.quantity }}</p>
@@ -61,3 +61,18 @@ export default {
   },
 };
 </script>
+<style scoped>
+button {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge var(--secondary-color);
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  margin: 14px;
+}
+</style>

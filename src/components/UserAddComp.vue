@@ -84,7 +84,7 @@ export default {
       userRole: "",
       emailAdd: "",
       userPass: "",
-      userProfile: "",
+      userProfile: "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png",
     };
   },
   methods: {
