@@ -20,15 +20,19 @@ const getCart = (id, result) => {
   );
 };
 
-const insertCart = (data, result) => {
-  db.query("INSERT INTO cart SET ?;", data, (err, results) => {
-    if (err) {
-      console.log(err);
-      result(err, null);
-    } else {
-      result(null, results);
+const insertCart = (userID, prodID, callback) => {
+  db.query(
+    'INSERT INTO cart (userID, prodID) VALUES (?, ?)',
+    [userID, prodID],
+    (err, results) => {
+      if (err) {
+        console.log('Database error');
+        callback(err, null);
+      } else {
+        callback(null, results);
+      }
     }
-  });
+  );
 };
 
 const updateCartbyId = (data, id, result) => {
