@@ -36,7 +36,7 @@
 
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <router-link to="/history">
+        <router-link to="/history" class="arrow ms-auto">
           <img
             src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
             alt=""
@@ -54,7 +54,7 @@
 
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <router-link to="/values">
+        <router-link to="/values" class="arrow ms-auto">
           <img
             src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
             alt=""
@@ -72,7 +72,7 @@
       />
       <div class="d-flex">
         <h5 class="text-start category-name">READ MORE</h5>
-        <router-link to="/mission">
+        <router-link to="/mission" class="arrow ms-auto">
           <img
             src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
             alt=""
@@ -82,7 +82,7 @@
       </div>
     </div>
   </div>
-  <h2>MEET THE TEAM</h2>
+  <h1>MEET THE TEAM</h1>
   <div class="radio-inputs container p-2 mb-4">
     <label class="radio">
       <input
@@ -90,9 +90,9 @@
         name="radio"
         checked=""
         v-model="activeTab"
-        value="managers"
+        value="Admin"
       />
-      <span class="name">Managers</span>
+      <span class="name">Admin</span>
     </label>
     <label class="radio" id="experience-btn">
       <input
@@ -115,11 +115,11 @@
     </label>
   </div>
   <div
-    v-if="activeTab === 'managers'"
+    v-if="activeTab === 'Admin'"
     class="managers d-flex justify-content-center"
   >
     <UserComp
-      v-for="user in filteredUsers('Manager')"
+      v-for="user in filteredUsers('Admin')"
       :key="user.userID"
       :user="user"
     />
@@ -144,6 +144,7 @@
       :user="user"
     />
   </div>
+
   <h2>IN PARTNERSHIP WITH:</h2>
 
   <div
@@ -177,12 +178,13 @@
 </template>
 
 <script>
+import SpinnerComp from "@/components/SpinnerComp.vue";
 import UserComp from "@/components/UserComp.vue";
 
 export default {
   data() {
     return {
-      activeTab: "managers",
+      activeTab: "Admin",
     };
   },
   computed: {
@@ -203,7 +205,7 @@ export default {
   mounted() {
     this.$store.dispatch("getUsers");
   },
-  components: { UserComp },
+  components: { UserComp, SpinnerComp },
 };
 </script>
 

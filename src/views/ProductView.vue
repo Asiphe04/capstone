@@ -76,7 +76,7 @@ export default {
 }
 
 h6 {
-  color: #ff4c4c !important;
+  color: rgb(196, 196, 196) !important;
 }
 button {
   width: 10em;

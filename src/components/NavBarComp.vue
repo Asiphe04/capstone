@@ -68,9 +68,8 @@
             <span class="tooltip">Contact</span></router-link
           >
         </li>
-        <li>
+        <li v-if="userRole === 'Admin'">
           <router-link
-           
             to="/admin"
             class="link"
             :exact-active-class="'active-link'"
@@ -97,21 +96,14 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
-        <!-- <li> -->
-          <!-- <router-link
-            @click="logout"
-            class="link"
-            :exact-active-class="'active-link'"
-          >
+        <li v-show="userRole">
+          <button @click="logout" class="link">
             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">Log Out</span></router-link
-          >
-        </li> -->
-        <!-- <li>
-          <i class="fa fa-sign-out" aria-hidden="true" @click="logout"></i>
-        </li> -->
+            <span class="tooltip">Log out</span>
+          </button>
+        </li>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown" v-show="!userRole">
           <router-link
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -140,7 +132,7 @@
               <a class="dropdown-item text-white" href="#">Sign Up</a>
             </router-link>
           </ul>
-        </div>
+        </div> -->
       </div>
     </ul>
     <div class="icons d-flex"></div>
@@ -152,11 +144,33 @@
 </template>
 <script>
 export default {
-
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
 <style scoped>
+button {
+  background-color: transparent !important;
+  border-color: none;
+  border: none;
+}
 .dropdown-item,
 #dropdownMenuButton1,
 :hover {

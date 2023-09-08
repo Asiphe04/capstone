@@ -1,11 +1,11 @@
 <template>
-  <h1 class="text-center m-3">CLOUD 9 SUPERSTORE</h1>
+  <h1 class="text-center">CLOUD 9 SUPERSTORE</h1>
   <div class="container">
     <div class="col-12">
       <img
         src="https://i.postimg.cc/VkH6WTBR/c92.webp"
         alt=""
-        class="home-wallpaper mb-4"
+        class="home-wallpaper"
       />
     </div>
     <div class="d-flex justify-content-center">
@@ -17,7 +17,7 @@
       >
     </button>
     <div class="shop row justify-content-center">
-      <div class="col-4">
+      <div class="col-4 type">
         <img
           src="https://i.postimg.cc/DytgH5TP/hardware.jpg"
           alt=""
@@ -25,7 +25,10 @@
         />
         <div class="d-flex">
           <h2 class="text-start category-name">HARDWARE</h2>
-          <router-link to="/products">
+          <router-link
+            :to="{ name: 'products', query: { filter: 'Hardware' } }"
+            class="arrow ms-auto"
+          >
             <img
               src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
               alt=""
@@ -44,7 +47,10 @@
 
         <div class="d-flex">
           <h2 class="text-start category-name">SKIN ROUTINE</h2>
-          <router-link to="/products">
+          <router-link
+            :to="{ name: 'products', query: { filter: 'Skin' } }"
+            class="arrow ms-auto"
+          >
             <img
               src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
               alt=""
@@ -61,7 +67,10 @@
         />
         <div class="d-flex">
           <h2 class="text-start category-name">BEVERAGES</h2>
-          <router-link to="/products">
+          <router-link
+            :to="{ name: 'products', query: { filter: 'Beverages' } }"
+            class="arrow ms-auto"
+          >
             <img
               src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
               alt=""
@@ -79,7 +88,10 @@
         />
         <div class="d-flex">
           <h2 class="text-start category-name">SNACKS</h2>
-          <router-link to="/products">
+          <router-link
+            :to="{ name: 'products', query: { filter: 'Snacks' } }"
+            class="arrow ms-auto"
+          >
             <img
               src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
               alt=""
@@ -93,7 +105,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    if (
+      this.$store.state.userRole === null ||
+      this.$store.state.userRole === "" ||
+      this.$store.state.userRole === undefined
+    ) {
+      this.$router.push("/login");
+      window.location.reload();
+    }
+  },
+};
 </script>
 <style scoped>
 button {
@@ -107,7 +130,7 @@ button {
   transition: 1s;
   border-radius: 0.3em;
   font-size: 16px;
-  margin: 14px;
+  /* margin: 14px; */
 }
 .home-wallpaper {
   width: 100%;
@@ -124,6 +147,7 @@ button {
   padding: 3px;
   border-radius: 10px;
   background-color: var(--bggrey);
+  width: 370px !important;
 }
 .category-name {
   color: var(--bgblack) !important;

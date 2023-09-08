@@ -13,7 +13,10 @@
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
-          <router-link class="text-white text-decoration-none" :to="{ name: 'user edit', params: { id: user.userID } }">
+          <router-link
+            class="text-white text-decoration-none"
+            :to="{ name: 'user edit', params: { id: user.userID } }"
+          >
             Edit
           </router-link>
         </button>
@@ -33,7 +36,7 @@ export default {
   methods: {
     async deleteUser(id) {
       try {
-        await axios.delete(`https://nodejseomp.onrender.com/users/${id}`);
+        await axios.delete(`https://capstone-2z3t.onrender.com/users/${id}`);
         this.$store.dispatch("getUsers");
         alert("User has been deleted");
       } catch (err) {
