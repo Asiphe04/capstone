@@ -1,5 +1,4 @@
 <template>
-
   <input
     class="m-2"
     v-model="searchTerm"
@@ -25,6 +24,7 @@
       <button
         type="button"
         class="filter-btn"
+        id="Hardware"
         :class="{ 'active-btn': selectedFilter === 'Hardware' }"
         @click="selectFilter('Hardware')"
       >
@@ -68,7 +68,6 @@
     />
   </div>
   <SpinnerComp v-else />
-  
 </template>
 
 <script>
@@ -116,16 +115,29 @@ export default {
     },
   },
   mounted() {
+    // Check if a query parameter named 'filter' is present in the URL
+    const filterFromQuery = this.$route.query.filter;
+
+    if (filterFromQuery) {
+      this.selectedFilter = filterFromQuery;
+    }
+
+    // Fetch and set your products data as you were doing before
     this.$store.dispatch("getProducts").then(() => {
       this.products = this.$store.state.products;
     });
   },
 
+  // mounted() {
+  //   this.$store.dispatch("getProducts").then(() => {
+  //     this.products = this.$store.state.products;
+  //   });
+  // },
+
   components: { CardComp, SpinnerComp },
 };
 </script>
 <style scoped>
-
 option {
   color: black;
 }
@@ -143,7 +155,7 @@ input {
   border-radius: none;
   background-color: var(--bggrey);
   color: black;
-  border-radius: 6% !important;
+  border-radius: 2rem !important;
   border: none !important;
   height: 40px;
   margin: 10px;

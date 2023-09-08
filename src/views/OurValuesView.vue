@@ -1,5 +1,14 @@
 <template>
-  <h1 class="mt-3">OUR VALUES</h1>
+  <div class="container">
+    <router-link to="/about" class="arrow">
+      <img
+        src="https://i.postimg.cc/wTxGjk32/arrow-removebg-preview.png"
+        alt=""
+        class="arrow"
+      />
+    </router-link>
+    <h1 class="mt-2">OUR VALUES</h1>
+  </div>
   <div class="container d-flex">
     <div class="col-6">
       <p class="text-start">
@@ -68,5 +77,18 @@ p {
 }
 .number {
   font-size: 100px !important;
+}
+.arrow {
+  width: 90px;
+  height: 67px;
+}
+.container {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

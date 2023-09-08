@@ -78,10 +78,10 @@ export default createStore({
     addProductToCart(state, product) {
       state.cart.push(product);
     },
-  //remove from cart
-  removeProductFromCart(state, prodID) {
-    state.cart = state.cart.filter(product => product.prodID !== prodID);
-  },
+    removeFromCart(state, cartID) {
+      // Remove the item from the cart state
+      state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
+    },
 
     // decrementProductQuantity(state, productId) {
     //   const product = state.products.find(
@@ -92,7 +92,6 @@ export default createStore({
     //   }
     // },
 
-  
     clearCart(state) {
       state.cartItems = [];
     },
@@ -275,35 +274,17 @@ export default createStore({
       }
     },
 
+    // router.delete("/users/:id/cart/:id", deleteCart);
 
-// router.delete("/users/:id/cart/:id", deleteCart);
-
-    //remove from cart function
-    async removeFromCart({ commit }, product) {
-      const { cartID, userID } = product; // Use cartID instead of prodID
+    async removeFromCart({ commit }, { userID, cartID }) {
       try {
-        // Send a DELETE request to your server's API endpoint with cartID
-        const response = await axios.delete(`${URL}users/${userID}/cart/${cartID}`);
-    
-        // Handle the response as needed
-        if (response.status === 204) {
-          // The item was removed from the cart successfully
-          // Commit the mutation to update the cart in your store
-          commit("removeProductFromCart", cartID);
-        } else {
-          // Handle other response statuses or errors
-          // You can also use try-catch blocks to handle errors more precisely
-        }
+        await axios.delete(`${URL}users/${userID}/cart/${cartID}`);
+
+        commit("removeFromCart", cartID);
       } catch (error) {
         console.error(error);
-        // Handle network errors or other exceptions
       }
-    }
-    
-    
-    
-    
-
+    },
   },
   modules: {},
 });

@@ -1,7 +1,17 @@
 <template>
-  <h1 class="mt-2">OUR HISTORY</h1>
+  <div class="container">
+    <router-link to="/about" class="arrow">
+      <img
+        src="https://i.postimg.cc/wTxGjk32/arrow-removebg-preview.png"
+        alt=""
+        class="arrow"
+      />
+    </router-link>
+    <h1 class="mt-2">OUR HISTORY</h1>
+  </div>
+
   <div class="d-flex m-5">
-    <div class="col-6">
+    <div class="col-6 m-2">
       <h2 class="text-start">Chapter 1: The Birth of a Vision (1970-1979)</h2>
       <p class="text-start">
         In the late 1970s, as the United States was entering a new era of
@@ -31,7 +41,7 @@
       />
     </div>
   </div>
-  <div class="m-5">
+  <div class="m-4">
     <p class="text-start">
       Chapter 3: The Expansion Era (1990-1999) The 1990s witnessed Cloud 9's
       rapid expansion, both in terms of store numbers and product offerings. The
@@ -85,5 +95,18 @@ p {
   border-radius: 3%;
   width: 100%;
   height: 360px;
+}
+.arrow {
+  width: 90px;
+  height: 67px;
+}
+.container {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

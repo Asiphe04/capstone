@@ -90,6 +90,7 @@ const routes = [
     component: () => import("../views/RegisterView.vue"),
     props: true,
   },
+  
 ];
 
 const router = createRouter({

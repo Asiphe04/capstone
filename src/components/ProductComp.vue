@@ -14,12 +14,6 @@
         {{ product.prodName }} <br />
         R{{ product.amount }}
       </h4>
-      <button
-        @click="addToCart(product.prodID)"
-        class="btn-add-to-cart btn m-2"
-      >
-        Add to cart
-      </button>
 
       <router-link :to="{ name: 'product', params: { id: product.prodID } }">
         <button class="btn-see-more btn">See more</button></router-link
@@ -30,8 +24,6 @@
 <script>
 export default {
   props: ["product"],
-
-
 };
 </script>
 <style scoped>
@@ -60,7 +52,7 @@ a {
   background: var(--tertiary-color) !important;
 
   color: white !important;
-  border-radius: 7% !important;
+  border-radius: 1rem !important;
   width: 8em;
 
   border-style: none;
