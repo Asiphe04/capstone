@@ -77,17 +77,30 @@ const updateCartbyId = (data, id, result) => {
     }
   );
 };
-
-const removeCart = (id, result) => {
-  db.query(`DELETE FROM cart WHERE cartID = ?`, id, (err, results) => {
-    if (err) {
-      console.log(err);
-      result(err, null);
-    } else {
-      result(null, results);
+const removeCart = ( cartID, callback) => {
+  db.query(
+    'DELETE FROM cart WHERE cartID = ?',
+    [cartID],
+    (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
     }
-  });
+  );
 };
+
+// const removeCart = (id, result) => {
+//   db.query(`DELETE FROM cart WHERE cartID = ?`, [cartID], (err, results) => {
+//     if (err) {
+//       console.log(err);
+//       result(err, null);
+//     } else {
+//       result(null, results);
+//     }
+//   });
+// };
 
 const removeAllcartItems = (id, result) => {
   db.query(`DELETE FROM cart WHERE userID = ?`, id, (err, results) => {
