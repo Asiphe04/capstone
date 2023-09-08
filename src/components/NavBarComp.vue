@@ -68,9 +68,8 @@
             <span class="tooltip">Contact</span></router-link
           >
         </li>
-        <li>
+        <li v-if="userRole === 'Admin'">
           <router-link
-           
             to="/admin"
             class="link"
             :exact-active-class="'active-link'"
@@ -97,8 +96,9 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
-        <!-- <li> -->
-          <!-- <router-link
+        <button @click="logout">Log out</button>
+        <!-- <li>
+          <router-link
             @click="logout"
             class="link"
             :exact-active-class="'active-link'"
@@ -152,7 +152,23 @@
 </template>
 <script>
 export default {
-
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 

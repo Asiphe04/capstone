@@ -33,13 +33,13 @@
         :placeholder="user.userAge"
       />
 
-      <label for="Gender">Gender</label>
+      <label for="gender">Gender</label>
       <input
         type="text"
         autocomplete="off"
         required
-        id="Gender"
-        name="Gender"
+        id="gender"
+        name="gender"
         v-model="user.gender"
         :placeholder="user.gender"
       />
