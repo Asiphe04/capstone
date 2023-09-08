@@ -105,7 +105,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    if (
+      this.$store.state.userRole === null ||
+      this.$store.state.userRole === "" ||
+      this.$store.state.userRole === undefined
+    ) {
+      this.$router.push("/login");
+      window.location.reload();
+    }
+  },
+};
 </script>
 <style scoped>
 button {
