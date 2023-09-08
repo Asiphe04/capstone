@@ -1,36 +1,35 @@
-//cart view
-
 <template>
   <div>
-     <h1>YOUR ITEMS</h1>
-    <div v-if="products && products.length > 0" >Your cart is empty.</div>
-    <div v-else>
-      <div v-for="product in getCart" :key="product.prodID">
-      
-       
-        <img :src="product.prodUrl" alt="" class="w-25" />
-        <h4>Name: {{ product.prodName }}</h4>
-        <p>Price: R{{ product.amount }}</p>
-        <p>Quantity: {{ product.quantity }}</p>
-        <!-- <h6>Total Price: R{{ cartTotalPrice }}</h6> -->
-      <!-- <button @click="removeFromCart(product)">Debug Product</button> -->
-      <!-- <button @click="console.log(product)">Debug Product</button> -->
-      <button @click="removeFromCart(product)">Remove</button>
-
-    <!-- <button @click="removeFromCart({ prodID: product.prodID, userID: user.userID })">Remove</button> -->
-
-
-
-
-
-
-        <button @click="checkout">Checkout</button>
-        <!-- Total Price: ${{ cartTotalPrice }} -->
-        <!-- Total Price: ${{ calculateTotalPrice() }} -->
-      </div>
-    </div>
+    <h1>YOUR ITEMS</h1>
+    <table v-if="products && products.length > 0">
+      <tr>
+        <td colspan="4">Your cart is empty.</td>
+      </tr>
+    </table>
+    <table v-else>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in getCart" :key="product.prodID">
+          <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
+          <td>{{ product.prodName }}</td>
+          <td>R{{ product.amount }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button @click="removeFromCart(product.cartID)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+      <button @click="checkout">Checkout</button>
+    </table>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -51,25 +50,32 @@ export default {
 
   mounted() {
     this.$store.dispatch("getCart", this.user.userID);
-   
-
   },
   methods: {
-removeFromCart(product) {
-  console.log("Product:", product);
-  console.log("Product's prodID:", product.prodID);
-    this.$store.dispatch('removeFromCart', { prodID: product.prodID, userID: this.user.userID });
-  },
+    removeFromCart(cartID) {
+      const userID = this.user.userID;
 
+      this.$store
+        .dispatch("removeFromCart", { userID, cartID })
+        .then(() => {})
+        .catch((error) => {
+          console.error("Error removing item from cart:", error);
+        });
+    },
     checkout() {
       // Redirect to the login page
       this.$router.push("/login");
     },
-
   },
 };
 </script>
 <style scoped>
+th {
+  color: white;
+}
+td {
+  color: white;
+}
 button {
   width: 10em;
   position: relative;
