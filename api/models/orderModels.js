@@ -2,7 +2,7 @@
 const db = require("../config/db");
 const getCart = (id, result) => {
   db.query(
-    `SELECT cart.cartID, products.prodID, products.prodName, products.description, products.amount, products.prodUrl
+    `SELECT cart.cartID, products.prodID, products.prodName, products.description, products.amount, products.prodUrl, products.quantity
 FROM users
 INNER JOIN cart ON users.userID = cart.userID
 INNER JOIN products ON cart.prodID = products.prodID
