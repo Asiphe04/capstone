@@ -126,12 +126,12 @@ const userLogin = (req, res) => {
 // Update an existing user
 const updateUserByID = (id, data, result) => {
   db.query(
-    "UPDATE users SET firstName = ?, lastName = ?, userAge = ?, Gender = ?, userRole = ? , emailAdd = ? , userPass = ? , userProfile = ? WHERE userID = ?",
+    "UPDATE users SET firstName = ?, lastName = ?, userAge = ?, gender = ?, userRole = ? , emailAdd = ? , userPass = ? , userProfile = ? WHERE userID = ?",
     [
       data.firstName,
       data.lastName,
       data.userAge,
-      data.Gender,
+      data.gender,
       data.userRole,
       data.emailAdd,
       data.userPass,
