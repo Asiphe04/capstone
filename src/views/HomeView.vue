@@ -113,7 +113,7 @@ export default {
       this.$store.state.userRole === undefined
     ) {
       this.$router.push("/login");
-      window.location.reload();
+      // window.location.reload();
     }
   },
 };
