@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "*");
   res.header("Access-Control-Expose-Headers", "Authorization");
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
- res.setHeader("Access-Control-Allow-Origin", "https://capstone-18568.web.app/");
+ res.setHeader("Access-Control-Allow-Origin", "https://capstone-18568.web.app");
 //https://capstone-18568.web.app/
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
