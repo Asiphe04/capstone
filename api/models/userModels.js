@@ -7,7 +7,7 @@ const { compare } = require("bcrypt");
 //Get users
 const getUsers = (result) => {
   db.query(
-    "SELECT userID, firstName, lastName, userAge , Gender , userRole, emailAdd, userPass, userProfile FROM users",
+    "SELECT userID, firstName, lastName, userAge , gender , userRole, emailAdd, userPass, userProfile FROM users",
     (err, results) => {
       if (err) {
         console.log(err);
