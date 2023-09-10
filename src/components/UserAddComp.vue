@@ -20,21 +20,18 @@
       <label>Age</label>
 
       <input
-        type="text"
+        type="number"
         autocomplete="off"
         required
         name="userAge"
         v-model="userAge"
       />
 
-      <label>Gender</label>
-      <input
-        type="text"
-        autocomplete="off"
-        required
-        name="gender"
-        v-model="gender"
-      />
+    <label for="gender">Gender</label>
+<select required type="text"  id="gender" name="gender" :placeholder="gender" v-model="gender">
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
       <label>Role</label>
       <input
         type="text"
@@ -69,7 +66,7 @@
         placeholder="https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png"
       />
 
-      <button @click="addUser" class="btn-submit">Submit</button>
+      <button @click="register" class="btn-submit">Submit</button>
     </div>
   </div>
 </template>
@@ -82,16 +79,16 @@ export default {
       lastName: "",
       userAge: "",
       gender: "",
-      userRole: "",
+      userRole: "User",
       emailAdd: "",
       userPass: "",
       userProfile: "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png",
     };
   },
   methods: {
-    async addUser() {
+     async register() {
       try {
-        await axios.post("https://capstone-2z3t.onrender.com/users/", {
+         this.$store.dispatch("register", {
           firstName: this.firstName,
           lastName: this.lastName,
           userAge: this.userAge,
@@ -101,15 +98,6 @@ export default {
           userPass: this.userPass,
           userProfile: this.userProfile,
         });
-
-        this.firstName = "";
-        this.lastName = "";
-        this.userAge = "";
-        this.gender = "";
-        this.userRole = "";
-        this.emailAdd = "";
-        this.userPass = "";
-        this.userProfile = "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png";
 
         this.$router.push("/admin");
         alert("User has been created");
@@ -136,7 +124,7 @@ label {
   margin-top: 2.5rem;
 }
 
-input {
+input, select, option {
   font-size: 1.25rem;
   padding: 0.5rem 0 0.5rem 1rem;
 }

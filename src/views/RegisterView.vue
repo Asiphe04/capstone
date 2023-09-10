@@ -42,13 +42,11 @@
           />
         </div>
         <div class="col-6">
-          <label for="gender" class="text-start">Gender:</label>
-          <input
-            type="gender"
-            placeholder="eg. Male"
-            v-model="gender"
-            required
-          />
+      <label for="gender">Gender</label>
+<select required type="text"  id="gender" name="gender" :placeholder="gender" v-model="gender">
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
           <label for="email" class="text-start">EMAIL:</label>
 
           <input
@@ -94,10 +92,10 @@ export default {
       lastName: "",
       userAge: "",
       gender: "",
-      userRole: "",
+      userRole: "User",
       emailAdd: "",
       userPass: "",
-      userProfile: "",
+      userProfile: "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png",
     };
   },
   methods: {
@@ -155,7 +153,7 @@ button {
   font-size: 16px;
   margin: 14px;
 }
-input {
+input , select, option{
   width: 100%;
   padding: 14px 12px;
   border-radius: 6px;

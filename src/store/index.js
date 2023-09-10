@@ -124,6 +124,39 @@ export default createStore({
       }
     },
 
+
+    updateUser: async (context, id) => {
+      try {
+        const res = await put(`${URL}users/${id}`);
+        if (!res.ok) {
+          throw new Error("Failed to update user");
+        }
+        const user = await res.json();
+
+        context.commit("setUser", user);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteUser(context, id) {
+      try {
+        // Send a DELETE request to delete the user
+        const response = await axios.delete(`${URL}users/${id}`);
+  
+        if (response.status === 204) {
+          // User deleted successfully
+          context.commit("setUser", null); // Clear the user data in the store
+          console.log("User deleted successfully");
+        } else {
+          // Handle other response statuses or errors
+          console.error("Failed to delete user");
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle network errors or other exceptions
+      }
+    },
+
     getProducts: async (context) => {
       try {
         const res = await fetch(`${URL}products`);
