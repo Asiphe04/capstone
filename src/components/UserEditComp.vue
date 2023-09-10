@@ -116,9 +116,9 @@ export default {
   methods: {
     async updateUser() {
       try {
-        await axios.put(
-          `https://capstone-2z3t.onrender.com/users/${this.$route.params.id}`,
+const payload = 
           {
+            userID: this.$route.params.id,
             firstName: this.user.firstName,
             lastName: this.user.lastName,
             userAge: this.user.userAge,
@@ -128,7 +128,7 @@ export default {
             userPass: this.user.userPass,
             userProfile: this.user.userProfile,
           }
-        );
+       await this.$store.dispatch("updateUser", payload);
         this.firstName = "";
         this.lastName = "";
         this.userAge = "";
@@ -138,26 +138,26 @@ export default {
         this.userPass = "";
         this.userProfile = "";
 
-        this.$router.push("/admin");
+       this.$router.push("/admin");
         alert("User has been updated");
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
   },
-  props: ["id"],
   computed: {
     user() {
       return this.$store.state.user;
     },
   },
   mounted() {
-    this.$store.dispatch("getUser", this.$route.params.id),
-      this.$store.dispatch("getUsers");
+    // Fetch user data from the store if not already loaded
+    if (!this.user) {
+      this.$store.dispatch("getUser", this.$route.params.id);
+    }
   },
 };
 </script>
-
 <style scoped>
 label {
   color: white;

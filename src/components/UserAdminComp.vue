@@ -21,7 +21,7 @@
           </router-link>
         </button>
         <button class="btn-delete text-white" @click="deleteUser(user.userID)">
-          Delete
+         <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
     </td>
@@ -49,22 +49,6 @@
   },
 };
 
-// import axios from "axios";
-
-// export default {
-//   props: ["user"],
-//   methods: {
-//     async deleteUser(id) {
-//       try {
-//         await axios.delete(`https://capstone-2z3t.onrender.com/users/${id}`);
-//         this.$store.dispatch("getUsers");
-//         alert("User has been deleted");
-//       } catch (err) {
-//         alert(err);
-//       }
-//     },
-//   },
-// };
 </script>
 
 <style scoped>

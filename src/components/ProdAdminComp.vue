@@ -16,11 +16,11 @@
             class="text-white text-decoration-none"
             :to="{ name: 'product-edit', params: { id: product.prodID } }"
           >
-            Edit
+           <i class="fas fa-edit"></i>
           </router-link>
         </button>
         <button class="btn-delete text-white" @click="deleteProduct(product.prodID)">
-          Delete
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
     </td>

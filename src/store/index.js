@@ -36,6 +36,9 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
     },
+    updateUser: (state, updatedUser) => {
+      state.user = updatedUser;
+    },
     setRegStatus(state, status) {
       state.regStatus = status;
     },
@@ -123,21 +126,47 @@ export default createStore({
         console.error(error);
       }
     },
-
-
-    updateUser: async (context, id) => {
+    // async updateProduct({ commit }, data) {
+    //   try {
+    //     const response = await axios.put(`https://capstone-sb96.onrender.com/products/${data.id}`, data);
+    //     if (response.status === 200) {
+    //       commit('updateProduct', data);
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } catch (err) {
+    //     console.error(err);
+    //     return false; 
+    //   }
+    // },
+    async updateUser(context, payload) {
       try {
-        const res = await put(`${URL}users/${id}`);
-        if (!res.ok) {
-          throw new Error("Failed to update user");
+        const { res } = await axios.put(`${URL}users/${payload.userID}`, payload);
+        const {msg, err} = res.data
+        if(msg){
+          context.commit("setUser", msg)
         }
-        const user = await res.json();
-
-        context.commit("setUser", user);
-      } catch (error) {
-        console.error(error);
+        if(err){
+          context.commit("setMsg", err)
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
       }
     },
+
+    // async updateUser({ commit }, id) {
+    //   try {
+    //     const response = await axios.put(`https://capstone-2z3t.onrender.com/users/${id}`);
+    //     if (response.status === 200) {
+    //       commit('setUser', response.data);
+    //     } else {
+    //       throw new Error("Failed to update user");
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
     async deleteUser(context, id) {
       try {
         // Send a DELETE request to delete the user
