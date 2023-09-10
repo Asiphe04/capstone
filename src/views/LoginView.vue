@@ -65,12 +65,18 @@ export default {
         const resp = await this.$store.dispatch("login", payload);
 
         if (resp.success && resp.token) {
+           console.log("Successful login");
           await Swal.fire({
             icon: "success",
             title: "Logged in Successfully",
             text: "You are now logged in!",
           });
+         
           this.$router.push("/");
+          setTimeout(() => {
+  window.location.reload(); // Reload the page
+}, 100);
+          
         } else {
           const errMsg = resp.error || "Unexpected error";
           await Swal.fire({

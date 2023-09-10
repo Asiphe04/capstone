@@ -179,7 +179,7 @@ export default createStore({
       try {
         const res = await axios.post(`${URL}users/login`, payload);
         const { msg, err, token, userData } = res.data;
-        if (msg === "You are providing the wrong email or password") {
+        if (msg === "Incorrect email or password") {
           console.log(msg);
           context.commit("setError", msg);
           context.commit("setLogStatus", "Not logged in");
@@ -199,7 +199,7 @@ export default createStore({
           console.log("User logged in:", userData);
 
           context.commit("setLogStatus", res.data.message);
-
+          
           return { success: res.data.success, token };
         } else if (err) {
           context.commit("setToken", null);

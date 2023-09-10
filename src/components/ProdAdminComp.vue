@@ -6,7 +6,7 @@
     <td class="text-white">R{{ product.amount }}</td>
     <td class="text-white">{{ product.category }}</td>
     <td><img :src="product.prodURL" alt="" class="prodImg" /></td>
-    <td class="text-white text-start w-25">
+    <td class="text-white text-start">
       {{ product.description }}
     </td>
     <td class="second-table-data">

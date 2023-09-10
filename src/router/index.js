@@ -6,6 +6,7 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+    props: true,
   },
   {
     path: "/about",
@@ -96,6 +97,8 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-});
+})
+
+
 
 export default router;

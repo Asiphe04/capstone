@@ -35,7 +35,7 @@
       <input type="checkbox" id="checkbox_toggle" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
-        <li>
+        <li >
           <router-link to="/" class="link" :exact-active-class="'active-link'"
             ><i class="fa fa-home fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Home</span></router-link
@@ -50,7 +50,7 @@
             <span class="tooltip">About</span></router-link
           >
         </li>
-        <li>
+        <li >
           <router-link
             to="/products"
             class="link"
@@ -68,42 +68,7 @@
             <span class="tooltip">Contact</span></router-link
           >
         </li>
-        <li v-if="userRole === 'Admin'">
-          <router-link
-            to="/admin"
-            class="link"
-            :exact-active-class="'active-link'"
-            ><i class="fa fa-user fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">User</span></router-link
-          >
-        </li>
-        <!-- <li>
-          <router-link
-            to="/wishlist"
-            class="link"
-            :exact-active-class="'active-link'"
-            ><i class="fa fa-heart fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">Wishlist</span></router-link
-          >
-        </li> -->
-        <li>
-          <router-link
-            to="/cart"
-            class="link"
-            :exact-active-class="'active-link'"
-          >
-            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">Cart</span></router-link
-          >
-        </li>
-        <li v-show="userRole">
-          <button @click="logout" class="link">
-            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">Log out</span>
-          </button>
-        </li>
-
-        <!-- <div class="dropdown" v-show="!userRole">
+                <div class="dropdown" v-show="!userRole">
           <router-link
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -132,15 +97,38 @@
               <a class="dropdown-item text-white" href="#">Sign Up</a>
             </router-link>
           </ul>
-        </div> -->
+        </div>
+        <li v-if="userRole === 'Admin'">
+          <router-link
+            to="/admin"
+            class="link"
+            :exact-active-class="'active-link'"
+            ><i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Admin</span></router-link
+          >
+        </li>
+        <li v-show="userRole">
+          <router-link
+            to="/cart"
+            class="link"
+            :exact-active-class="'active-link'"
+          >
+            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Cart</span></router-link
+          >
+        </li>
+        <li v-show="userRole">
+          <button @click="logout" class="link">
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+            <span class="tooltip">Log out</span>
+          </button>
+        </li>
       </div>
     </ul>
-    <div class="icons d-flex"></div>
   </nav>
-
-  <br />
-  <br />
-  <br />
+  <br>
+  <br>
+  <br>
 </template>
 <script>
 export default {
@@ -157,8 +145,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
-      
+      this.$store.dispatch("logout");    
       this.$router.push("/login");
     },
   },
@@ -196,7 +183,7 @@ button {
 
 .tooltip {
   position: absolute;
-  bottom: -30px; /* Position it at the bottom of the icon */
+  bottom: -30px; 
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
@@ -230,7 +217,6 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 5px; */
   background-color: var(--secondary-color);
   color: var(--bgwhite);
 }

@@ -33,7 +33,12 @@
         :placeholder="user.userAge"
       />
 
-      <label for="gender">Gender</label>
+<label for="gender">Gender</label>
+<select required type="text"  id="gender" name="gender" :placeholder="user.gender" v-model="user.gender">
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+      <!-- <label for="gender">Gender</label>
       <input
         type="text"
         autocomplete="off"
@@ -42,7 +47,7 @@
         name="gender"
         v-model="user.gender"
         :placeholder="user.gender"
-      />
+      /> -->
 
       <label for="userRole">Role</label>
       <input
@@ -168,7 +173,7 @@ label {
   margin-top: 2.5rem;
 }
 
-input {
+input, select, option {
   font-size: 1.25rem;
   padding: 0.5rem 0 0.5rem 1rem;
 }

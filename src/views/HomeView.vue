@@ -106,16 +106,29 @@
 
 <script>
 export default {
-  mounted() {
-    if (
-      this.$store.state.userRole === null ||
-      this.$store.state.userRole === "" ||
-      this.$store.state.userRole === undefined
-    ) {
-      this.$router.push("/login");
-      // window.location.reload();
-    }
-  },
+// mounted() {
+//   if (!this.$store.state.userRole) {
+//     this.$router.push("/login");
+    
+//   } else {
+//     this.$router.push("/");
+ 
+//   }
+// }
+
+
+  // mounted() {
+  //   if (
+  //     this.$store.state.userRole === null ||
+  //     // this.$store.state.userRole === "" ||
+  //     this.$store.state.userRole === undefined
+  //   ) {
+      
+  //     this.$router.push("/login");
+    
+  //   }
+   
+  // } 
 };
 </script>
 <style scoped>

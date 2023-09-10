@@ -32,8 +32,8 @@
         type="text"
         autocomplete="off"
         required
-        name="Gender"
-        v-model="Gender"
+        name="gender"
+        v-model="gender"
       />
       <label>Role</label>
       <input
@@ -66,6 +66,7 @@
         required
         name="userProfile"
         v-model="userProfile"
+        placeholder="https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png"
       />
 
       <button @click="addUser" class="btn-submit">Submit</button>
@@ -80,7 +81,7 @@ export default {
       firstName: "",
       lastName: "",
       userAge: "",
-      Gender: "",
+      gender: "",
       userRole: "",
       emailAdd: "",
       userPass: "",
@@ -94,7 +95,7 @@ export default {
           firstName: this.firstName,
           lastName: this.lastName,
           userAge: this.userAge,
-          Gender: this.Gender,
+          gender: this.gender,
           userRole: this.userRole,
           emailAdd: this.emailAdd,
           userPass: this.userPass,
@@ -104,11 +105,11 @@ export default {
         this.firstName = "";
         this.lastName = "";
         this.userAge = "";
-        this.Gender = "";
+        this.gender = "";
         this.userRole = "";
         this.emailAdd = "";
         this.userPass = "";
-        this.userProfile = "";
+        this.userProfile = "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png";
 
         this.$router.push("/admin");
         alert("User has been created");

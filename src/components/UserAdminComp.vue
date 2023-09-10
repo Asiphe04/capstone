@@ -7,7 +7,7 @@
     <!-- <td class="text-white">{{ user.Gender }}</td> -->
     <td class="text-white">{{ user.userRole }}</td>
     <td class="text-white emailAdd">{{ user.emailAdd }}</td>
-    <td class="text-white password w-25">{{ user.userPass }}</td>
+    <td class="text-white password text-start w-25">{{ user.userPass }}</td>
     <!-- <td><img :src="user.userProfile" alt="" class="prodImg" /></td> -->
 
     <td class="second-table-data">

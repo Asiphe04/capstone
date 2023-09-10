@@ -59,8 +59,7 @@
           />
           <h5>Luke Evertson</h5>
           <p>
-            "I've been a loyal customer of Cloud 9 Superstore for over a decade,
-            and I can't praise them enough."
+            "The staff is always friendly and knowledgeable, and their willingness to assist customers makes shopping here a pleasure."
           </p>
         </div>
         <div class="carousel-item">
@@ -71,8 +70,7 @@
           />
           <h5>Ethan Lesar</h5>
           <p>
-            "I've been a loyal customer of Cloud 9 Superstore for over a decade,
-            and I can't praise them enough."
+            "Whether I'm shopping for groceries, household items, or even electronics, I can always count on Cloud 9 to have it all. "
           </p>
         </div>
       </div>
