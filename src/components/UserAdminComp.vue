@@ -12,13 +12,9 @@
 
     <td class="second-table-data">
       <div class="action">
-        <button class="btn-edit">
-          <router-link
-            class="text-white text-decoration-none"
-            :to="{ name: 'user edit', params: { id: user.userID } }"
-          >
-            <i class="fas fa-edit"></i>
-          </router-link>
+     
+      <button class="btn-edit text-white" >
+          <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
         <button class="btn-delete text-white" @click="deleteUser(user.userID)">
           <i class="fa fa-trash" aria-hidden="true"></i>

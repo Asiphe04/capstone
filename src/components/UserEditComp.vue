@@ -33,19 +33,6 @@
         :placeholder="user.userAge"
       />
 
-      <label for="gender">Gender</label>
-      <select
-        required
-        type="text"
-        id="gender"
-        name="gender"
-        :placeholder="user.gender"
-        v-model="user.gender"
-      >
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-
       <label for="userRole">Role</label>
       <input
         type="text"
@@ -103,7 +90,6 @@ export default {
       firstName: "",
       lastName: "",
       userAge: "",
-      gender: "",
       userRole: "",
       emailAdd: "",
       userPass: "",
@@ -118,7 +104,6 @@ export default {
           firstName: this.user.firstName,
           lastName: this.user.lastName,
           userAge: this.user.userAge,
-          gender: this.user.gender,
           userRole: this.user.userRole,
           emailAdd: this.user.emailAdd,
           userPass: this.user.userPass,
@@ -128,7 +113,6 @@ export default {
         this.firstName = "";
         this.lastName = "";
         this.userAge = "";
-        this.gender = "";
         this.userRole = "";
         this.emailAdd = "";
         this.userPass = "";

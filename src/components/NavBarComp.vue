@@ -125,7 +125,7 @@
           </button>
         </li>
         <li v-if="userRole">
-          <router-link to="/">
+          <router-link  :to="{ name: 'user profile', params: { id: userData.userID } }">
             <img
               :src="userData.userProfile"
               alt=""

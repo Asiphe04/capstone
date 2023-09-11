@@ -43,6 +43,7 @@ a {
   text-align: center;
   border-radius: 5%;
   width: 85%;
+  transition: 0.5s;
 }
 
 .top-picks-items:hover {
