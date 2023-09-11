@@ -35,7 +35,7 @@
       <input type="checkbox" id="checkbox_toggle" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
-        <li >
+        <li>
           <router-link to="/" class="link" :exact-active-class="'active-link'"
             ><i class="fa fa-home fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Home</span></router-link
@@ -50,7 +50,7 @@
             <span class="tooltip">About</span></router-link
           >
         </li>
-        <li >
+        <li v-show="userRole">
           <router-link
             to="/products"
             class="link"
@@ -68,7 +68,7 @@
             <span class="tooltip">Contact</span></router-link
           >
         </li>
-                <div class="dropdown" v-show="!userRole">
+        <div class="dropdown" v-show="!userRole">
           <router-link
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -117,22 +117,42 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
+
         <li v-show="userRole">
           <button @click="logout" class="link">
             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Log out</span>
           </button>
         </li>
+        <li v-if="userRole">
+          <router-link to="/">
+            <img
+              :src="userData.userProfile"
+              alt=""
+              class="user-profile-image"
+            />
+            <span class="tooltip"> {{ userData.firstName }} </span>
+          </router-link>
+        </li>
       </div>
     </ul>
   </nav>
-  <br>
-  <br>
-  <br>
+
+  <br />
+  <br />
+  <br />
 </template>
 <script>
+import Swal from "sweetalert2";
 export default {
+  props: ["user"],
+  mounted() {
+    this.$store.dispatch("getUsers");
+  },
   computed: {
+    users() {
+      return this.$store.state.users;
+    },
     user() {
       return this.$store.state.user;
     },
@@ -145,14 +165,36 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");    
-      this.$router.push("/login");
+      Swal.fire({
+        title: "Logout",
+        background: "#86bbd8",
+        color: "white",
+        text: "Are you sure you want to logout?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logout",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // User clicked the "Yes, logout" button
+          this.$store.dispatch("logout");
+          this.$router.push("/login");
+        }
+      });
     },
   },
 };
 </script>
 
 <style scoped>
+.user-profile-image {
+  width: 32px; /* Adjust the size as needed */
+  height: 32px; /* Adjust the size as needed */
+  border-radius: 50%; /* This makes it a circle */
+  object-fit: cover; /* Ensures the image covers the entire circle */
+}
 button {
   background-color: transparent !important;
   border-color: none;
@@ -183,7 +225,7 @@ button {
 
 .tooltip {
   position: absolute;
-  bottom: -30px; 
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);

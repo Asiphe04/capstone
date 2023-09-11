@@ -68,6 +68,7 @@ export default {
            console.log("Successful login");
           await Swal.fire({
             icon: "success",
+            background: "#86bbd8",
             title: "Logged in Successfully",
             text: "You are now logged in!",
           });

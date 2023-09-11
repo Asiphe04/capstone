@@ -48,12 +48,16 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: () => import("../views/AdminView.vue"),
-    props: true,
   },
   {
     path: "/cart",
     name: "cart",
     component: () => import("../views/CartView.vue"),
+  },
+  {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../views/CheckoutView.vue"),
   },
 
   {
@@ -75,6 +79,12 @@ const routes = [
     props: true,
   },
   {
+    path: "/user/edit/:id",
+    name: "user profile",
+    component: () => import("../views/UserProfileView.vue"),
+    props: true,
+  },
+  {
     path: "/users/add",
     name: "userAdd",
     component: () => import("../views/UserAdd.vue"),
@@ -91,14 +101,11 @@ const routes = [
     component: () => import("../views/RegisterView.vue"),
     props: true,
   },
-  
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-})
-
-
+});
 
 export default router;

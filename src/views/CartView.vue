@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>YOUR ITEMS</h1>
     <table v-if="products && products.length > 0">
       <tr>
@@ -27,7 +27,12 @@
           </td>
         </tr>
       </tbody>
-      <button @click="checkout">Checkout</button>
+
+      <button>
+        <router-link to="/checkout" class="text-white text-decoration-none"
+          >Checkout</router-link
+        >
+      </button>
     </table>
   </div>
 </template>
@@ -62,14 +67,13 @@ export default {
           console.error("Error removing item from cart:", error);
         });
     },
-    checkout() {
-      // Redirect to the login page
-      this.$router.push("/login");
-    },
   },
 };
 </script>
 <style scoped>
+.container {
+  height: 80vh;
+}
 th {
   color: white;
 }

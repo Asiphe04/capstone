@@ -7,97 +7,102 @@
         alt=""
         class="home-wallpaper"
       />
+      <br>
+      <br>
+      <br>
     </div>
-    <div class="d-flex justify-content-center">
-      <h1 class="text-center">SHOP</h1>
-    </div>
-    <button class="ms-auto">
-      <router-link class="text-white text-decoration-none" to="/products"
-        >View All</router-link
-      >
-    </button>
-    <div class="shop row justify-content-center">
-      <div class="col-4 type">
-        <img
-          src="https://i.postimg.cc/DytgH5TP/hardware.jpg"
-          alt=""
-          class="hardware-display"
-        />
-        <div class="d-flex">
-          <h2 class="text-start category-name">HARDWARE</h2>
-          <router-link
-            :to="{ name: 'products', query: { filter: 'Hardware' } }"
-            class="arrow ms-auto"
-          >
-            <img
-              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-              alt=""
-              class="arrow ms-auto"
-            />
-          </router-link>
-        </div>
+    <div v-show="userRole">
+      <div class="d-flex justify-content-center">
+        <h1 class="text-center">SHOP</h1>
       </div>
-      <div class="col-2"></div>
-      <div class="col-4">
-        <img
-          src="https://i.postimg.cc/FRjsc8kz/skincare.jpg"
-          alt=""
-          class="hardware-display"
-        />
+      <button class="ms-auto">
+        <router-link class="text-white text-decoration-none" to="/products"
+          >View All</router-link
+        >
+      </button>
+      <div class="shop row justify-content-center">
+        <div class="col-4 type">
+          <img
+            src="https://i.postimg.cc/DytgH5TP/hardware.jpg"
+            alt=""
+            class="hardware-display"
+          />
+          <div class="d-flex">
+            <h2 class="text-start category-name">HARDWARE</h2>
+            <router-link
+              :to="{ name: 'products', query: { filter: 'Hardware' } }"
+              class="arrow ms-auto"
+            >
+              <img
+                src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+                alt=""
+                class="arrow ms-auto"
+              />
+            </router-link>
+          </div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4">
+          <img
+            src="https://i.postimg.cc/FRjsc8kz/skincare.jpg"
+            alt=""
+            class="hardware-display"
+          />
 
-        <div class="d-flex">
-          <h2 class="text-start category-name">SKIN ROUTINE</h2>
-          <router-link
-            :to="{ name: 'products', query: { filter: 'Skin' } }"
-            class="arrow ms-auto"
-          >
-            <img
-              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-              alt=""
+          <div class="d-flex">
+            <h2 class="text-start category-name">SKIN ROUTINE</h2>
+            <router-link
+              :to="{ name: 'products', query: { filter: 'Skin' } }"
               class="arrow ms-auto"
-            />
-          </router-link>
+            >
+              <img
+                src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+                alt=""
+                class="arrow ms-auto"
+              />
+            </router-link>
+          </div>
         </div>
-      </div>
-      <div class="col-4">
-        <img
-          src="https://i.postimg.cc/pLYwfvqg/beverages.png"
-          alt=""
-          class="hardware-display"
-        />
-        <div class="d-flex">
-          <h2 class="text-start category-name">BEVERAGES</h2>
-          <router-link
-            :to="{ name: 'products', query: { filter: 'Beverages' } }"
-            class="arrow ms-auto"
-          >
-            <img
-              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-              alt=""
+        <div class="col-4">
+          <img
+            src="https://i.postimg.cc/pLYwfvqg/beverages.png"
+            alt=""
+            class="hardware-display"
+          />
+          <div class="d-flex">
+            <h2 class="text-start category-name">BEVERAGES</h2>
+            <router-link
+              :to="{ name: 'products', query: { filter: 'Beverages' } }"
               class="arrow ms-auto"
-            />
-          </router-link>
+            >
+              <img
+                src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+                alt=""
+                class="arrow ms-auto"
+              />
+            </router-link>
+          </div>
         </div>
-      </div>
-      <div class="col-2"></div>
-      <div class="col-4">
-        <img
-          src="https://i.postimg.cc/rm65q6Lw/snacks.webp"
-          alt=""
-          class="hardware-display"
-        />
-        <div class="d-flex">
-          <h2 class="text-start category-name">SNACKS</h2>
-          <router-link
-            :to="{ name: 'products', query: { filter: 'Snacks' } }"
-            class="arrow ms-auto"
-          >
-            <img
-              src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
-              alt=""
+        <div class="col-2"></div>
+        <div class="col-4">
+          <img
+            src="https://i.postimg.cc/rm65q6Lw/snacks.webp"
+            alt=""
+            class="hardware-display"
+          />
+          <div class="d-flex">
+            <h2 class="text-start category-name">SNACKS</h2>
+            <router-link
+              :to="{ name: 'products', query: { filter: 'Snacks' } }"
               class="arrow ms-auto"
-            />
-          </router-link>
+            >
+              <img
+                src="https://i.postimg.cc/T2VbZjvD/ra-removebg-preview.png"
+                alt=""
+                class="arrow ms-auto"
+              />
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -106,16 +111,26 @@
 
 <script>
 export default {
-// mounted() {
-//   if (!this.$store.state.userRole) {
-//     this.$router.push("/login");
-    
-//   } else {
-//     this.$router.push("/");
- 
-//   }
-// }
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+  // mounted() {
+  //   if (!this.$store.state.userRole) {
+  //     this.$router.push("/login");
 
+  //   } else {
+  //     this.$router.push("/");
+
+  //   }
+  // }
 
   // mounted() {
   //   if (
@@ -123,12 +138,12 @@ export default {
   //     // this.$store.state.userRole === "" ||
   //     this.$store.state.userRole === undefined
   //   ) {
-      
+
   //     this.$router.push("/login");
-    
+
   //   }
-   
-  // } 
+
+  // }
 };
 </script>
 <style scoped>
