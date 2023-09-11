@@ -85,6 +85,7 @@ const deleteUser = (req, res) => {
 const updateUser = (req, res) => {
   const id = req.params.id;
   const data = req.body;
+   data.userPass = bcrypt.hashSync(data.userPass, 10);
   updateUserByID(id, data, (err, results) => {
     if (err) {
       res.status(500).json({ error: "Internal Server Error" });
