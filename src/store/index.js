@@ -155,18 +155,6 @@ export default createStore({
       }
     },
 
-    // async updateUser({ commit }, id) {
-    //   try {
-    //     const response = await axios.put(`https://capstone-2z3t.onrender.com/users/${id}`);
-    //     if (response.status === 200) {
-    //       commit('setUser', response.data);
-    //     } else {
-    //       throw new Error("Failed to update user");
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
     async deleteUser(context, id) {
       try {
         // Send a DELETE request to delete the user
