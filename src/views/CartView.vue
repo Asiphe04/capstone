@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>YOUR ITEMS</h1>
     <table v-if="products && products.length > 0">
       <tr>
@@ -71,6 +71,9 @@ export default {
 };
 </script>
 <style scoped>
+.container {
+  height: 80vh;
+}
 th {
   color: white;
 }
