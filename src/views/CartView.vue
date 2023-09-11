@@ -62,9 +62,16 @@ export default {
           console.error("Error removing item from cart:", error);
         });
     },
-    checkout() {
-      // Redirect to the login page
-      this.$router.push("/login");
+    async checkout() {
+      const userID = this.user.userID;
+
+      try {
+        await this.$store.dispatch("clearCart", { userID });
+        // Clear the cart and then redirect to the login page
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Error clearing cart:", error);
+      }
     },
   },
 };

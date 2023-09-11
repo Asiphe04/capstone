@@ -137,18 +137,21 @@ export default createStore({
     //     }
     //   } catch (err) {
     //     console.error(err);
-    //     return false; 
+    //     return false;
     //   }
     // },
     async updateUser(context, payload) {
       try {
-        const { res } = await axios.put(`${URL}users/${payload.userID}`, payload);
-        const {msg, err} = res.data
-        if(msg){
-          context.commit("setUser", msg)
+        const { res } = await axios.put(
+          `${URL}users/${payload.userID}`,
+          payload
+        );
+        const { msg, err } = res.data;
+        if (msg) {
+          context.commit("setUser", msg);
         }
-        if(err){
-          context.commit("setMsg", err)
+        if (err) {
+          context.commit("setMsg", err);
         }
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -171,7 +174,7 @@ export default createStore({
       try {
         // Send a DELETE request to delete the user
         const response = await axios.delete(`${URL}users/${id}`);
-  
+
         if (response.status === 204) {
           // User deleted successfully
           context.commit("setUser", null); // Clear the user data in the store
@@ -261,7 +264,7 @@ export default createStore({
           console.log("User logged in:", userData);
 
           context.commit("setLogStatus", res.data.message);
-          
+
           return { success: res.data.success, token };
         } else if (err) {
           context.commit("setToken", null);
@@ -343,6 +346,15 @@ export default createStore({
         await axios.delete(`${URL}users/${userID}/cart/${cartID}`);
 
         commit("removeFromCart", cartID);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async clearCart({ commit }, { userID }) {
+      try {
+        await axios.delete(`${URL}users/${userID}/cart`);
+        commit("clearCart", userID);
       } catch (error) {
         console.error(error);
       }

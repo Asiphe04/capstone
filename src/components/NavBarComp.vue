@@ -35,7 +35,7 @@
       <input type="checkbox" id="checkbox_toggle" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
-        <li >
+        <li>
           <router-link to="/" class="link" :exact-active-class="'active-link'"
             ><i class="fa fa-home fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Home</span></router-link
@@ -50,7 +50,7 @@
             <span class="tooltip">About</span></router-link
           >
         </li>
-        <li >
+        <li v-show="userRole">
           <router-link
             to="/products"
             class="link"
@@ -68,7 +68,7 @@
             <span class="tooltip">Contact</span></router-link
           >
         </li>
-                <div class="dropdown" v-show="!userRole">
+        <div class="dropdown" v-show="!userRole">
           <router-link
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -126,9 +126,9 @@
       </div>
     </ul>
   </nav>
-  <br>
-  <br>
-  <br>
+  <br />
+  <br />
+  <br />
 </template>
 <script>
 export default {
@@ -145,7 +145,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");    
+      this.$store.dispatch("logout");
       this.$router.push("/login");
     },
   },
@@ -183,7 +183,7 @@ button {
 
 .tooltip {
   position: absolute;
-  bottom: -30px; 
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
