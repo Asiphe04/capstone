@@ -16,10 +16,13 @@
             class="text-white text-decoration-none"
             :to="{ name: 'product-edit', params: { id: product.prodID } }"
           >
-           <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
           </router-link>
         </button>
-        <button class="btn-delete text-white" @click="deleteProduct(product.prodID)">
+        <button
+          class="btn-delete text-white"
+          @click="deleteProduct(product.prodID)"
+        >
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
@@ -28,18 +31,21 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   props: ["product"],
+  mounted() {
+    this.$store.dispatch("getProducts");
+  },
   methods: {
     async deleteProduct(id) {
       try {
-        await axios.delete(`https://capstone-2z3t.onrender.com/products/${id}`);
-        this.$store.dispatch("getProducts");
-        alert("Product has been deleted");
-      } catch (err) {
-        alert(err);
+        await this.$store.dispatch("deleteProduct", id);
+        alert("Product deleted successfully");
+        // If the delete operation is successful, you can add any necessary code here.
+      } catch (error) {
+        // Handle the error here, for example, display an error message.
+        alert("Error deleting product");
+        console.error("Error deleting product:", error);
       }
     },
   },

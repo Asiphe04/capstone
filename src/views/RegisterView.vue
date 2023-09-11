@@ -42,11 +42,18 @@
           />
         </div>
         <div class="col-6">
-      <label for="gender">Gender</label>
-<select required type="text"  id="gender" name="gender" :placeholder="gender" v-model="gender">
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
+          <label for="gender">Gender</label>
+          <select
+            required
+            type="text"
+            id="gender"
+            name="gender"
+            :placeholder="gender"
+            v-model="gender"
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
           <label for="email" class="text-start">EMAIL:</label>
 
           <input
@@ -114,6 +121,7 @@ export default {
         if (resp.success) {
           await Swal.fire({
             icon: "success",
+            background: "#86bbd8",
             title: "Registration successful",
             text: "CONGRATULATIONS ,YOU ARE NOW REGISTERED ! Please Login",
           });
@@ -153,7 +161,9 @@ button {
   font-size: 16px;
   margin: 14px;
 }
-input , select, option{
+input,
+select,
+option {
   width: 100%;
   padding: 14px 12px;
   border-radius: 6px;

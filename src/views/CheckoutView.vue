@@ -57,9 +57,55 @@
         </div>
       </div>
     </div>
-    <a href="" type="submit">Confirm</a>
+    <button @click="checkout">Confirm</button>
   </div>
 </template>
+
+<script>
+import Swal from "sweetalert2";
+export default {
+  Name: "setCart",
+  computed: {
+    getCart() {
+      console.log(this.$store.state.cart);
+      return this.$store.state.cart;
+    },
+    user() {
+      return this.$store.state.userData;
+    },
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch("getCart", this.user.userID);
+  },
+  methods: {
+    async checkout() {
+      const userID = this.user.userID;
+
+      try {
+        await this.$store.dispatch("clearCart", { userID });
+
+        // Show a SweetAlert for a successful purchase
+        Swal.fire({
+          title: "Thank you for your purchase!",
+          
+          background: "#86bbd8",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(() => {
+          // Redirect to the login page after clicking OK
+          this.$router.push("/cart");
+        });
+      } catch (error) {
+        console.error("Error clearing cart:", error);
+      }
+    },
+  },
+};
+</script>
 
 <style scoped>
 .container {
@@ -107,7 +153,7 @@
   padding: 10px 20px;
 }
 
-a {
+button {
   background-color: var(--tertiary-color);
   color: white;
   text-align: center;
@@ -118,7 +164,7 @@ a {
   transition: 0.5s;
 }
 
-a:hover {
+button:hover {
   background-color: var(--secondary-color);
 }
 

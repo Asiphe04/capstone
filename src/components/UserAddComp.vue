@@ -27,11 +27,18 @@
         v-model="userAge"
       />
 
-    <label for="gender">Gender</label>
-<select required type="text"  id="gender" name="gender" :placeholder="gender" v-model="gender">
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
+      <label for="gender">Gender</label>
+      <select
+        required
+        type="text"
+        id="gender"
+        name="gender"
+        :placeholder="gender"
+        v-model="gender"
+      >
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
       <label>Role</label>
       <input
         type="text"
@@ -86,9 +93,9 @@ export default {
     };
   },
   methods: {
-     async register() {
+    async register() {
       try {
-         this.$store.dispatch("register", {
+        this.$store.dispatch("register", {
           firstName: this.firstName,
           lastName: this.lastName,
           userAge: this.userAge,
@@ -124,7 +131,9 @@ label {
   margin-top: 2.5rem;
 }
 
-input, select, option {
+input,
+select,
+option {
   font-size: 1.25rem;
   padding: 0.5rem 0 0.5rem 1rem;
 }

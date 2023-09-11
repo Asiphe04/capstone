@@ -66,6 +66,9 @@ export default createStore({
         localStorage.removeItem("userData");
       }
     },
+    // addProduct(state, product) {
+    //   state.products.push(product); // Add the new product to the list.
+    // },
     setMsg(state, msg) {
       state.msg = msg;
     },
@@ -126,20 +129,7 @@ export default createStore({
         console.error(error);
       }
     },
-    // async updateProduct({ commit }, data) {
-    //   try {
-    //     const response = await axios.put(`https://capstone-sb96.onrender.com/products/${data.id}`, data);
-    //     if (response.status === 200) {
-    //       commit('updateProduct', data);
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   } catch (err) {
-    //     console.error(err);
-    //     return false;
-    //   }
-    // },
+
     async updateUser(context, payload) {
       try {
         const { res } = await axios.put(
@@ -158,18 +148,6 @@ export default createStore({
       }
     },
 
-    // async updateUser({ commit }, id) {
-    //   try {
-    //     const response = await axios.put(`https://capstone-2z3t.onrender.com/users/${id}`);
-    //     if (response.status === 200) {
-    //       commit('setUser', response.data);
-    //     } else {
-    //       throw new Error("Failed to update user");
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
     async deleteUser(context, id) {
       try {
         // Send a DELETE request to delete the user
@@ -213,6 +191,57 @@ export default createStore({
         context.commit("setProduct", product);
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    addProduct: async (context, payload) => {
+      try {
+        const res = await axios.post(`${URL}products`, payload);
+        if (res.status !== 200) {
+          throw new Error("Failed to add product");
+        }
+
+        const product = res.data;
+        context.commit("addProduct");
+        context.commit("setProduct", product);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async updateProduct(context, payload) {
+      try {
+        const { res } = await axios.put(
+          `${URL}products/${payload.prodID}`,
+          payload
+        );
+        const { msg, err } = res.data;
+        if (msg) {
+          context.commit("setProduct", msg);
+        }
+        if (err) {
+          context.commit("setMsg", err);
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
+      }
+    },
+    async deleteProduct(context, id) {
+      try {
+        // Send a DELETE request to delete the user
+        const response = await axios.delete(`${URL}products/${id}`);
+
+        if (response.status === 204) {
+          // User deleted successfully
+          context.commit("setProduct", null); // Clear the user data in the store
+          console.log("Product deleted successfully");
+        } else {
+          // Handle other response statuses or errors
+          console.error("Failed to delete product");
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle network errors or other exceptions
       }
     },
 

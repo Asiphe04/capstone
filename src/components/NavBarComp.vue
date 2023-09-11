@@ -131,6 +131,7 @@
   <br />
 </template>
 <script>
+import Swal from "sweetalert2";
 export default {
   computed: {
     user() {
@@ -145,14 +146,36 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
-      this.$router.push("/login");
+      Swal.fire({
+        title: "Logout",
+        background: "#86bbd8",
+        color: "white",
+        text: "Are you sure you want to logout?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logout",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // User clicked the "Yes, logout" button
+          this.$store.dispatch("logout");
+          this.$router.push("/login");
+        }
+      });
     },
   },
 };
 </script>
 
 <style scoped>
+.user-profile-image {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  border-radius: 50%; /* This makes it a circle */
+  object-fit: cover; /* Ensures the image covers the entire circle */
+}
 button {
   background-color: transparent !important;
   border-color: none;

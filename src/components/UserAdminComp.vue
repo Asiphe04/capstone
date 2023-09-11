@@ -17,11 +17,11 @@
             class="text-white text-decoration-none"
             :to="{ name: 'user edit', params: { id: user.userID } }"
           >
-            Edit
+            <i class="fas fa-edit"></i>
           </router-link>
         </button>
         <button class="btn-delete text-white" @click="deleteUser(user.userID)">
-         <i class="fa fa-trash" aria-hidden="true"></i>
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
     </td>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-   export default {
+export default {
   props: ["user"],
   mounted() {
     this.$store.dispatch("getUsers");
@@ -37,18 +37,17 @@
   methods: {
     async deleteUser(id) {
       try {
-        await this.$store.dispatch('deleteUser', id);
-        alert("User deleted successfully")
+        await this.$store.dispatch("deleteUser", id);
+        alert("User deleted successfully");
         // If the delete operation is successful, you can add any necessary code here.
       } catch (error) {
         // Handle the error here, for example, display an error message.
-         alert("Error deleting user")
+        alert("Error deleting user");
         console.error("Error deleting user:", error);
       }
     },
   },
 };
-
 </script>
 
 <style scoped>

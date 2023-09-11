@@ -27,8 +27,12 @@
           </td>
         </tr>
       </tbody>
-      <router-link to="/checkout">Checkout please</router-link>
-      <button @click="checkout">Checkout</button>
+
+      <button>
+        <router-link to="/checkout" class="text-white text-decoration-none"
+          >Checkout</router-link
+        >
+      </button>
     </table>
   </div>
 </template>
@@ -62,17 +66,6 @@ export default {
         .catch((error) => {
           console.error("Error removing item from cart:", error);
         });
-    },
-    async checkout() {
-      const userID = this.user.userID;
-
-      try {
-        await this.$store.dispatch("clearCart", { userID });
-        // Clear the cart and then redirect to the login page
-        this.$router.push("/");
-      } catch (error) {
-        console.error("Error clearing cart:", error);
-      }
     },
   },
 };

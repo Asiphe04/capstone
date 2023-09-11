@@ -48,7 +48,6 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: () => import("../views/AdminView.vue"),
-    props: true,
   },
   {
     path: "/cart",
@@ -96,14 +95,11 @@ const routes = [
     component: () => import("../views/RegisterView.vue"),
     props: true,
   },
-  
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-})
-
-
+});
 
 export default router;

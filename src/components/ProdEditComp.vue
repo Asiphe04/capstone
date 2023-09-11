@@ -98,17 +98,16 @@ export default {
   methods: {
     async updateProduct() {
       try {
-        await axios.put(
-          `https://capstone-2z3t.onrender.com/products/${this.$route.params.id}`,
-          {
-            prodName: this.product.prodName,
-            quantity: this.product.quantity,
-            amount: this.product.amount,
-            category: this.product.category,
-            prodURL: this.product.prodURL,
-            description: this.product.description,
-          }
-        );
+        const payload = {
+          prodID: this.$route.params.id,
+          prodName: this.product.prodName,
+          quantity: this.product.quantity,
+          amount: this.product.amount,
+          category: this.product.category,
+          prodURL: this.product.prodURL,
+          description: this.product.description,
+        };
+        await this.$store.dispatch("updateProduct", payload);
         this.prodName = "";
         this.quantity = "";
         this.amount = "";
@@ -123,17 +122,16 @@ export default {
       }
     },
   },
-  props: ["id"],
   computed: {
     product() {
       return this.$store.state.product;
     },
   },
   mounted() {
-   
-    this.$store.commit("setProduct", null);
- 
-    this.$store.dispatch("getProduct", this.$route.params.id);
+    // Fetch product data from the store if not already loaded
+    if (!this.product) {
+      this.$store.dispatch("getProduct", this.$route.params.id);
+    }
   },
 };
 </script>

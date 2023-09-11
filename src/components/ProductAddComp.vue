@@ -71,7 +71,7 @@ export default {
   methods: {
     async addProduct() {
       try {
-        await axios.post("https://capstone-2z3t.onrender.com/products/", {
+        this.$store.dispatch("addProduct", {
           prodName: this.prodName,
           quantity: this.quantity,
           amount: this.amount,
@@ -79,13 +79,6 @@ export default {
           prodURL: this.prodURL,
           description: this.description,
         });
-
-        this.productName = "";
-        this.quantity = "";
-        this.amount = "";
-        this.category = "";
-        this.prodURL = "";
-        this.description = "";
 
         this.$router.push("/admin");
         alert("Product has been created");

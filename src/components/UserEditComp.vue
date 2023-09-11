@@ -33,21 +33,18 @@
         :placeholder="user.userAge"
       />
 
-<label for="gender">Gender</label>
-<select required type="text"  id="gender" name="gender" :placeholder="user.gender" v-model="user.gender">
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
-      <!-- <label for="gender">Gender</label>
-      <input
-        type="text"
-        autocomplete="off"
+      <label for="gender">Gender</label>
+      <select
         required
+        type="text"
         id="gender"
         name="gender"
-        v-model="user.gender"
         :placeholder="user.gender"
-      /> -->
+        v-model="user.gender"
+      >
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
 
       <label for="userRole">Role</label>
       <input
@@ -116,19 +113,18 @@ export default {
   methods: {
     async updateUser() {
       try {
-const payload = 
-          {
-            userID: this.$route.params.id,
-            firstName: this.user.firstName,
-            lastName: this.user.lastName,
-            userAge: this.user.userAge,
-            gender: this.user.gender,
-            userRole: this.user.userRole,
-            emailAdd: this.user.emailAdd,
-            userPass: this.user.userPass,
-            userProfile: this.user.userProfile,
-          }
-       await this.$store.dispatch("updateUser", payload);
+        const payload = {
+          userID: this.$route.params.id,
+          firstName: this.user.firstName,
+          lastName: this.user.lastName,
+          userAge: this.user.userAge,
+          gender: this.user.gender,
+          userRole: this.user.userRole,
+          emailAdd: this.user.emailAdd,
+          userPass: this.user.userPass,
+          userProfile: this.user.userProfile,
+        };
+        await this.$store.dispatch("updateUser", payload);
         this.firstName = "";
         this.lastName = "";
         this.userAge = "";
@@ -138,7 +134,7 @@ const payload =
         this.userPass = "";
         this.userProfile = "";
 
-       this.$router.push("/admin");
+        this.$router.push("/admin");
         alert("User has been updated");
       } catch (err) {
         console.error(err);
@@ -173,7 +169,9 @@ label {
   margin-top: 2.5rem;
 }
 
-input, select, option {
+input,
+select,
+option {
   font-size: 1.25rem;
   padding: 0.5rem 0 0.5rem 1rem;
 }
