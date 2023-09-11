@@ -49,7 +49,7 @@ const insertUser = (data, result) => {
 //login user
 const userLogin = (req, res) => {
   const { emailAdd, userPass } = req.body;
-  const query = `SELECT userID, firstName, lastName, userAge, gender, userRole, emailAdd, userPass FROM users WHERE emailAdd = '${emailAdd}'`;
+  const query = `SELECT userID, firstName, lastName, userAge, gender, userRole ,userProfile , emailAdd, userPass FROM users WHERE emailAdd = '${emailAdd}'`;
   db.query(query, async (err, result) => {
     if (err) throw err;
     if (!result?.length) {
