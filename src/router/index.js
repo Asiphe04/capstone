@@ -79,6 +79,12 @@ const routes = [
     props: true,
   },
   {
+    path: "/user/edit/:id",
+    name: "user profile",
+    component: () => import("../views/UserProfileView.vue"),
+    props: true,
+  },
+  {
     path: "/users/add",
     name: "userAdd",
     component: () => import("../views/UserAdd.vue"),

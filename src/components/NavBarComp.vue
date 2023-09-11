@@ -117,15 +117,27 @@
             <span class="tooltip">Cart</span></router-link
           >
         </li>
+
         <li v-show="userRole">
           <button @click="logout" class="link">
             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
             <span class="tooltip">Log out</span>
           </button>
         </li>
+        <li v-if="userRole">
+          <router-link to="/">
+            <img
+              :src="userData.userProfile"
+              alt=""
+              class="user-profile-image"
+            />
+            <span class="tooltip"> {{ userData.firstName }} </span>
+          </router-link>
+        </li>
       </div>
     </ul>
   </nav>
+
   <br />
   <br />
   <br />
@@ -133,7 +145,14 @@
 <script>
 import Swal from "sweetalert2";
 export default {
+  props: ["user"],
+  mounted() {
+    this.$store.dispatch("getUsers");
+  },
   computed: {
+    users() {
+      return this.$store.state.users;
+    },
     user() {
       return this.$store.state.user;
     },
@@ -171,8 +190,8 @@ export default {
 
 <style scoped>
 .user-profile-image {
-  width: 50px; /* Adjust the size as needed */
-  height: 50px; /* Adjust the size as needed */
+  width: 32px; /* Adjust the size as needed */
+  height: 32px; /* Adjust the size as needed */
   border-radius: 50%; /* This makes it a circle */
   object-fit: cover; /* Ensures the image covers the entire circle */
 }
