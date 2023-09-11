@@ -27,6 +27,7 @@
           </td>
         </tr>
       </tbody>
+      <router-link to="/checkout">Checkout please</router-link>
       <button @click="checkout">Checkout</button>
     </table>
   </div>
