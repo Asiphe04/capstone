@@ -59,6 +59,7 @@
       </div>
     </div>
     <button @click="checkout">Confirm</button>
+     <button>Pay on delivery</button>
     </div>
     <div class="col-6">
           <h1>YOUR ITEMS</h1>

@@ -47,7 +47,7 @@
           <!-- <th class="text-white">Gender</th> -->
           <th class="text-white">Role</th>
           <th class="text-white">Email</th>
-          <th class="text-white password">Password</th>
+          <!-- <th class="text-white password">Password</th> -->
           <!-- <th class="text-white">Image</th> -->
           <th class="text-white">Actions</th>
         </tr>
