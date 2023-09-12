@@ -18,12 +18,13 @@
           type="email"
           name="email"
           v-model="emailAdd"
-          placeholder="eg. asiphendimlana40@gmail.com"
+          placeholder="Enter your email address"
+          required
         />
         <br />
         <label for="password" class="text-start">PASSWORD</label>
         <br />
-        <input type="password" v-model="userPass" name="password" />
+        <input type="password" v-model="userPass" name="password" required/>
 
         <button type="submit">Log In</button>
         <p>
