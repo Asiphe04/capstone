@@ -83,8 +83,9 @@
 
 <script>
 import axios from "axios";
-
+  
 export default {
+  props: ["id"],
   data() {
     return {
       firstName: "",
@@ -118,7 +119,7 @@ export default {
         this.userPass = "";
         this.userProfile = "";
 
-        this.$router.push("/admin");
+        this.$router.push("/");
         alert("User has been updated");
       } catch (err) {
         console.error(err);
@@ -127,17 +128,29 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user;
+      return this.$store.state.userData;
     },
+    //   users() {
+    //   return this.$store.state.users;
+    // },
+    //   userData() {
+    //   return this.$store.state.userData;
+    // },
+    //  userRole() {
+    //   return this.$store.state.userRole;
+    // },
+
   },
   mounted() {
+    //  this.$store.dispatch("getUser");
     // Fetch user data from the store if not already loaded
-    if (!this.user) {
+   
       this.$store.dispatch("getUser", this.$route.params.id);
-    }
+    
   },
 };
-</script>
+</script>>
+
 <style scoped>
 label {
   color: white;
@@ -172,3 +185,5 @@ option {
   font-size: 1.5rem;
 }
 </style>
+
+

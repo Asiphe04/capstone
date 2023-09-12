@@ -1,54 +1,29 @@
 <template>
-  <UserEditComp />
+  <div>
+    <div class="container flex-container" v-if="user">
+     <h1>Name :{{user.firstName}}</h1>
+      <h1>Surname: {{user.lastName}}</h1>
+<h1>Age: {{user.userAge}}</h1>
+
+ <h1>Role: {{user.userRole}}</h1>
+    <h1>Email: {{user.emailAdd}}</h1>
+
+     <h1>Passwrd: {{user.userPass}}</h1>
+   <img :src="user.userProfile" alt="" class="w-25">
+
+      
+    </div>
+    <h1 v-else class="text-white">Error</h1>
+  </div>
 </template>
+
 <script>
-import UserEditComp from "@/components/UserEditComp.vue";
 import axios from "axios";
 
 export default {
- 
-  components: {
-    UserEditComp,
-  },
-  data() {
-    return {
-      firstName: "",
-      lastName: "",
-      userAge: "",
-      userRole: "",
-      emailAdd: "",
-      userPass: "",
-      userProfile: "",
-    };
-  },
-  methods: {
-    async updateUser() {
-      try {
-        const payload = {
-          userID: this.$route.params.id,
-          firstName: this.user.firstName,
-          lastName: this.user.lastName,
-          userAge: this.user.userAge,
-          userRole: this.user.userRole,
-          emailAdd: this.user.emailAdd,
-          userPass: this.user.userPass,
-          userProfile: this.user.userProfile,
-        };
-        await this.$store.dispatch("updateUser", payload);
-        this.firstName = "";
-        this.lastName = "";
-        this.userAge = "";
-        this.userRole = "";
-        this.emailAdd = "";
-        this.userPass = "";
-        this.userProfile = "";
 
-        this.$router.push("/admin");
-        alert("User has been updated");
-      } catch (err) {
-        console.error(err);
-      }
-    },
+  methods: {
+
   },
   computed: {
     user() {
@@ -63,3 +38,37 @@ export default {
   },
 };
 </script>
+<style scoped>
+label {
+  color: white;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+label {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+input,
+select,
+option {
+  font-size: 1.25rem;
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.btn-submit {
+  margin-top: 2rem;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background-color: #0033ff;
+  color: #ffffff;
+  text-align: center;
+  width: fit-content;
+  border-radius: 0.2rem;
+  font-size: 1.5rem;
+}
+</style>

@@ -124,8 +124,39 @@
             <span class="tooltip">Log out</span>
           </button>
         </li>
-        <li v-if="userRole">
-          <router-link  :to="{ name: 'user profile', params: { id: userData.userID } }">
+         <div class="dropdown" v-if="userRole">
+          <router-link
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            to="/admin"
+            type="button"
+            class="link btn dropdown-toggle"
+            :exact-active-class="'active-link'"
+            > <img
+              :src="userData.userProfile"
+              alt=""
+              class="user-profile-image"
+            />
+            <span class="tooltip">{{userData.firstName}}</span></router-link
+          >
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <router-link
+                :to="{ name: 'user edit', params: { id: userData.userID } }"
+                class="text-decoration-none text-white text-center"
+              >
+                <a class="dropdown-item text-white" href="#">Edit</a>
+              </router-link>
+            </li>
+             <button class="btn-delete text-white" @click="deleteUser(user.userID)">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+          </ul>
+        </div>
+        <!-- <li v-if="userRole">
+          <router-link  :to="{ name: 'user edit', params: { id: userData.userID } }">
             <img
               :src="userData.userProfile"
               alt=""
@@ -133,7 +164,7 @@
             />
             <span class="tooltip"> {{ userData.firstName }} </span>
           </router-link>
-        </li>
+        </li> -->
       </div>
     </ul>
   </nav>
@@ -164,6 +195,17 @@ export default {
     },
   },
   methods: {
+       async deleteUser(id) {
+      try {
+        await this.$store.dispatch("deleteUser", id);
+        alert("User deleted successfully");
+        // If the delete operation is successful, you can add any necessary code here.
+      } catch (error) {
+        // Handle the error here, for example, display an error message.
+        alert("Error deleting user");
+        console.error("Error deleting user:", error);
+      }
+    },
     logout() {
       Swal.fire({
         title: "Logout",

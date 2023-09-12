@@ -12,13 +12,15 @@
 
     <td class="second-table-data">
       <div class="action">
-     
-      <button class="btn-edit text-white" >
+     <router-link :to="{ name: 'user profile', params: { id: user.userID } }"> 
+ <button class="btn-edit text-white" >
           <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
-        <button class="btn-delete text-white" @click="deleteUser(user.userID)">
+     </router-link>
+     
+        <!-- <button class="btn-delete text-white" @click="deleteUser(user.userID)">
           <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
+        </button> -->
       </div>
     </td>
   </tr>
