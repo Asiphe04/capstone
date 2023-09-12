@@ -2,97 +2,95 @@
   <div class="container d-flex">
     <div class="col-6">
       <h1>CONFIRM YOUR PAYMENT</h1>
-    <div class="first-row">
-      <div class="owner">
-        <h3>Owner</h3>
-        <div class="input-field">
-          <input type="text" required />
+      <div class="first-row">
+        <div class="owner">
+          <h3>Owner</h3>
+          <div class="input-field">
+            <input type="text" required />
+          </div>
+        </div>
+        <div class="cvv">
+          <h3>CVV</h3>
+          <div class="input-field">
+            <input type="password" required />
+          </div>
         </div>
       </div>
-      <div class="cvv">
-        <h3>CVV</h3>
-        <div class="input-field">
-          <input type="password" required />
+      <div class="second-row">
+        <div class="card-number">
+          <h3>Card Number</h3>
+          <div class="input-field">
+            <input type="number" required />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="second-row">
-      <div class="card-number">
-        <h3>Card Number</h3>
-        <div class="input-field">
-          <input type="number" required />
+      <div class="third-row mb-2">
+        <h3>Expiry Date</h3>
+        <div class="selection">
+          <div class="date">
+            <select name="months" id="months">
+              <option value="Jan">Jan</option>
+              <option value="Feb">Feb</option>
+              <option value="Mar">Mar</option>
+              <option value="Apr">Apr</option>
+              <option value="May">May</option>
+              <option value="Jun">Jun</option>
+              <option value="Jul">Jul</option>
+              <option value="Aug">Aug</option>
+              <option value="Sep">Sep</option>
+              <option value="Oct">Oct</option>
+              <option value="Nov">Nov</option>
+              <option value="Dec">Dec</option>
+            </select>
+            <select name="years" id="years">
+              <option value="2020">2029</option>
+              <option value="2019">2028</option>
+              <option value="2018">2027</option>
+              <option value="2017">2026</option>
+              <option value="2016">2025</option>
+              <option value="2015">2024</option>
+            </select>
+          </div>
+          <div class="cards">
+            <img src="https://i.postimg.cc/J72jL382/mc.png" alt="" />
+            <img src="https://i.postimg.cc/KjwTDbQ2/vi.png" alt="" />
+            <img src="https://i.postimg.cc/GhTGhBhh/pp.png" alt="" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="third-row">
-      <h3>Expiry Date</h3>
-      <div class="selection">
-        <div class="date">
-          <select name="months" id="months">
-            <option value="Jan">Jan</option>
-            <option value="Feb">Feb</option>
-            <option value="Mar">Mar</option>
-            <option value="Apr">Apr</option>
-            <option value="May">May</option>
-            <option value="Jun">Jun</option>
-            <option value="Jul">Jul</option>
-            <option value="Aug">Aug</option>
-            <option value="Sep">Sep</option>
-            <option value="Oct">Oct</option>
-            <option value="Nov">Nov</option>
-            <option value="Dec">Dec</option>
-          </select>
-          <select name="years" id="years">
-            <option value="2020">2029</option>
-            <option value="2019">2028</option>
-            <option value="2018">2027</option>
-            <option value="2017">2026</option>
-            <option value="2016">2025</option>
-            <option value="2015">2024</option>
-          </select>
-        </div>
-        <div class="cards">
-          <img src="https://i.postimg.cc/J72jL382/mc.png" alt="" />
-          <img src="https://i.postimg.cc/KjwTDbQ2/vi.png" alt="" />
-          <img src="https://i.postimg.cc/GhTGhBhh/pp.png" alt="" />
-        </div>
-      </div>
-    </div>
-    <button @click="checkout">Confirm</button>
-     <button>Pay on delivery</button>
+      <button @click="checkout" class="m-2">Confirm</button>
+      <h5>Or</h5>
+      <button class="m-2">Pay on delivery</button>
     </div>
     <div class="col-6">
-          <h1>YOUR ITEMS</h1>
-    <table v-if="products && products.length > 0">
-      <tr>
-        <td colspan="4">Your cart is empty.</td>
-      </tr>
-    </table>
-    <table v-else>
-      <thead>
+      <h1>YOUR ITEMS</h1>
+      <table v-if="products && products.length > 0">
         <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-         
+          <td colspan="4">Your cart is empty.</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in getCart" :key="product.prodID">
-          <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
-          <td>{{ product.prodName }}</td>
-          <td>R{{ product.amount }}</td>
-          <td>{{ product.quantity }}</td>
-         
-        </tr>
-      </tbody>
-    </table>
-    <router-link to="/cart">
-    <button>Edit Items</button>
-    </router-link>
+      </table>
+      <table v-else>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in getCart" :key="product.prodID">
+            <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
+            <td class="w-50">{{ product.prodName }}</td>
+            <td>R{{ product.amount }}</td>
+            <td>{{ product.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <router-link to="/cart">
+        <button>Edit Items</button>
+      </router-link>
     </div>
-    
   </div>
 </template>
 
@@ -126,7 +124,7 @@ export default {
         // Show a SweetAlert for a successful purchase
         Swal.fire({
           title: "Thank you for your purchase!",
-          
+
           background: "#86bbd8",
           icon: "success",
           confirmButtonText: "OK",
@@ -138,7 +136,7 @@ export default {
         console.error("Error clearing cart:", error);
       }
     },
-        removeFromCart(cartID) {
+    removeFromCart(cartID) {
       const userID = this.user.userID;
 
       this.$store
@@ -153,13 +151,14 @@ export default {
 </script>
 
 <style scoped>
+th,
+td {
+  color: white;
+}
 .container {
-  width: 750px;
-  height: 500px;
-  /* border: 1px solid; */
   height: 80vh;
   display: flex;
-  /* flex-direction: column; */
+
   padding: 40px;
   justify-content: space-around;
 }

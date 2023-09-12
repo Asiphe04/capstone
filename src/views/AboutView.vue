@@ -123,7 +123,9 @@
       :key="user.userID"
       :user="user"
     />
+    <SpinnerComp v-if="filteredUsers('Admin').length === 0" />
   </div>
+
   <div
     v-else-if="activeTab === 'supervisers'"
     class="supervisers d-flex justify-content-center"
@@ -133,6 +135,7 @@
       :key="user.userID"
       :user="user"
     />
+    <SpinnerComp v-if="filteredUsers('Admin').length === 0" />
   </div>
   <div
     v-if="activeTab === 'floor worker'"
@@ -143,6 +146,7 @@
       :key="user.userID"
       :user="user"
     />
+    <SpinnerComp v-if="filteredUsers('Admin').length === 0" />
   </div>
 
   <h2>IN PARTNERSHIP WITH:</h2>

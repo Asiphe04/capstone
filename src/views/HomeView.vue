@@ -7,9 +7,9 @@
         alt=""
         class="home-wallpaper"
       />
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
     </div>
     <div v-show="userRole">
       <div class="d-flex justify-content-center">
@@ -122,28 +122,6 @@ export default {
       return this.$store.state.userRole;
     },
   },
-  // mounted() {
-  //   if (!this.$store.state.userRole) {
-  //     this.$router.push("/login");
-
-  //   } else {
-  //     this.$router.push("/");
-
-  //   }
-  // }
-
-  // mounted() {
-  //   if (
-  //     this.$store.state.userRole === null ||
-  //     // this.$store.state.userRole === "" ||
-  //     this.$store.state.userRole === undefined
-  //   ) {
-
-  //     this.$router.push("/login");
-
-  //   }
-
-  // }
 };
 </script>
 <style scoped>
@@ -162,7 +140,7 @@ button {
 }
 .home-wallpaper {
   width: 100%;
-  height: 475px;
+  height: 515px;
   border-radius: 10px;
 }
 .hardware-display {

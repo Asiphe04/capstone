@@ -14,7 +14,7 @@
     </div>
     <div class="col-6 mt-5">
       <h1 class="text-start uppercase">{{ product.prodName }}</h1>
-      <h3 class="text-start uppercase">{{ product.category }}</h3>
+      <h3 class="text-start uppercase category">{{ product.category }}</h3>
       <br />
       <p class="desc text-start">
         {{ product.description }}
@@ -32,10 +32,12 @@
       </div>
     </div>
   </div>
-  <div v-else class="text-white">Error</div>
+  <SpinnerComp v-else />
 </template>
 <script>
+import SpinnerComp from "@/components/SpinnerComp.vue";
 export default {
+  components: { SpinnerComp },
   computed: {
     product() {
       return this.$store.state.product;
@@ -71,6 +73,9 @@ export default {
 </script>
 
 <style scoped>
+.category {
+  color: var(--secondary-color) !important;
+}
 .desc {
   font-size: 19px;
 }
@@ -90,6 +95,9 @@ button {
   border-radius: 0.3em;
   font-size: 16px;
   margin: 14px;
+}
+button:hover {
+  background-color: var(--tertiary-color);
 }
 .top-picks-img {
   width: 600px;

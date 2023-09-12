@@ -33,65 +33,53 @@
       lasting impact on the world, leaving a legacy of a brighter and more
       equitable future for all.
     </p>
-    <div
-      id="carouselExampleCaptions"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="https://i.postimg.cc/c4Jm6JjQ/C12-Ayesha-Galant-Class1-2.jpg"
-            class="testimonial-img"
-            alt="..."
-          />
-          <h5>Ayesha Galant</h5>
-          <p>
-            "I've been a loyal customer of Cloud 9 Superstore for over a decade,
-            and I can't praise them enough."
-          </p>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://i.postimg.cc/g2XHqTGj/C12-Luke-Evertson-2.jpg"
-            class="testimonial-img"
-            alt="..."
-          />
-          <h5>Luke Evertson</h5>
-          <p>
-            "The staff is always friendly and knowledgeable, and their willingness to assist customers makes shopping here a pleasure."
-          </p>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://i.postimg.cc/vmc7CH8t/ethan2.png"
-            class="testimonial-img"
-            alt="..."
-          />
-          <h5>Ethan Lesar</h5>
-          <p>
-            "Whether I'm shopping for groceries, household items, or even electronics, I can always count on Cloud 9 to have it all. "
-          </p>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    <h1>TESTIMONIALS</h1>
+    <div class="d-flex justify-content-center">
+      <figure class="snip1390">
+        <img
+          src="https://i.postimg.cc/c4Jm6JjQ/C12-Ayesha-Galant-Class1-2.jpg"
+          alt="profile-sample3"
+          class="profile"
+        />
+        <figcaption>
+          <h2>Ayesha Galant</h2>
+          <h4>Customer</h4>
+          <blockquote>
+            I've been a loyal customer of Cloud 9 Superstore for over a decade,
+            and I can't praise them enough.
+          </blockquote>
+        </figcaption>
+      </figure>
+      <figure class="snip1390 hover">
+        <img
+          src="https://i.postimg.cc/g2XHqTGj/C12-Luke-Evertson-2.jpg"
+          alt="profile-sample5"
+          class="profile"
+        />
+        <figcaption>
+          <h2>Luke Evertson</h2>
+          <h4>Customer</h4>
+          <blockquote>
+            The staff is always friendly and knowledgeable, and their
+            willingness to assist customers makes shopping here a pleasure.
+          </blockquote>
+        </figcaption>
+      </figure>
+      <figure class="snip1390">
+        <img
+          src="https://i.postimg.cc/vmc7CH8t/ethan2.png"
+          alt="profile-sample6"
+          class="profile"
+        />
+        <figcaption>
+          <h2>Ethan Lesar</h2>
+          <h4>Customer</h4>
+          <blockquote>
+            Whether I'm shopping for groceries, household items, or even
+            electronics, I can always count on Cloud 9 to have it all.
+          </blockquote>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </template>
@@ -99,18 +87,92 @@
 export default {};
 </script>
 <style scoped>
-.testimonial-img {
-  border-radius: 3%;
-  height: 350px;
+figure.snip1390 {
+  font-family: "Roboto", Arial, sans-serif;
+  position: relative;
+  border-radius: 0.5em;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+  font-size: 16px;
+  background-color: var(--secondary-color);
+  padding: 30px;
+  background-image: linear-gradient(
+    -25deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
+figure.snip1390 *,
+figure.snip1390 *:before,
+figure.snip1390 *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+figure.snip1390 figcaption {
+  width: 100%;
+}
+figure.snip1390 h2,
+figure.snip1390 h4,
+figure.snip1390 blockquote {
+  margin: 0;
+}
+figure.snip1390 h2,
+figure.snip1390 h4 {
+  font-weight: 300;
+}
+figure.snip1390 h2 {
+  color: #ffffff;
+}
+figure.snip1390 h4 {
+  color: #a6a6a6;
+}
+figure.snip1390 blockquote {
+  color: white;
+  font-size: 1em;
+  padding: 45px 20px 40px 50px;
+  margin-top: 30px;
+  background-color: #33658a;
+  border-radius: 5px;
+  box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+figure.snip1390 blockquote:before {
+  font-family: "FontAwesome";
+  content: "\201C";
+  position: absolute;
+  font-size: 70px;
+  opacity: 0.25;
+  font-style: normal;
+  top: 0px;
+  left: 20px;
+}
+figure.snip1390 .profile {
+  width: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+  border: solid 5px #a6a57a;
+}
+
 .heading {
-  font-size: 55px;
+  font-size: 45px;
   text-transform: uppercase;
 }
 .mission-img {
   border-radius: 3%;
   width: 100%;
-  height: 400px;
+  height: 350px;
 }
 .paragrph {
   font-size: 20px;

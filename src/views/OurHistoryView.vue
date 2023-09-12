@@ -92,7 +92,7 @@ p {
   font-size: 16px;
 }
 .history-img {
-  border-radius: 3%;
+  border-radius: 0.4em;
   width: 100%;
   height: 360px;
 }

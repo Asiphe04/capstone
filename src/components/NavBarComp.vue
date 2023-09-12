@@ -124,7 +124,7 @@
             <span class="tooltip">Log out</span>
           </button>
         </li>
-         <div class="dropdown" v-if="userRole">
+        <div class="dropdown" v-if="userRole">
           <router-link
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -133,12 +133,13 @@
             type="button"
             class="link btn dropdown-toggle"
             :exact-active-class="'active-link'"
-            > <img
+          >
+            <img
               :src="userData.userProfile"
               alt=""
               class="user-profile-image"
             />
-            <span class="tooltip">{{userData.firstName}}</span></router-link
+            <span class="tooltip">{{ userData.firstName }}</span></router-link
           >
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -147,24 +148,18 @@
                 :to="{ name: 'user edit', params: { id: userData.userID } }"
                 class="text-decoration-none text-white text-center"
               >
-                <a class="dropdown-item text-white" href="#">Edit</a>
+                <i class="fa fa-edit" aria-hidden="true"></i>
+                <!-- <a class="dropdown-item text-white" href="#">Edit</a> -->
               </router-link>
             </li>
-             <button class="btn-delete text-white" @click="deleteUser(user.userID)">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
+            <button
+              class="btn-delete text-white"
+              @click="deleteUser(user.userID)"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
           </ul>
         </div>
-        <!-- <li v-if="userRole">
-          <router-link  :to="{ name: 'user edit', params: { id: userData.userID } }">
-            <img
-              :src="userData.userProfile"
-              alt=""
-              class="user-profile-image"
-            />
-            <span class="tooltip"> {{ userData.firstName }} </span>
-          </router-link>
-        </li> -->
       </div>
     </ul>
   </nav>
@@ -195,7 +190,7 @@ export default {
     },
   },
   methods: {
-       async deleteUser(id) {
+    async deleteUser(id) {
       try {
         await this.$store.dispatch("deleteUser", id);
         alert("User deleted successfully");
@@ -248,6 +243,7 @@ button {
   background-color: var(--secondary-color) !important;
 }
 .dropdown-menu {
+  width: 5px !important;
   background-color: var(--secondary-color) !important;
 }
 .link.active-link .fa-home,
