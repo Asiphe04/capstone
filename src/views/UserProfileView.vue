@@ -8,6 +8,7 @@
  <h1>Role: {{user.userRole}}</h1>
     <h1>Email: {{user.emailAdd}}</h1>
 
+     <h1>Passwrd: {{user.userPass}}</h1>
    <img :src="user.userProfile" alt="" class="w-25">
 
       
