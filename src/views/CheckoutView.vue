@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <h1>CONFIRM YOUR PAYMENT</h1>
+  <div class="container d-flex">
+    <div class="col-6">
+      <h1>CONFIRM YOUR PAYMENT</h1>
     <div class="first-row">
       <div class="owner">
         <h3>Owner</h3>
@@ -58,6 +59,39 @@
       </div>
     </div>
     <button @click="checkout">Confirm</button>
+    </div>
+    <div class="col-6">
+          <h1>YOUR ITEMS</h1>
+    <table v-if="products && products.length > 0">
+      <tr>
+        <td colspan="4">Your cart is empty.</td>
+      </tr>
+    </table>
+    <table v-else>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in getCart" :key="product.prodID">
+          <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
+          <td>{{ product.prodName }}</td>
+          <td>R{{ product.amount }}</td>
+          <td>{{ product.quantity }}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+    <router-link to="/cart">
+    <button>Edit Items</button>
+    </router-link>
+    </div>
+    
   </div>
 </template>
 
@@ -103,6 +137,16 @@ export default {
         console.error("Error clearing cart:", error);
       }
     },
+        removeFromCart(cartID) {
+      const userID = this.user.userID;
+
+      this.$store
+        .dispatch("removeFromCart", { userID, cartID })
+        .then(() => {})
+        .catch((error) => {
+          console.error("Error removing item from cart:", error);
+        });
+    },
   },
 };
 </script>
@@ -114,7 +158,7 @@ export default {
   /* border: 1px solid; */
   height: 80vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding: 40px;
   justify-content: space-around;
 }
