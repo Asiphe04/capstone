@@ -10,8 +10,8 @@
     <h1 class="mt-2">OUR HISTORY</h1>
   </div>
 
-  <div class="d-flex m-5">
-    <div class="col-6 m-2">
+  <div class="d-flex m-5 sec-container">
+    <div class="col-6 m-2 chapter-1">
       <h2 class="text-start">Chapter 1: The Birth of a Vision (1970-1979)</h2>
       <p class="text-start">
         In the late 1970s, as the United States was entering a new era of
@@ -33,7 +33,7 @@
         began to make a name for itself.
       </p>
     </div>
-    <div class="col-6">
+    <div class="col-6 history-div">
       <img
         src="https://i.postimg.cc/26Dnrsx4/hhiissttor.webp"
         alt=""
@@ -88,11 +88,37 @@
 export default {};
 </script>
 <style scoped>
+@media (max-width: 768px) {
+  .col-6 {
+    width: 100%;
+    margin: 0% !important;
+    margin: 0%;
+  }
+  .history-div {
+    order: 1;
+  }
+  .sec-container {
+    flex-direction: column;
+    margin: 5% !important;
+  }
+  .chapter-1 {
+    order: 2;
+  }
+  .arrow {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .history-img {
+    border-radius: 0.4em;
+    width: 100%;
+    height: 180px !important;
+  }
+}
 p {
   font-size: 16px;
 }
 .history-img {
-  border-radius: 0.4em;
+  border-radius: 0.2em;
   width: 100%;
   height: 360px;
 }

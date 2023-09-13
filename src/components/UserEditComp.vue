@@ -214,7 +214,7 @@ export default {
         this.userPass = "";
         this.userProfile = "";
 
-        this.$router.push("/");
+        this.$router.push("/userView/:id");
       } catch (err) {
         console.error(err);
       }

@@ -6,13 +6,13 @@
         <div class="owner">
           <h3>Owner</h3>
           <div class="input-field">
-            <input type="text" required />
+            <input type="text" required ref="ownerInput" />
           </div>
         </div>
         <div class="cvv">
           <h3>CVV</h3>
           <div class="input-field">
-            <input type="password" required />
+            <input type="password" required ref="cvvInput" />
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
         <div class="card-number">
           <h3>Card Number</h3>
           <div class="input-field">
-            <input type="number" required />
+            <input type="number" required ref="cardNumberInput" />
           </div>
         </div>
       </div>
@@ -58,9 +58,10 @@
           </div>
         </div>
       </div>
-      <button @click="checkout" class="m-2">Confirm</button>
+
+      <button @click="checkout" class="m-2" type="submit">Pay Now</button>
       <h5>Or</h5>
-      <button class="m-2">Pay on delivery</button>
+      <button class="m-2" @click="paycash">Pay on delivery</button>
     </div>
     <div class="col-6">
       <h1>YOUR ITEMS</h1>
@@ -87,6 +88,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="text-white">
+        <h1>Total Price: R{{ cartTotalPrice }}</h1>
+      </div>
       <router-link to="/cart">
         <button>Edit Items</button>
       </router-link>
@@ -115,7 +119,7 @@ export default {
     this.$store.dispatch("getCart", this.user.userID);
   },
   methods: {
-    async checkout() {
+    async paycash() {
       const userID = this.user.userID;
 
       try {
@@ -124,7 +128,46 @@ export default {
         // Show a SweetAlert for a successful purchase
         Swal.fire({
           title: "Thank you for your purchase!",
+          text: "Please be ready with your cash when the diver arrives in 3-4 working days",
+          background: "#86bbd8",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(() => {
+          // Redirect to the login page after clicking OK
+          this.$router.push("/cart");
+        });
+      } catch (error) {
+        console.error("Error clearing cart:", error);
+      }
+    },
+    async checkout() {
+      const ownerInput = this.$refs.ownerInput.value;
+      const cvvInput = this.$refs.cvvInput.value;
+      const cardNumberInput = this.$refs.cardNumberInput.value;
 
+      // Perform custom validation
+      if (!ownerInput || !cvvInput || !cardNumberInput) {
+        // Display a SweetAlert error message
+        Swal.fire({
+          background: "#33658a",
+          color: "white",
+          icon: "error",
+          title: "Error",
+          text: "Please fill in all required fields before proceeding.",
+        });
+        return; // Prevent form submission
+      }
+
+      const userID = this.user.userID;
+
+      try {
+        await this.$store.dispatch("clearCart", { userID });
+
+        // Show a SweetAlert for a successful purchase
+        Swal.fire({
+          title: "Thank you for your purchase!",
+          color: "white",
+          text: "Your delivery will arrive in 3-4 working days",
           background: "#86bbd8",
           icon: "success",
           confirmButtonText: "OK",
@@ -198,6 +241,8 @@ td {
 }
 
 button {
+  border-radius: 0.3em;
+  border: none;
   background-color: var(--tertiary-color);
   color: white;
   text-align: center;

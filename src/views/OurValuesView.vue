@@ -9,8 +9,8 @@
     </router-link>
     <h1 class="mt-2">OUR VALUES</h1>
   </div>
-  <div class="container d-flex">
-    <div class="col-6">
+  <div class="container d-flex" id="details">
+    <div class="col-6 numbers">
       <p class="text-start">
         At the heart of our organization, our values are the guiding stars that
         illuminate our path to success. Integrity is our cornerstone, a bedrock
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-6 store-img">
       <img
         src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
         alt=""
@@ -67,6 +67,29 @@
 </template>
 <script></script>
 <style scoped>
+@media (max-width: 768px) {
+  #details {
+    flex-direction: column !important;
+  }
+  .col-6 {
+    width: 100%;
+  }
+  .arrow {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .values-img {
+    width: 100% !important;
+    height: 180px !important;
+  }
+  .numbers {
+    order: 2;
+  }
+  .store-img {
+    order: 1;
+  }
+}
+
 p {
   font-size: 16px;
 }

@@ -60,13 +60,7 @@
                   </div>
                   <div class="col-sm-9">{{ user.lastName }}</div>
                 </div>
-                <hr />
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Gender</h6>
-                  </div>
-                  <div class="col-sm-9">{{ user.gender }}</div>
-                </div>
+
                 <hr />
                 <div class="row">
                   <div class="col-sm-3">
@@ -89,6 +83,15 @@
                   </div>
                   <div class="col-sm-9">
                     {{ user.userRole }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Password</h6>
+                  </div>
+                  <div class="col-sm-9">
+                    {{ user.userPass }}
                   </div>
                 </div>
               </div>
@@ -124,10 +127,10 @@ export default {
         if (result.isConfirmed) {
           await this.$store.dispatch("deleteUser", id);
           Swal.fire("Deleted!", "User has been deleted.", "success");
-          // If the delete operation is successful, you can add any necessary code here.
+
+          this.$router.push("/register");
         }
       } catch (error) {
-        // Handle the error here, for example, display an error message.
         Swal.fire("Error", "Error deleting user.", "error");
         console.error("Error deleting user:", error);
       }

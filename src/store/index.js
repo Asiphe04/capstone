@@ -15,14 +15,19 @@ export default createStore({
     error: null,
     regStatus: null,
     logStatus: null,
-    cart: null,
+    cart: [],
   },
 
   getters: {
     cartTotalPrice(state) {
-      return state.cart.reduce((total, product) => total + product.amount, 0);
+      // Use the reduce function to sum the amounts in the cart
+      return state.cart.reduce(
+        (total, product) => total + parseFloat(product.amount),
+        0
+      );
     },
   },
+
   mutations: {
     setProducts: (state, products) => {
       state.products = products;
@@ -66,9 +71,7 @@ export default createStore({
         localStorage.removeItem("userData");
       }
     },
-    // addProduct(state, product) {
-    //   state.products.push(product); // Add the new product to the list.
-    // },
+
     setMsg(state, msg) {
       state.msg = msg;
     },
@@ -78,9 +81,7 @@ export default createStore({
     setCart(state, value) {
       state.cart = value;
     },
-    // addProduct(state, product) {
-    //   state.products.push(product); // Add the new product to the list.
-    // },
+
     addProductToCart(state, product) {
       state.cart.push(product);
     },
@@ -88,15 +89,6 @@ export default createStore({
       // Remove the item from the cart state
       state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
     },
-
-    // decrementProductQuantity(state, productId) {
-    //   const product = state.products.find(
-    //     (product) => product.id === productId
-    //   );
-    //   if (product) {
-    //     product.quantity--;
-    //   }
-    // },
 
     clearCart(state) {
       state.cartItems = [];
