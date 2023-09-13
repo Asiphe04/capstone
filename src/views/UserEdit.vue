@@ -6,7 +6,6 @@ import UserEditComp from "@/components/UserEditComp.vue";
 import axios from "axios";
 
 export default {
- 
   components: {
     UserEditComp,
   },
