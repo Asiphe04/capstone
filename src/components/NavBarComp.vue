@@ -124,15 +124,10 @@
             <span class="tooltip">Log out</span>
           </button>
         </li>
-        <div class="dropdown" v-if="userRole">
+
+        <li v-if="userRole">
           <router-link
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            to="/admin"
-            type="button"
-            class="link btn dropdown-toggle"
-            :exact-active-class="'active-link'"
+            :to="{ name: 'user view', params: { id: userData.userID } }"
           >
             <img
               :src="userData.userProfile"
@@ -141,25 +136,7 @@
             />
             <span class="tooltip">{{ userData.firstName }}</span></router-link
           >
-
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-              <router-link
-                :to="{ name: 'user edit', params: { id: userData.userID } }"
-                class="text-decoration-none text-white text-center"
-              >
-                <i class="fa fa-edit" aria-hidden="true"></i>
-              
-              </router-link>
-            </li>
-            <button
-              class="btn-delete text-white"
-              @click="deleteUser(user.userID)"
-            >
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </ul>
-        </div>
+        </li>
       </div>
     </ul>
   </nav>
