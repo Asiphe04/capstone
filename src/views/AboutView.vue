@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex">
+  <div class="container d-md-flex">
     <div class="col-6 mt-5">
       <img
         src="https://i.postimg.cc/JzdRxNQW/e2.webp"
@@ -214,6 +214,11 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .col-6 {
+    width: 100%;
+  }
+}
 .employees-img {
   height: 300px;
   width: 85%;

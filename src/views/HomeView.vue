@@ -136,13 +136,24 @@ button {
   transition: 1s;
   border-radius: 0.3em;
   font-size: 16px;
-  /* margin: 14px; */
+}
+button:hover {
+  background: var(--secondary-color);
 }
 .home-wallpaper {
   width: 100%;
   height: 515px;
+  max-width: 100%;
   border-radius: 10px;
 }
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  .home-wallpaper {
+    height: 250px;
+  }
+}
+
 .hardware-display {
   width: 100%;
   height: 205px;
@@ -158,10 +169,7 @@ button {
 .category-name {
   color: var(--bgblack) !important;
 }
-/* .btn-view-all {
-  color: var(--bgwhite);
-  background-color: var(--secondary-color);
-} */
+
 .arrow {
   width: 60px;
   height: 37px;
