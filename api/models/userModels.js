@@ -42,7 +42,7 @@ const insertUser = (data, result) => {
       email: data.emailAdd,
       password: data.userPass,
     };
-    const checkEmail = `SELECT COUNT(*) AS Count FROM Users WHERE email = ?`;
+    const checkEmail = `SELECT COUNT(*) AS Count FROM users WHERE emailAdd = ?`;
     db.query(checkEmail, [data.emailAdd], (checkErr, checkRes) => {
       if (checkErr) throw checkErr;
       if (checkRes[0].Count > 0) {
