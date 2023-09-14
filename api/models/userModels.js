@@ -87,41 +87,7 @@ const userLogin = (req, res) => {
   });
 };
 
-// const userLogin = (req, res) => {
-//   const { emailAdd, userPass } = req.body;
-//   const query = `SELECT firstName, lastName, userAge, gender, userRole, emailAdd, userPass FROM users WHERE emailAdd = '${emailAdd}'`;
-//   db.query(query, async (err, result) => {
-//     if (err) throw err;
-//     if (!result?.length) {
-//       res.json({
-//         status: res.statusCode,
-//         message: "Incorrect email address!",
-//       });
-//     } else {
-//       await compare(userPass, result[0].userPass, (cErr, cResult) => {
-//         if (cErr) throw cErr;
-//         // create token
-//         const token = createToken({
-//           emailAdd,
-//           userPass,
-//         });
 
-//         if (cResult) {
-//           res.json({
-//             message: "You can now enter another time",
-//             token,
-//             result: result[0],
-//           });
-//         } else {
-//           res.json({
-//             status: res.statusCode,
-//             message: "Unregistered user or incorrect password!",
-//           });
-//         }
-//       });
-//     }
-//   });
-// };
 
 // Update an existing user
 const updateUserByID = (id, data, result) => {
@@ -160,21 +126,7 @@ const deleteUserByID = (id, result) => {
     }
   });
 };
-//Check if email exists
-const checkEmailExists = (email, result) => {
-  db.query(
-    "SELECT emailAdd FROM users WHERE emailAdd = ?",
-    [email],
-    (err, results) => {
-      if (err) {
-        console.log(err);
-        result(err, null);
-      } else {
-        result(null, results.length > 0); // Return true if email exists, false otherwise
-      }
-    }
-  );
-};
+
 
 module.exports = {
   getUsers,
@@ -183,5 +135,4 @@ module.exports = {
   updateUserByID,
   deleteUserByID,
   userLogin,
-checkEmailExists,
 };
