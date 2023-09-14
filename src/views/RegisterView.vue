@@ -132,13 +132,20 @@ export default {
         }
         this.$router.push("/login");
       } catch (e) {
+        // Display Axios error in SweetAlert
+        await Swal.fire({
+          icon: "error",
+          background: "#86bbd8",
+          color: "white",
+          title: "Registration failed",
+          text: e.response?.data?.error || "Unexpected error", // Access the error message from Axios response
+        });
         console.error("Registration error: ", e);
       }
     },
   },
 };
 </script>
-
 <style scoped>
 .account {
   font-size: 24px !important;
