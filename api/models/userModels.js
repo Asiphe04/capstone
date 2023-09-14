@@ -36,15 +36,51 @@ const getUserByID = (id, result) => {
 
 //Add a new user
 const insertUser = (data, result) => {
-  db.query("INSERT INTO users SET ?;", [data], (err, results) => {
-    if (err) {
-      console.log(err);
-      result(err, null);
-    } else {
-      result(null, results);
-    }
-  });
-};
+  const data = req.body;
+    data.userPass = await hash(data.userPass, 10);
+    const user = {
+      email: data.emailAdd,
+      password: data.userPass,
+    };
+    const checkEmail = `SELECT COUNT(*) AS Count FROM Users WHERE email = ?`;
+    db.query(checkEmail, [data.emailAdd], (checkErr, checkRes) => {
+      if (checkErr) throw checkErr;
+      if (checkRes[0].Count > 0) {
+        res.json({
+          status: res.statusCode,
+          msg: "This email address is already in use",
+        });
+      } else {
+        const query = `
+            INSERT INTO users SET ?
+        `;
+        db.query(query, [req.body], (err) => {
+          if (!err) {
+            let token = createToken(user);
+            res.json({
+              status: res.statusCode,
+              token,
+              msg: "User registered successfully",
+            });
+          } else {
+            res.json({
+              err,
+              msg: "An error occured",
+            });
+          }
+        });
+      }
+    });
+  }
+//   db.query("INSERT INTO users SET ?;", [data], (err, results) => {
+//     if (err) {
+//       console.log(err);
+//       result(err, null);
+//     } else {
+//       result(null, results);
+//     }
+//   });
+// };
 
 //login user
 const userLogin = (req, res) => {
