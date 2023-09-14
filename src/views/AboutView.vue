@@ -25,7 +25,7 @@
       </p>
     </div>
   </div>
-  <div class="d-flex justify-content-center row">
+  <div class="sec-divider d-flex justify-content-center row">
     <div class="col-3">
       <h4 class="text-start category-name">OUR HISTORY</h4>
       <img
@@ -152,7 +152,7 @@
   <h2>IN PARTNERSHIP WITH:</h2>
 
   <div
-    class="container d-flex mx-auto justify-content-center align-items-center"
+    class="sponser-div container d-flex mx-auto justify-content-center align-items-center"
   >
     <div class="circle1 m-3">
       <img
@@ -215,8 +215,44 @@ export default {
 
 <style scoped>
 @media (max-width: 768px) {
+  .hardware-display {
+    width: 90%;
+    height: 180px !important;
+    border-radius: 10px;
+  }
   .col-6 {
     width: 100%;
+  }
+  .col-3 {
+    width: 80% !important;
+    margin: 10px;
+    padding: 3px;
+    border-radius: 10px;
+    background-color: var(--bggrey);
+  }
+  .employees-img {
+    height: 190px !important;
+    width: 85%;
+    border-radius: 2%;
+  }
+  .sec-divider {
+    margin: 0% !important;
+  }
+  .radio-inputs {
+    display: grid !important;
+    width: 90% !important;
+    font-size: 10px !important;
+  }
+
+  .managers,
+  .supervisers,
+  .floorteam {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sponser-div {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 .employees-img {

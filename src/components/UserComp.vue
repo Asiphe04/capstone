@@ -1,5 +1,5 @@
 <template>
-  <div :to="{ name: 'user', params: { id: user.userID } }">
+  <div class="" :to="{ name: 'user', params: { id: user.userID } }">
     <img
       width="150"
       height="150"
@@ -17,6 +17,12 @@ export default {
 };
 </script>
 <style scoped>
+@media (max-width: 768px) {
+  .employee-img {
+    height: 120px;
+    width: 120px;
+  }
+}
 .employee-img {
   border-radius: 50%;
   margin-bottom: 5px;

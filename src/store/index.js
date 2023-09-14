@@ -21,10 +21,13 @@ export default createStore({
   getters: {
     cartTotalPrice(state) {
       // Use the reduce function to sum the amounts in the cart
-      return state.cart.reduce(
+      const totalPrice = state.cart.reduce(
         (total, product) => total + parseFloat(product.amount),
         0
       );
+
+      // Use toFixed to round to 2 decimal places and convert it back to a string
+      return totalPrice.toFixed(2);
     },
   },
 
