@@ -31,7 +31,7 @@
         <button type="submit">Send!</button>
       </form>
     </div>
-    <div class="col-6 m-4">
+    <div class="col-6 m-4 contact-div">
       <img
         src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
         alt=""
@@ -64,6 +64,11 @@
 export default {};
 </script>
 <style scoped>
+@media (max-width: 768px) {
+  .contact-div {
+    display: none !important;
+  }
+}
 @media (max-width: 700px) {
   .contact-form {
     width: 90% !important;
@@ -71,7 +76,7 @@ export default {};
   .title {
     display: none;
   }
-  #contact-img {
+  .contact-div {
     display: none;
   }
 }
@@ -79,11 +84,6 @@ export default {};
   border-radius: 3%;
   height: 330px;
   width: 100%;
-  /* width: 500px;
-   */
-  /* background-image: url("https://i.postimg.cc/nhcxpbgY/l2.png"); */
-  /* background-size: cover; */
-  /* background-position: center; */
 }
 .container {
   border-radius: 10px;
