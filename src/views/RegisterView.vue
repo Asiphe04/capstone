@@ -12,39 +12,22 @@
       <form class="row d-flex" @submit.prevent="register">
         <div class="col-6">
           <label for="firstName" class="text-start">First Name:</label>
-          <input
-            type="text"
-            placeholder="eg. Asiphe"
-            v-model="firstName"
-            required
-          />
+          <input type="text" placeholder="eg. Asiphe" v-model="firstName" />
           <label for="lastname" class="text-start">Surname:</label>
-          <input
-            type="text"
-            placeholder="eg. Ndimlana"
-            v-model="lastName"
-            required
-          />
+          <input type="text" placeholder="eg. Ndimlana" v-model="lastName" />
           <label for="role" class="text-start">Role:</label>
-          <input
-            type="text"
-            placeholder="eg. Admin"
-            v-model="userRole"
-            required
-          />
+          <input type="text" placeholder="eg. Admin" v-model="userRole" />
           <label for="text" class="text-start">Profile URL</label>
 
           <input
             type="text"
             placeholder="https://i.postimg.cc/Cx0fdCZw/C12-Asiphe-Ndimlana-3.jpg"
             v-model="userProfile"
-            required
           />
         </div>
         <div class="col-6">
           <label for="gender">Gender</label>
           <select
-            required
             type="text"
             id="gender"
             name="gender"
@@ -60,24 +43,18 @@
             type="email"
             placeholder="eg. asiphendimlana40@gmail.com"
             v-model="emailAdd"
-            required
           />
 
           <label for="age" class="text-start">Age:</label>
-          <input
-            type="number"
-            placeholder="eg. 19"
-            v-model="userAge"
-            required
-          />
+          <input type="number" placeholder="eg. 19" v-model="userAge" />
           <label for="password" class="text-start">PASSWORD</label>
 
-          <input type="password" v-model="userPass" required />
+          <input type="password" v-model="userPass" />
         </div>
         <button class="submit">Sign Up</button>
       </form>
 
-      <p>
+      <p class="account">
         Have an account?
         <router-link
           to="/login"
@@ -107,6 +84,26 @@ export default {
   },
   methods: {
     async register() {
+      // Validate if all required fields are filled
+      if (
+        !this.firstName ||
+        !this.lastName ||
+        !this.userAge ||
+        !this.gender ||
+        !this.emailAdd ||
+        !this.userPass ||
+        !this.userProfile
+      ) {
+        await Swal.fire({
+          icon: "error",
+          background: "#86bbd8",
+          color: "white",
+          title: "Error",
+          text: "Please fill in all required fields.",
+        });
+        return;
+      }
+
       try {
         const resp = await this.$store.dispatch("register", {
           firstName: this.firstName,
@@ -122,8 +119,9 @@ export default {
           await Swal.fire({
             icon: "success",
             background: "#86bbd8",
+            color: "white",
             title: "Registration successful",
-            text: "CONGRATULATIONS ,YOU ARE NOW REGISTERED ! Please Login",
+            text: "CONGRATULATIONS, YOU ARE NOW REGISTERED! Please Login",
           });
         } else {
           await Swal.fire({
@@ -142,6 +140,9 @@ export default {
 </script>
 
 <style scoped>
+.account {
+  font-size: 24px !important;
+}
 .register-link {
   color: var(--secondary-color) !important;
 }
