@@ -11,6 +11,7 @@ const {
   updateUserByID,
   deleteUserByID,
   loginUserByPass,
+checkEmailExists,
 } = require("../models/userModels");
 
 // Get all users
@@ -44,6 +45,12 @@ const createUser = (req, res) => {
   // Check if userPass is provided in the request body
   if (!data.userPass) {
     return res.status(400).json({ error: "Password is required." });
+  }
+  // Check if the email already exists
+  const emailExists = await checkEmailExists(data.emailAdd);
+
+  if (emailExists) {
+    return res.status(400).json({ error: "Email already exists." });
   }
 
   // Hash the password
