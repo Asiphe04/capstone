@@ -8,7 +8,6 @@
     </div>
 
     <div class="col-6">
-      <!-- <button onclick="history.back()" class="back-btn"> -->
       <h1>WELCOME BACK !</h1>
 
       <form @submit.prevent="userLogin">
@@ -18,17 +17,17 @@
           type="email"
           name="email"
           v-model="emailAdd"
+          
           placeholder="Enter your email address"
-          required
         />
         <br />
         <label for="password" class="text-start">PASSWORD</label>
         <br />
-        <input type="password" v-model="userPass" name="password" required/>
+        <input type="password" v-model="userPass" name="password" required />
 
-        <button type="submit">Log In</button>
+        <button type="submit" @click="validateForm">Log In</button>
         <p>
-          Dont have an account?
+          Don't have an account?
           <router-link
             to="/register"
             class="register-link text-decoration-none text-white"
@@ -45,6 +44,7 @@
 
 <script>
 import Swal from "sweetalert2";
+
 export default {
   data() {
     return {
@@ -66,19 +66,19 @@ export default {
         const resp = await this.$store.dispatch("login", payload);
 
         if (resp.success && resp.token) {
-           console.log("Successful login");
+          console.log("Successful login");
           await Swal.fire({
             icon: "success",
             background: "#86bbd8",
             title: "Logged in Successfully",
             text: "You are now logged in!",
+            color: "white",
           });
-         
+
           this.$router.push("/");
           setTimeout(() => {
-  window.location.reload(); // Reload the page
-}, 100);
-          
+            window.location.reload(); // Reload the page
+          }, 100);
         } else {
           const errMsg = resp.error || "Unexpected error";
           await Swal.fire({
@@ -89,6 +89,22 @@ export default {
         }
       } catch (e) {
         console.error("Error while logging in: ", e);
+      }
+    },
+    validateForm() {
+      if (!this.emailAdd || !this.userPass) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          background: "#86bbd8",
+          color: "white",
+          text: "Please fill in all the fields.",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK",
+        });
+      } else {
+        // If all fields are filled, proceed with form submission
+        this.userLogin();
       }
     },
   },

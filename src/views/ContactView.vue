@@ -87,7 +87,9 @@ export default {
       ) {
         await Swal.fire({
           icon: "error",
-          title: "Validation Error",
+          title: "Error",
+          color: "white",
+          background: "#86bbd8",
           text: "Please fill in all fields",
         });
         return;
