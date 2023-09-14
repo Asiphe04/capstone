@@ -1,11 +1,11 @@
 <template>
   <div
-    class="container d-flex"
+    class="parent-div container d-flex"
     v-if="product"
     :key="product.prodID"
     :product="product"
   >
-    <div class="col-6 m-3">
+    <div class="img-div col-6 m-3">
       <img
         :src="product.prodURL"
         :alt="product.prodName"
@@ -13,7 +13,7 @@
       />
     </div>
     <div class="col-6 mt-5">
-      <h1 class="text-start uppercase">{{ product.prodName }}</h1>
+      <h1 class="text-start uppercase prodName">{{ product.prodName }}</h1>
       <h3 class="text-start uppercase category">{{ product.category }}</h3>
       <br />
       <p class="desc text-start">
@@ -25,7 +25,7 @@
 
       <div class="buttons text-start">
         <button @click="addToCart(id)">Add to Cart</button>
-        <!-- <button @click="addToCart(product.prodID)">Add to Cart</button> -->
+
         <router-link to="/products">
           <button>Back</button>
         </router-link>
@@ -49,9 +49,7 @@ export default {
       return this.$store.state.userData;
     },
   },
-  // mounted() {
-  //   this.$store.dispatch("getProduct", this.$route.params.id);
-  // },
+
   mounted() {
     this.$store.dispatch("getProduct", this.id);
   },
@@ -73,6 +71,33 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .parent-div {
+    flex-direction: column;
+  }
+  .top-picks-img {
+    width: 100% !important;
+    height: 250px !important;
+  }
+  .img-div {
+    margin: 0% !important;
+    width: 100% !important;
+  }
+  .prodName {
+    font-size: 45px !important;
+  }
+  h3 {
+    font-size: 25px !important;
+  }
+  .buttons {
+    text-align: center !important;
+  }
+
+  .col-6 {
+    margin-top: 0% !important;
+    width: 100%;
+  }
+}
 .category {
   color: var(--secondary-color) !important;
 }
