@@ -42,19 +42,7 @@ const {
 const { userLogin } = require("../models/userModels");
 
 //users
-// Add this route for checking email existence
-router.get("/users/check-email", (req, res) => {
-  const email = req.query.email; // Get the email from the query parameter
 
-  // Call the checkEmailExists function from your controller
-  checkEmailExists(email, (err, exists) => {
-    if (err) {
-      res.status(500).json({ error: "Internal Server Error" });
-    } else {
-      res.status(200).json({ exists });
-    }
-  });
-});
 
 //get all users
 router.get("/users", showUsers);
