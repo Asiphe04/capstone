@@ -1,13 +1,13 @@
 <template>
   <div class="container d-flex p-4">
-    <div class="col-6">
+    <div class="col-6 img-div">
       <img
         src="https://i.postimg.cc/YCJbkvPZ/c9bl-removebg-preview.png"
         alt=""
       />
     </div>
     <div class="col-6">
-      <h1>WELCOME TO CLOUD 9 SUPERSTORE!</h1>
+      <h1 class="heading">WELCOME TO CLOUD 9 SUPERSTORE!</h1>
 
       <form class="row d-flex" @submit.prevent="register">
         <div class="col-6">
@@ -146,9 +146,23 @@ export default {
 };
 </script>
 <style scoped>
-.account {
-  font-size: 24px !important;
-}
+@media (max-width: 768px) {
+  .col-6{
+    width: 100% !important;
+  }
+ 
+  
+  .img-div{
+display: none;
+  }
+   .heading{
+     font-size: 25px !important;
+  }
+    label{
+     font-size: 20px !important;
+  }
+  }
+
 .register-link {
   color: var(--secondary-color) !important;
 }
