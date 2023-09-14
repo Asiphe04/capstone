@@ -11,7 +11,6 @@ const {
   updateUserByID,
   deleteUserByID,
   loginUserByPass,
-checkEmailExists,
 } = require("../models/userModels");
 
 // Get all users
@@ -92,20 +91,7 @@ const updateUser = (req, res) => {
     }
   });
 };
-const emailExists = (req, res) => {
-  const email = req.body.email; // Assuming the email is sent in the request body
-  if (!email) {
-    return res.status(400).json({ error: "Email is required." });
-  }
 
-  checkEmailExists(email, (err, exists) => {
-    if (err) {
-      res.status(500).json({ error: "Internal Server Error" });
-    } else {
-      res.status(200).json({ exists });
-    }
-  });
-};
 
 module.exports = {
   showUsers,
@@ -113,6 +99,6 @@ module.exports = {
   createUser,
   deleteUser,
   updateUser,
-  emailExists,
+
 
 };
