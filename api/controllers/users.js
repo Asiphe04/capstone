@@ -11,7 +11,7 @@ const {
   updateUserByID,
   deleteUserByID,
   loginUserByPass,
-checkEmailExists,
+// checkEmailExists,
 } = require("../models/userModels");
 
 // Get all users
@@ -41,28 +41,17 @@ const showUserByID = (req, res) => {
 // Create new user
 const createUser = (req, res) => {
   const data = req.body;
-
   // Check if userPass is provided in the request body
   if (!data.userPass) {
     return res.status(400).json({ error: "Password is required." });
   }
-  // Check if the email already exists
-  const emailExists = await checkEmailExists(data.emailAdd);
-
-  if (emailExists) {
-    return res.status(400).json({ error: "Email already exists." });
-  }
-
   // Hash the password
   data.userPass = bcrypt.hashSync(data.userPass, 10);
-
   const user = {
     emailAdd: data.emailAdd,
     userPass: data.userPass,
   };
-
   let token = createToken(user);
-
   insertUser(data, (err, results) => {
     if (err) {
       res
