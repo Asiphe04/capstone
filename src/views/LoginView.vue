@@ -1,6 +1,6 @@
 <template>
   <div class="container d-flex p-4">
-    <div class="col-6">
+    <div class="col-6 img-div">
       <img
         src="https://i.postimg.cc/YCJbkvPZ/c9bl-removebg-preview.png"
         alt=""
@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-6">
-      <h1>WELCOME BACK !</h1>
+      <h1 class="heading">WELCOME BACK !</h1>
 
       <form @submit.prevent="userLogin">
         <label for="email" class="text-start">ENTER YOUR EMAIL</label>
@@ -110,6 +110,25 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .col-6{
+    width: 100% !important;
+  }
+  
+  .img-div{
+display: none;
+  }
+  .heading{
+     font-size: 25px !important;
+  }
+  form{
+    width: 100% !important;
+  }
+  label{
+     font-size: 20px !important;
+  }
+
+}
 .register-link {
   color: var(--secondary-color) !important;
 }
