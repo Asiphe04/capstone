@@ -182,6 +182,9 @@ button {
   font-size: 16px;
   margin: 14px;
 }
+button:hover {
+  background-color: var(--tertiary-color);
+}
 input,
 select,
 option {
