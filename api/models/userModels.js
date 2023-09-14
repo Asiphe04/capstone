@@ -35,46 +35,16 @@ const getUserByID = (id, result) => {
 };
 
 //Add a new user
-const insertUser = async (data) => {
-  try {
-    data.userPass = await hash(data.userPass, 10);
-    const user = {
-      email: data.emailAdd,
-      password: data.userPass,
-    };
-    const checkEmail = `SELECT COUNT(*) AS Count FROM users WHERE emailAdd = ?`;
-    const checkRes = await dbQuery(checkEmail, [data.emailAdd]);
-
-    if (checkRes[0].Count > 0) {
-      return {
-        status: 400,
-        msg: "This email address is already in use",
-      };
+const insertUser = (data, result) => {
+  db.query("INSERT INTO users SET ?;", [data], (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
     } else {
-      const query = `INSERT INTO users SET ?`;
-      await dbQuery(query, [user]);
-      let token = createToken(user);
-      return {
-        status: 201,
-        token,
-        msg: "User registered successfully",
-      };
+      result(null, results);
     }
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
+  });
 };
-
-//   db.query("INSERT INTO users SET ?;", [data], (err, results) => {
-//     if (err) {
-//       console.log(err);
-//       result(err, null);
-//     } else {
-//       result(null, results);
-//     }
-//   });
-// };
 
 //login user
 const userLogin = (req, res) => {
