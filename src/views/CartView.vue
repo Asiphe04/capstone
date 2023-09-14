@@ -42,7 +42,6 @@ export default {
   Name: "setCart",
   computed: {
     getCart() {
-      console.log(this.$store.state.cart);
       return this.$store.state.cart;
     },
     user() {

@@ -108,13 +108,13 @@
           >
         </li>
         <li v-show="userRole">
-          <router-link
-            to="/cart"
+          <button
+           @click="toggleCart"
             class="link"
             :exact-active-class="'active-link'"
           >
             <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            <span class="tooltip">Cart</span></router-link
+            <span class="tooltip">Cart</span></button
           >
         </li>
 
@@ -139,6 +139,43 @@
         </li>
       </div>
     </ul>
+    
+       <div class="offcanvas-cart" :class="{ active: isCartOpen }">
+       <h1>YOUR ITEMS</h1>
+    <table v-if="products && products.length > 0">
+      <tr>
+        <td colspan="4">Your cart is empty.</td>
+      </tr>
+    </table>
+    <table v-else>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th class="prodName m-2">Name</th>
+          <th class="m-2">Price</th>
+
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="p-3" v-for="product in getCart" :key="product.prodID">
+          <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
+          <td class="prodName p-3">{{ product.prodName }}</td>
+          <td>R{{ product.amount }}</td>
+
+          <td>
+            <button @click="removeFromCart(product.cartID)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+
+      <button>
+        <router-link to="/checkout" class="text-white text-decoration-none"
+          >Checkout</router-link
+        >
+      </button>
+    </table>
+    </div>
   </nav>
 
   <br />
@@ -148,9 +185,16 @@
 <script>
 import Swal from "sweetalert2";
 export default {
+  Name: "setCart",
+   data() {
+    return {
+      isCartOpen: false,
+    };
+  },
   props: ["user"],
   mounted() {
     this.$store.dispatch("getUsers");
+    this.$store.dispatch("getCart", this.user.userID);
   },
   computed: {
     users() {
@@ -159,14 +203,36 @@ export default {
     user() {
       return this.$store.state.user;
     },
+     user() {
+      return this.$store.state.userData;
+    },
     userData() {
       return this.$store.state.userData;
     },
     userRole() {
       return this.$store.state.userRole;
     },
+     getCart() {
+      return this.$store.state.cart;
+    },
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
   },
   methods: {
+      removeFromCart(cartID) {
+      const userID = this.user.userID;
+
+      this.$store
+        .dispatch("removeFromCart", { userID, cartID })
+        .then(() => {})
+        .catch((error) => {
+          console.error("Error removing item from cart:", error);
+        });
+    },
+     toggleCart() {
+      this.isCartOpen = !this.isCartOpen;
+    },
     async deleteUser(id) {
       try {
         await this.$store.dispatch("deleteUser", id);
@@ -203,6 +269,24 @@ export default {
 </script>
 
 <style scoped>
+.offcanvas-cart {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start with the cart off-canvas */
+  width: 300px;
+  height: 100%;
+  background-color: var(--primary-color);
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto;
+}
+.offcanvas-cart:hover{
+   background-color: var(--primary-color) !important;
+}
+.offcanvas-cart.active {
+  right: 0; /* Slide the cart into view */
+}
 .user-profile-image {
   width: 32px; /* Adjust the size as needed */
   height: 32px; /* Adjust the size as needed */
