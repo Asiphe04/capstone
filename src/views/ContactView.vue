@@ -33,7 +33,8 @@
           ></textarea>
           <label for="comment">Message</label>
         </div>
-        <button type="submit" @click="submitForm">Send!</button>
+        <button type="submit">Send!</button>
+        <!-- <button>Clear fields</button> -->
       </form>
     </div>
     <div class="col-6 m-4 contact-div">
@@ -95,18 +96,20 @@ export default {
         return;
       }
 
-      // If the form is valid, you can submit it
-      // Note: You may want to send the form data to your server or the Formspree endpoint here
-      console.log("Form submitted:", this.formData);
-
-      // Clear the form after submission
-      this.formData.name = "";
-      this.formData.email = "";
-      this.formData.comment = "";
+      // Show a success SweetAlert after successful submission
+      await Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Form submitted successfully!",
+        confirmButtonText: "OK",
+        background: "#86bbd8",
+        color: "white",
+      });
     },
   },
 };
 </script>
+
 <style scoped>
 @media (max-width: 768px) {
   .contact-div {

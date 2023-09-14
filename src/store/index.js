@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 const URL = "https://capstone-2z3t.onrender.com/";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 export default createStore({
   state: {
     users: null,
@@ -239,7 +240,6 @@ export default createStore({
         // Handle network errors or other exceptions
       }
     },
-
     async register(context, payload) {
       console.log("Reached");
       try {
@@ -256,6 +256,15 @@ export default createStore({
           return { success: true, token };
         } else if (err) {
           console.error(err);
+        }
+
+        // Check if the email already exists
+        if (msg === "This email address is already in use") {
+          Swal.fire({
+            icon: "error",
+            title: "Email Already Exists",
+            text: "The email you entered is already registered. Please use a different email.",
+          });
         }
       } catch (e) {
         context.commit("setError", e);
