@@ -38,29 +38,51 @@ const showUserByID = (req, res) => {
 };
 
 // Create new user
-const createUser = (req, res) => {
-  const data = req.body;
-  // Check if userPass is provided in the request body
-  if (!data.userPass) {
-    return res.status(400).json({ error: "Password is required." });
-  }
-  // Hash the password
-  data.userPass = bcrypt.hashSync(data.userPass, 10);
-  const user = {
-    emailAdd: data.emailAdd,
-    userPass: data.userPass,
-  };
-  let token = createToken(user);
-  insertUser(data, (err, results) => {
-    if (err) {
-      res
-        .status(500)
-        .json({ error: "An error occurred while creating the user." });
-    } else {
-      res.status(201).json({ token, results });
+const createUser = async (req, res) => {
+  try {
+    const data = req.body;
+    // Check if userPass is provided in the request body
+    if (!data.userPass) {
+      return res.status(400).json({ error: "Password is required." });
     }
-  });
+
+    const result = await insertUser(data);
+
+    if (result.status === 201) {
+      res.status(201).json(result);
+    } else if (result.status === 400) {
+      res.status(400).json(result);
+    } else {
+      res.status(500).json({ error: "An error occurred while creating the user." });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "An error occurred" });
+  }
 };
+// const createUser = (req, res) => {
+//   const data = req.body;
+//   // Check if userPass is provided in the request body
+//   if (!data.userPass) {
+//     return res.status(400).json({ error: "Password is required." });
+//   }
+//   // Hash the password
+//   data.userPass = bcrypt.hashSync(data.userPass, 10);
+//   const user = {
+//     emailAdd: data.emailAdd,
+//     userPass: data.userPass,
+//   };
+//   let token = createToken(user);
+//   insertUser(data, (err, results) => {
+//     if (err) {
+//       res
+//         .status(500)
+//         .json({ error: "An error occurred while creating the user." });
+//     } else {
+//       res.status(201).json({ token, results });
+//     }
+//   });
+// };
 
 // Delete a user
 const deleteUser = (req, res) => {
