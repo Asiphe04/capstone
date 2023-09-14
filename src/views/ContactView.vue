@@ -3,9 +3,14 @@
   <div class="container d-flex">
     <div class="contact-form col-6 m-4">
       <span class="title text-white">Leave a Message</span>
-      <form class="form" action="https://formspree.io/f/mzblbdga" method="POST">
+      <form
+        class="form"
+        action="https://formspree.io/f/mzblbdga"
+        method="POST"
+        @submit.prevent="submitForm"
+      >
         <div class="group">
-          <input placeholder="‎" type="text" required="" />
+          <input placeholder="‎" type="text" v-model="formData.name" />
           <label for="name">Name</label>
         </div>
         <div class="group">
@@ -14,7 +19,7 @@
             type="email"
             id="email"
             name="email"
-            required=""
+            v-model="formData.email"
           />
           <label for="email">Email</label>
         </div>
@@ -24,11 +29,11 @@
             id="comment"
             name="comment"
             rows="5"
-            required=""
+            v-model="formData.comment"
           ></textarea>
           <label for="comment">Message</label>
         </div>
-        <button type="submit">Send!</button>
+        <button type="submit" @click="submitForm">Send!</button>
       </form>
     </div>
     <div class="col-6 m-4 contact-div">
@@ -61,7 +66,44 @@
 </template>
 
 <script>
-export default {};
+import Swal from "sweetalert2";
+export default {
+  data() {
+    return {
+      formData: {
+        name: "",
+        email: "",
+        comment: "",
+      },
+    };
+  },
+  methods: {
+    async submitForm() {
+      // Validate the form data here
+      if (
+        !this.formData.name ||
+        !this.formData.email ||
+        !this.formData.comment
+      ) {
+        await Swal.fire({
+          icon: "error",
+          title: "Validation Error",
+          text: "Please fill in all fields",
+        });
+        return;
+      }
+
+      // If the form is valid, you can submit it
+      // Note: You may want to send the form data to your server or the Formspree endpoint here
+      console.log("Form submitted:", this.formData);
+
+      // Clear the form after submission
+      this.formData.name = "";
+      this.formData.email = "";
+      this.formData.comment = "";
+    },
+  },
+};
 </script>
 <style scoped>
 @media (max-width: 768px) {
