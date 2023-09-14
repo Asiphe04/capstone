@@ -35,43 +35,36 @@ const getUserByID = (id, result) => {
 };
 
 //Add a new user
-const insertUser = async (req, res) => {
-  const data = req.body;
+const insertUser = async (data) => {
+  try {
     data.userPass = await hash(data.userPass, 10);
     const user = {
-      emailAdd: data.emailAdd,
-      userPass: data.userPass,
+      email: data.emailAdd,
+      password: data.userPass,
     };
     const checkEmail = `SELECT COUNT(*) AS Count FROM users WHERE emailAdd = ?`;
-    db.query(checkEmail, [data.emailAdd], (checkErr, checkRes) => {
-      if (checkErr) throw checkErr;
-      if (checkRes[0].Count > 0) {
-        res.json({
-          status: res.statusCode,
-          msg: "This email address is already in use",
-        });
-      } else {
-        const query = `
-            INSERT INTO users SET ?
-        `;
-        db.query(query, [req.body], (err) => {
-          if (!err) {
-            let token = createToken(user);
-            res.json({
-              status: res.statusCode,
-              token,
-              msg: "User registered successfully",
-            });
-          } else {
-            res.json({
-              err,
-              msg: "An error occured",
-            });
-          }
-        });
-      }
-    });
+    const checkRes = await dbQuery(checkEmail, [data.emailAdd]);
+
+    if (checkRes[0].Count > 0) {
+      return {
+        status: 400,
+        msg: "This email address is already in use",
+      };
+    } else {
+      const query = `INSERT INTO users SET ?`;
+      await dbQuery(query, [user]);
+      let token = createToken(user);
+      return {
+        status: 201,
+        token,
+        msg: "User registered successfully",
+      };
+    }
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
+};
 
 //   db.query("INSERT INTO users SET ?;", [data], (err, results) => {
 //     if (err) {
