@@ -46,6 +46,29 @@ const insertUser = (data, result) => {
   });
 };
 
+// Check if the email already exists in the database
+const checkEmailExists = (email, result) => {
+  db.query("SELECT * FROM users WHERE emailAdd = ?", [email], (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results.length > 0);
+    }
+  });
+};
+
+// const insertUser = (data, result) => {
+//   db.query("INSERT INTO users SET ?;", [data], (err, results) => {
+//     if (err) {
+//       console.log(err);
+//       result(err, null);
+//     } else {
+//       result(null, results);
+//     }
+//   });
+// };
+
 //login user
 const userLogin = (req, res) => {
   const { emailAdd, userPass } = req.body;
@@ -135,4 +158,5 @@ module.exports = {
   updateUserByID,
   deleteUserByID,
   userLogin,
+checkEmailExists,
 };
