@@ -11,6 +11,7 @@ const {
   updateUserByID,
   deleteUserByID,
   loginUserByPass,
+checkEmailExists 
 } = require("../models/userModels");
 
 // Get all users
@@ -40,27 +41,63 @@ const showUserByID = (req, res) => {
 // Create new user
 const createUser = (req, res) => {
   const data = req.body;
-  // Check if userPass is provided in the request body
-  if (!data.userPass) {
-    return res.status(400).json({ error: "Password is required." });
+  // Check if userPass and emailAdd are provided in the request body
+  if (!data.userPass || !data.emailAdd) {
+    return res.status(400).json({ error: "Both email and password are required." });
   }
-  // Hash the password
-  data.userPass = bcrypt.hashSync(data.userPass, 10);
-  const user = {
-    emailAdd: data.emailAdd,
-    userPass: data.userPass,
-  };
-  let token = createToken(user);
-  insertUser(data, (err, results) => {
+
+  // Check if the email already exists in the database
+  checkEmailExists(data.emailAdd, (err, emailExists) => {
     if (err) {
-      res
-        .status(500)
-        .json({ error: "An error occurred while creating the user." });
-    } else {
-      res.status(201).json({ token, results });
+      return res.status(500).json({ error: "An error occurred while checking the email." });
     }
+
+    if (emailExists) {
+      return res.status(409).json({ error: "Email address already exists." });
+    }
+
+    // Hash the password
+    data.userPass = bcrypt.hashSync(data.userPass, 10);
+    const user = {
+      emailAdd: data.emailAdd,
+      userPass: data.userPass,
+    };
+
+    let token = createToken(user);
+
+    // Insert the user into the database
+    insertUser(data, (err, results) => {
+      if (err) {
+        return res.status(500).json({ error: "An error occurred while creating the user." });
+      } else {
+        return res.status(201).json({ token, results });
+      }
+    });
   });
 };
+// const createUser = (req, res) => {
+//   const data = req.body;
+//   // Check if userPass is provided in the request body
+//   if (!data.userPass) {
+//     return res.status(400).json({ error: "Password is required." });
+//   }
+//   // Hash the password
+//   data.userPass = bcrypt.hashSync(data.userPass, 10);
+//   const user = {
+//     emailAdd: data.emailAdd,
+//     userPass: data.userPass,
+//   };
+//   let token = createToken(user);
+//   insertUser(data, (err, results) => {
+//     if (err) {
+//       res
+//         .status(500)
+//         .json({ error: "An error occurred while creating the user." });
+//     } else {
+//       res.status(201).json({ token, results });
+//     }
+//   });
+// };
 
 // Delete a user
 const deleteUser = (req, res) => {
