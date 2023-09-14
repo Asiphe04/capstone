@@ -76,7 +76,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Quantity</th>
+            <!-- <th>Quantity</th> -->
           </tr>
         </thead>
         <tbody>
@@ -84,12 +84,12 @@
             <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
             <td class="w-50">{{ product.prodName }}</td>
             <td>R{{ product.amount }}</td>
-            <td>{{ product.quantity }}</td>
+            <!-- <td>{{ product.quantity }}</td> -->
           </tr>
         </tbody>
       </table>
       <div class="text-white">
-        <h1>Total Price: R{{ cartTotalPrice }}</h1>
+        <h1>Total Price: R {{ cartTotalPrice }}</h1>
       </div>
       <router-link to="/cart">
         <button>Edit Items</button>

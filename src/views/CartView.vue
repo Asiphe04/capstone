@@ -10,18 +10,18 @@
       <thead>
         <tr>
           <th>Image</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
+          <th class="prodName m-2">Name</th>
+          <th class="m-2">Price</th>
+
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in getCart" :key="product.prodID">
+        <tr class="p-3" v-for="product in getCart" :key="product.prodID">
           <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
-          <td>{{ product.prodName }}</td>
+          <td class="prodName p-3">{{ product.prodName }}</td>
           <td>R{{ product.amount }}</td>
-          <td>{{ product.quantity }}</td>
+
           <td>
             <button @click="removeFromCart(product.cartID)">Remove</button>
           </td>
@@ -92,5 +92,21 @@ button {
   border-radius: 0.3em;
   font-size: 16px;
   margin: 14px;
+}
+
+/* Media query for screens with a max-width of 768px */
+@media (max-width: 768px) {
+  .container {
+    height: 80vh !important; /* Adjust the height for smaller screens */
+    padding: 10px; /* Add some padding for better spacing */
+  }
+  .prodName {
+    display: none;
+  }
+
+  button {
+    width: auto; /* Allow button width to adjust based on content */
+    margin: 5px; /* Reduce margin for better spacing */
+  }
 }
 </style>

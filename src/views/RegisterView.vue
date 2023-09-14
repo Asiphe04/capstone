@@ -140,7 +140,6 @@ export default {
           title: "Registration failed",
           text: e.response?.data?.error || "Unexpected error", // Access the error message from Axios response
         });
-        console.error("Registration error: ", e);
       }
     },
   },

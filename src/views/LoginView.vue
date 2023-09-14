@@ -17,7 +17,6 @@
           type="email"
           name="email"
           v-model="emailAdd"
-          
           placeholder="Enter your email address"
         />
         <br />
@@ -103,7 +102,6 @@ export default {
           confirmButtonText: "OK",
         });
       } else {
-        // If all fields are filled, proceed with form submission
         this.userLogin();
       }
     },
