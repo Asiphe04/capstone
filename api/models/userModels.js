@@ -160,6 +160,21 @@ const deleteUserByID = (id, result) => {
     }
   });
 };
+//Check if email exists
+const checkEmailExists = (email, result) => {
+  db.query(
+    "SELECT emailAdd FROM users WHERE emailAdd = ?",
+    [email],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results.length > 0); // Return true if email exists, false otherwise
+      }
+    }
+  );
+};
 
 module.exports = {
   getUsers,
@@ -168,4 +183,5 @@ module.exports = {
   updateUserByID,
   deleteUserByID,
   userLogin,
+checkEmailExists,
 };
