@@ -37,7 +37,6 @@ const {
   createUser,
   deleteUser,
   updateUser,
-emailExists,
 } = require("../controllers/users");
 
 const { userLogin } = require("../models/userModels");
@@ -62,9 +61,7 @@ router.delete("/users/:id", deleteUser);
 
 // Update a user
 router.put("/users/:id", updateUser);
-
-//check if email exists
-router.get("/users/check-email", emailExists); 
+ 
 
 //orders
 router.get("/users/:id/cart", showCart);
