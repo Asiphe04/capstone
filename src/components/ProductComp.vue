@@ -27,6 +27,15 @@ export default {
 };
 </script>
 <style scoped>
+@media (max-width: 768px) {
+  .cards {
+    width: 100% !important;
+  }
+  .top-picks-items {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
 a {
   text-decoration: none;
   color: white;
