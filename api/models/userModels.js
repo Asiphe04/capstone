@@ -35,7 +35,7 @@ const getUserByID = (id, result) => {
 };
 
 //Add a new user
-const insertUser = (data, result) => {
+const insertUser = (req, res) => {
   const data = req.body;
     data.userPass = await hash(data.userPass, 10);
     const user = {
