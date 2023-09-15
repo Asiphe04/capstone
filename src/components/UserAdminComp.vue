@@ -33,9 +33,9 @@ export default {
       try {
         await this.$store.dispatch("deleteUser", id);
         alert("User deleted successfully");
-        // If the delete operation is successful, you can add any necessary code here.
+      
       } catch (error) {
-        // Handle the error here, for example, display an error message.
+       
         alert("Error deleting user");
         console.error("Error deleting user:", error);
       }

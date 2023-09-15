@@ -216,13 +216,12 @@ export default {
 <style scoped>
 @media screen and (min-width: 700px) {
 }
-/* Define the initial state of the container */
+
 .container,
 .sec-divider {
-  transition: filter 0.5s; /* Add a smooth transition for the filter property */
+  transition: filter 0.5s; 
 }
 
-/* Define the animation using keyframes */
 @keyframes blur {
   0% {
     filter: blur(10px);
@@ -237,9 +236,9 @@ export default {
   }
 }
 
-/* Apply the animation to the container when the blur-animation class is added */
+
 .blur-animation {
-  animation: blur 1s forwards; /* Run the blur animation for 1 second */
+  animation: blur 1s forwards;
 }
 
 @media (max-width: 768px) {
@@ -304,7 +303,6 @@ export default {
 }
 .col-3,
 .col-4 {
-  /* width: 90%; */
   margin: 10px;
   padding: 3px;
   border-radius: 10px;
@@ -360,10 +358,10 @@ export default {
 
 .employee-img {
   border-radius: 50%;
-  /* height: 143px; */
+ 
   margin-bottom: 5px;
   padding: 3px;
-  /* width: 143px; */
+ 
 }
 div.circle1,
 .sponser {

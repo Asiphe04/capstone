@@ -102,7 +102,7 @@ export default {
 
       return sorted;
     },
-    // Create a computed property to filter products based on the search term
+  
     filteredProducts() {
       return this.sortedProducts.filter((product) =>
         product.prodName.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -115,24 +115,17 @@ export default {
     },
   },
   mounted() {
-    // Check if a query parameter named 'filter' is present in the URL
+   
     const filterFromQuery = this.$route.query.filter;
 
     if (filterFromQuery) {
       this.selectedFilter = filterFromQuery;
     }
 
-    // Fetch and set your products data as you were doing before
     this.$store.dispatch("getProducts").then(() => {
       this.products = this.$store.state.products;
     });
   },
-
-  // mounted() {
-  //   this.$store.dispatch("getProducts").then(() => {
-  //     this.products = this.$store.state.products;
-  //   });
-  // },
 
   components: { CardComp, SpinnerComp },
 };
@@ -168,7 +161,7 @@ input {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    /* margin-right: 50px !important; */
+    
     width: auto !important;
   }
 }
@@ -223,7 +216,7 @@ input {
 .filter-btn:hover::after {
   width: 100%;
 }
-/* active button */
+
 .active-btn {
   color: var(--secondary-color);
 }

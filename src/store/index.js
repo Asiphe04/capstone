@@ -21,13 +21,11 @@ export default createStore({
 
   getters: {
     cartTotalPrice(state) {
-      // Use the reduce function to sum the amounts in the cart
+    
       const totalPrice = state.cart.reduce(
         (total, product) => total + parseFloat(product.amount),
         0
       );
-
-      // Use toFixed to round to 2 decimal places and convert it back to a string
       return totalPrice.toFixed(2);
     },
   },
@@ -90,7 +88,7 @@ export default createStore({
       state.cart.push(product);
     },
     removeFromCart(state, cartID) {
-      // Remove the item from the cart state
+    
       state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
     },
 
@@ -146,20 +144,19 @@ export default createStore({
 
     async deleteUser(context, id) {
       try {
-        // Send a DELETE request to delete the user
+       
         const response = await axios.delete(`${URL}users/${id}`);
 
         if (response.status === 204) {
-          // User deleted successfully
-          context.commit("setUser", null); // Clear the user data in the store
+         
+          context.commit("setUser", null);
           console.log("User deleted successfully");
         } else {
-          // Handle other response statuses or errors
+       
           console.error("Failed to delete user");
         }
       } catch (error) {
         console.error(error);
-        // Handle network errors or other exceptions
       }
     },
 
@@ -224,20 +221,20 @@ export default createStore({
     },
     async deleteProduct(context, id) {
       try {
-        // Send a DELETE request to delete the user
+       
         const response = await axios.delete(`${URL}products/${id}`);
 
         if (response.status === 204) {
-          // User deleted successfully
-          context.commit("setProduct", null); // Clear the user data in the store
+        
+          context.commit("setProduct", null); 
           console.log("Product deleted successfully");
         } else {
-          // Handle other response statuses or errors
+       
           console.error("Failed to delete product");
         }
       } catch (error) {
         console.error(error);
-        // Handle network errors or other exceptions
+      
       }
     },
 
@@ -276,16 +273,16 @@ export default createStore({
           return { success: false, error: msg };
         }
         if (token) {
-          // Save the token in local storage
+       
           localStorage.setItem("userToken", token);
 
-          // Save the user data in local storage
+       
           localStorage.setItem("userData", JSON.stringify(userData));
 
           context.commit("setUser", userData);
           context.commit("setToken", token);
 
-          // Log user details here
+      
           console.log("User logged in:", userData);
 
           context.commit("setLogStatus", res.data.message);
@@ -343,29 +340,23 @@ export default createStore({
     },
     async addToCart({ commit }, { userID, prodID }) {
       try {
-        // Send a POST request to your server's API endpoint
+       
         const response = await axios.post(`${URL}users/${userID}/cart`, {
           userID,
           prodID,
         });
 
-        // Handle the response as needed
+      
         if (response.status === 200) {
-          // The item was added to the cart successfully
-          // You can commit a mutation to update the cart in your store if needed
-          commit("addProductToCart", response.data); // Assuming the response contains the added product
-        } else {
-          // Handle other response statuses or errors
-          // You can also use try-catch blocks to handle errors more precisely
+       
+          commit("addProductToCart", response.data); 
+          
         }
       } catch (error) {
         console.error(error);
-        // Handle network errors or other exceptions
+      
       }
     },
-
-    // router.delete("/users/:id/cart/:id", deleteCart);
-
     async removeFromCart({ commit }, { userID, cartID }) {
       try {
         await axios.delete(`${URL}users/${userID}/cart/${cartID}`);

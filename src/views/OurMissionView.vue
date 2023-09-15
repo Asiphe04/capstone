@@ -94,7 +94,7 @@ export default {};
   }
   .snip1390 {
     width: 90% !important;
-    margin-bottom: 20px; /* Optional spacing between testimonials */
+    margin-bottom: 20px;
   }
 }
 

@@ -56,15 +56,14 @@ export default {
   },
   methods: {
     addToCart(prodID) {
-      // Ensure the user is logged in
+     
       if (this.userData && this.userData.userID) {
-        // Call the addToCart action with userID and prodID
+
         this.$store.dispatch("addToCart", {
           userID: this.userData.userID,
           prodID,
         });
 
-        // Show a SweetAlert message
         Swal.fire({
           icon: "success",
           background: "#86bbd8",
@@ -72,7 +71,7 @@ export default {
           title: "Item Added to Cart",
           text: "The product has been added to your cart.",
           showConfirmButton: false,
-          timer: 1500, // You can adjust the timer as needed
+          timer: 1500, 
         });
       } else {
         Swal.fire({

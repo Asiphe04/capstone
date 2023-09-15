@@ -56,6 +56,7 @@
   </div>
 </template>
 <script>
+import Swal from "sweetalert2";
 import axios from "axios";
 export default {
   data() {
@@ -69,23 +70,41 @@ export default {
     };
   },
   methods: {
-    async addProduct() {
-      try {
-        this.$store.dispatch("addProduct", {
-          prodName: this.prodName,
-          quantity: this.quantity,
-          amount: this.amount,
-          category: this.category,
-          prodURL: this.prodURL,
-          description: this.description,
-        });
+async addProduct() {
+  try {
+    this.$store.dispatch("addProduct", {
+      prodName: this.prodName,
+      quantity: this.quantity,
+      amount: this.amount,
+      category: this.category,
+      prodURL: this.prodURL,
+      description: this.description,
+    });
 
-        this.$router.push("/admin");
-        alert("Product has been created");
-      } catch (err) {
-        alert(err);
-      }
-    },
+    this.$router.push("/admin");
+
+   
+    Swal.fire({
+       background: "#86bbd8",
+        color: "white",
+      title: "Success!",
+      text: "Product has been created",
+      icon: "success",
+      confirmButtonText: "OK",
+    });
+  } catch (err) {
+   
+    Swal.fire({
+       background: "#86bbd8",
+        color: "white",
+      title: "Error!",
+      text: err.message, 
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+  }
+},
+
   },
 };
 </script>

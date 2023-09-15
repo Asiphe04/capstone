@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     async register() {
-      // Validate if all required fields are filled
+    
       if (
         !this.firstName ||
         !this.lastName ||
@@ -121,7 +121,7 @@ export default {
             background: "#86bbd8",
             color: "white",
             title: "Registration successful",
-            text: "CONGRATULATIONS, YOU ARE NOW REGISTERED! Please Login",
+            text: "CONGRATULATIONS, You are Registered! Please Login",
           });
         } else {
           await Swal.fire({

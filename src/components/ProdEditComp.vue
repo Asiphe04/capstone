@@ -83,7 +83,7 @@
 
 <script>
 import axios from "axios";
-
+import Swal from "sweetalert2";
 export default {
   data() {
     return {
@@ -96,31 +96,48 @@ export default {
     };
   },
   methods: {
-    async updateProduct() {
-      try {
-        const payload = {
-          prodID: this.$route.params.id,
-          prodName: this.product.prodName,
-          quantity: this.product.quantity,
-          amount: this.product.amount,
-          category: this.product.category,
-          prodURL: this.product.prodURL,
-          description: this.product.description,
-        };
-        await this.$store.dispatch("updateProduct", payload);
-        this.prodName = "";
-        this.quantity = "";
-        this.amount = "";
-        this.category = "";
-        this.prodURL = "";
-        this.description = "";
+   async updateProduct() {
+  try {
+    const payload = {
+      prodID: this.$route.params.id,
+      prodName: this.product.prodName,
+      quantity: this.product.quantity,
+      amount: this.product.amount,
+      category: this.product.category,
+      prodURL: this.product.prodURL,
+      description: this.product.description,
+    };
+    await this.$store.dispatch("updateProduct", payload);
+    this.prodName = "";
+    this.quantity = "";
+    this.amount = "";
+    this.category = "";
+    this.prodURL = "";
+    this.description = "";
 
-        this.$router.push("/admin");
-        alert("Product has been updated");
-      } catch (err) {
-        console.log(err);
-      }
-    },
+    this.$router.push("/admin");
+
+    
+    Swal.fire({
+       background: "#86bbd8",
+        color: "white",
+      icon: 'success',
+      title: 'Product Updated',
+      text: 'The product has been updated successfully!',
+    });
+  } catch (err) {
+    console.error(err);
+
+   
+    Swal.fire({
+       background: "#86bbd8",
+        color: "white",
+      icon: 'error',
+      title: 'Error',
+      text: 'An error occurred while updating the product.',
+    });
+  }
+},
   },
   computed: {
     product() {
@@ -128,7 +145,7 @@ export default {
     },
   },
   mounted() {
-    // Fetch product data from the store if not already loaded
+   
     if (!this.product) {
       this.$store.dispatch("getProduct", this.$route.params.id);
     }

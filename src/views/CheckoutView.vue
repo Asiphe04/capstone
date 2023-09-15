@@ -76,7 +76,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <!-- <th>Quantity</th> -->
+           
           </tr>
         </thead>
         <tbody>
@@ -84,7 +84,7 @@
             <td><img :src="product.prodUrl" alt="" class="w-25" /></td>
             <td class="w-50">{{ product.prodName }}</td>
             <td>R{{ product.amount }}</td>
-            <!-- <td>{{ product.quantity }}</td> -->
+         
           </tr>
         </tbody>
       </table>
@@ -125,15 +125,16 @@ export default {
       try {
         await this.$store.dispatch("clearCart", { userID });
 
-        // Show a SweetAlert for a successful purchase
+        
         Swal.fire({
           title: "Thank you for your purchase!",
           text: "Please be ready with your cash when the diver arrives in 3-4 working days",
           background: "#86bbd8",
           icon: "success",
+          color: "white",
           confirmButtonText: "OK",
         }).then(() => {
-          // Redirect to the login page after clicking OK
+         
           this.$router.push("/cart");
         });
       } catch (error) {
@@ -145,9 +146,9 @@ export default {
       const cvvInput = this.$refs.cvvInput.value;
       const cardNumberInput = this.$refs.cardNumberInput.value;
 
-      // Perform custom validation
+     
       if (!ownerInput || !cvvInput || !cardNumberInput) {
-        // Display a SweetAlert error message
+      
         Swal.fire({
           background: "#33658a",
           color: "white",
@@ -155,7 +156,7 @@ export default {
           title: "Error",
           text: "Please fill in all required fields before proceeding.",
         });
-        return; // Prevent form submission
+        return; 
       }
 
       const userID = this.user.userID;
@@ -163,7 +164,7 @@ export default {
       try {
         await this.$store.dispatch("clearCart", { userID });
 
-        // Show a SweetAlert for a successful purchase
+
         Swal.fire({
           title: "Thank you for your purchase!",
           color: "white",
@@ -172,7 +173,7 @@ export default {
           icon: "success",
           confirmButtonText: "OK",
         }).then(() => {
-          // Redirect to the login page after clicking OK
+         
           this.$router.push("/cart");
         });
       } catch (error) {

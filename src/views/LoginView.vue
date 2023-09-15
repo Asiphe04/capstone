@@ -84,6 +84,8 @@ export default {
             icon: "error",
             title: "Login failed",
             text: errMsg,
+             background: "#86bbd8",
+        color: "white",
           });
         }
       } catch (e) {

@@ -6,9 +6,7 @@
     <td class="text-white">R{{ product.amount }}</td>
     <td class="text-white">{{ product.category }}</td>
     <td><img :src="product.prodURL" alt="" class="prodImg" /></td>
-    <!-- <td class="text-white text-start">
-      {{ product.description }}
-    </td> -->
+  
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
@@ -31,23 +29,34 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   props: ["product"],
   mounted() {
     this.$store.dispatch("getProducts");
   },
   methods: {
-    async deleteProduct(id) {
-      try {
-        await this.$store.dispatch("deleteProduct", id);
-        alert("Product deleted successfully");
-        // If the delete operation is successful, you can add any necessary code here.
-      } catch (error) {
-        // Handle the error here, for example, display an error message.
-        alert("Error deleting product");
-        console.error("Error deleting product:", error);
-      }
-    },
+  async deleteProduct(id) {
+  try {
+    await this.$store.dispatch("deleteProduct", id);
+    Swal.fire({
+       background: "#86bbd8",
+        color: "white",
+      icon: 'success',
+      title: 'Product deleted successfully',
+    });
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+       background: "#86bbd8",
+        color: "white",
+      title: 'Error deleting product',
+      text: 'An error occurred while deleting the product.',
+    });
+    console.error("Error deleting product:", error);
+  }
+},
+
   },
 };
 </script>

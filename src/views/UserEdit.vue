@@ -55,7 +55,6 @@ export default {
     },
   },
   mounted() {
-    // Fetch user data from the store if not already loaded
     if (!this.user) {
       this.$store.dispatch("getUser", this.$route.params.id);
     }

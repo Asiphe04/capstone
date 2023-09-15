@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     async submitForm() {
-      // Validate the form data here
+  
       if (
         !this.formData.name ||
         !this.formData.email ||
@@ -96,7 +96,7 @@ export default {
         return;
       }
 
-      // Show a success SweetAlert after successful submission
+     
       await Swal.fire({
         icon: "success",
         title: "Success",

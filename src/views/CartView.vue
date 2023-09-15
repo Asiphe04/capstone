@@ -61,7 +61,7 @@ export default {
     async clear() {
       const userID = this.user.userID;
 
-      // Show a confirmation dialog using SweetAlert
+     
       Swal.fire({
         title: "Are you sure?",
         color: "white",
@@ -75,10 +75,10 @@ export default {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            // Clear the cart
+           
             await this.$store.dispatch("clearCart", { userID });
 
-            // Show a success message
+          
             Swal.fire({
               title: "Cart Cleared!",
               text: "Your cart is now empty",
@@ -87,7 +87,7 @@ export default {
               icon: "success",
               confirmButtonText: "OK",
             }).then(() => {
-              // Redirect to the cart page after clicking OK
+            
               this.$router.push("/cart");
             });
           } catch (error) {
@@ -131,19 +131,19 @@ button {
   margin: 14px;
 }
 
-/* Media query for screens with a max-width of 768px */
+
 @media (max-width: 768px) {
   .container {
-    height: 80vh !important; /* Adjust the height for smaller screens */
-    padding: 10px; /* Add some padding for better spacing */
+    height: 80vh !important; 
+    padding: 10px; 
   }
   .prodName {
     display: none;
   }
 
   button {
-    width: auto; /* Allow button width to adjust based on content */
-    margin: 5px; /* Reduce margin for better spacing */
+    width: auto;
+    margin: 5px; 
   }
 }
 </style>

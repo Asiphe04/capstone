@@ -122,6 +122,8 @@ export default {
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
           confirmButtonText: "Yes, delete it!",
+           background: "#86bbd8",
+        color: "white",
         });
 
         if (result.isConfirmed) {
@@ -148,7 +150,7 @@ export default {
     },
   },
   mounted() {
-    // Fetch user data from the store if not already loaded
+   
     if (!this.user) {
       this.$store.dispatch("getUser", this.$route.params.id);
     }
@@ -183,7 +185,7 @@ option {
 }
 button {
   margin: 0.3em;
-  /* width: 5em; */
+  
   position: relative;
   height: 2.5em;
   border: 3px ridge var(--secondary-color);

@@ -16,7 +16,7 @@
             <th class="text-white">Price</th>
             <th class="text-white">Category</th>
             <th class="text-white">Image</th>
-            <!-- <th class="text-white">Description</th> -->
+          
             <th class="text-white">Actions</th>
           </tr>
         </thead>
@@ -148,7 +148,7 @@ table {
   table {
     width: 100% Vh !important;
     border-collapse: collapse;
-    /* border: 2px solid white; */
+   
   }
   .table-header th {
     width: 50px !important;

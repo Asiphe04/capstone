@@ -199,9 +199,11 @@ export default {
         };
         await this.$store.dispatch("updateUser", payload);
 
-        // Show SweetAlert success message
+       
         await Swal.fire({
           icon: "success",
+           background: "#86bbd8",
+        color: "white",
           title: "User Updated",
           text: "User has been updated",
         });
@@ -224,15 +226,7 @@ export default {
     user() {
       return this.$store.state.userData;
     },
-    //   users() {
-    //   return this.$store.state.users;
-    // },
-    //   userData() {
-    //   return this.$store.state.userData;
-    // },
-    //  userRole() {
-    //   return this.$store.state.userRole;
-    // },
+   
   },
   mounted() {
     this.$store.dispatch("getUser", this.$route.params.id);
@@ -262,7 +256,7 @@ div {
 
 button {
   margin: 0.3em;
-  /* width: 5em; */
+ 
   position: relative;
   height: 2.5em;
   border: 3px ridge var(--secondary-color);

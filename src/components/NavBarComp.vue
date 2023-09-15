@@ -167,9 +167,9 @@ export default {
       try {
         await this.$store.dispatch("deleteUser", id);
         alert("User deleted successfully");
-        // If the delete operation is successful, you can add any necessary code here.
+        
       } catch (error) {
-        // Handle the error here, for example, display an error message.
+       
         alert("Error deleting user");
         console.error("Error deleting user:", error);
       }
@@ -188,7 +188,7 @@ export default {
         cancelButtonText: "Cancel",
       }).then((result) => {
         if (result.isConfirmed) {
-          // User clicked the "Yes, logout" button
+         
           this.$store.dispatch("logout");
           this.$router.push("/login");
         }
@@ -200,10 +200,10 @@ export default {
 
 <style scoped>
 .user-profile-image {
-  width: 32px; /* Adjust the size as needed */
-  height: 32px; /* Adjust the size as needed */
-  border-radius: 50%; /* This makes it a circle */
-  object-fit: cover; /* Ensures the image covers the entire circle */
+  width: 32px; 
+  height: 32px;
+  border-radius: 50%; 
+  object-fit: cover;
 }
 button {
   background-color: transparent !important;
