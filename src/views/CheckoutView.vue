@@ -51,11 +51,7 @@
               <option value="2015">2024</option>
             </select>
           </div>
-          <div class="cards">
-            <img src="https://i.postimg.cc/J72jL382/mc.png" alt="" />
-            <img src="https://i.postimg.cc/KjwTDbQ2/vi.png" alt="" />
-            <img src="https://i.postimg.cc/GhTGhBhh/pp.png" alt="" />
-          </div>
+         
         </div>
       </div>
 
@@ -76,7 +72,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <!-- <th>Quantity</th> -->
+         
           </tr>
         </thead>
         <tbody>
