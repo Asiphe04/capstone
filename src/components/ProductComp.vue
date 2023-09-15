@@ -41,6 +41,11 @@ export default {
     width: 50% !important;
   }
 }
+@media screen and (max-width: 320px) {
+  .cards {
+    width: 100% !important;
+  }
+}
 a {
   text-decoration: none;
   color: white;

@@ -23,6 +23,7 @@ export default {
     width: 120px;
   }
 }
+
 .employee-img {
   border-radius: 50%;
   margin-bottom: 5px;
