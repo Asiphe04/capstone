@@ -58,16 +58,6 @@ const checkEmailExists = (email, result) => {
   });
 };
 
-// const insertUser = (data, result) => {
-//   db.query("INSERT INTO users SET ?;", [data], (err, results) => {
-//     if (err) {
-//       console.log(err);
-//       result(err, null);
-//     } else {
-//       result(null, results);
-//     }
-//   });
-// };
 
 //login user
 const userLogin = (req, res) => {
