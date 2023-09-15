@@ -214,6 +214,10 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 700px) {
+ 
+}
+
 @media (max-width: 768px) {
   .hardware-display {
     width: 90%;

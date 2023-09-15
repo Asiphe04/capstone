@@ -9,84 +9,107 @@
     </router-link>
     <h1 class="mt-2">OUR MISSION</h1>
   </div>
-  <div class="container">
-    <div class="d-flex">
-      <div class="col-6">
+  <div class="container first-div">
+    <div class="d-flex flex-column-reverse flex-md-row">
+      <div class="col-md-6 mission-div-img">
         <img
           src="https://i.postimg.cc/wjghLb53/h12.webp"
           alt=""
           class="mission-img"
         />
       </div>
-      <div class="col-6">
+      <div class="col-md-6 heading-power">
         <h1 class="heading text-start m-2">
           Give people the power to build community and bring the world closer
           together.
         </h1>
       </div>
     </div>
-    <p class="text-start paragrph">
-      Our mission is to empower individuals and communities, inspiring positive
-      change and progress. We strive to create innovative solutions that enhance
-      lives, while promoting sustainability, inclusivity, and ethical values.
-      Through unwavering dedication to these principles, we aim to make a
-      lasting impact on the world, leaving a legacy of a brighter and more
-      equitable future for all.
-    </p>
-    <h1>TESTIMONIALS</h1>
-    <div class="d-flex justify-content-center">
-      <figure class="snip1390">
-        <img
-          src="https://i.postimg.cc/c4Jm6JjQ/C12-Ayesha-Galant-Class1-2.jpg"
-          alt="profile-sample3"
-          class="profile"
-        />
-        <figcaption>
-          <h2>Ayesha Galant</h2>
-          <h4>Customer</h4>
-          <blockquote>
-            I've been a loyal customer of Cloud 9 Superstore for over a decade,
-            and I can't praise them enough.
-          </blockquote>
-        </figcaption>
-      </figure>
-      <figure class="snip1390 hover">
-        <img
-          src="https://i.postimg.cc/g2XHqTGj/C12-Luke-Evertson-2.jpg"
-          alt="profile-sample5"
-          class="profile"
-        />
-        <figcaption>
-          <h2>Luke Evertson</h2>
-          <h4>Customer</h4>
-          <blockquote>
-            The staff is always friendly and knowledgeable, and their
-            willingness to assist customers makes shopping here a pleasure.
-          </blockquote>
-        </figcaption>
-      </figure>
-      <figure class="snip1390">
-        <img
-          src="https://i.postimg.cc/vmc7CH8t/ethan2.png"
-          alt="profile-sample6"
-          class="profile"
-        />
-        <figcaption>
-          <h2>Ethan Lesar</h2>
-          <h4>Customer</h4>
-          <blockquote>
-            Whether I'm shopping for groceries, household items, or even
-            electronics, I can always count on Cloud 9 to have it all.
-          </blockquote>
-        </figcaption>
-      </figure>
-    </div>
+  </div>
+  <p class="text-start paragrph">
+    Our mission is to empower individuals and communities, inspiring positive
+    change and progress. We strive to create innovative solutions that enhance
+    lives, while promoting sustainability, inclusivity, and ethical values.
+    Through unwavering dedication to these principles, we aim to make a lasting
+    impact on the world, leaving a legacy of a brighter and more equitable
+    future for all.
+  </p>
+  <h1>TESTIMONIALS</h1>
+  <div class="d-flex justify-content-center">
+    <figure class="snip1390">
+      <img
+        src="https://i.postimg.cc/c4Jm6JjQ/C12-Ayesha-Galant-Class1-2.jpg"
+        alt="profile-sample3"
+        class="profile"
+      />
+      <figcaption>
+        <h2>Ayesha Galant</h2>
+        <h4>Customer</h4>
+        <blockquote>
+          I've been a loyal customer of Cloud 9 Superstore for over a decade,
+          and I can't praise them enough.
+        </blockquote>
+      </figcaption>
+    </figure>
+    <figure class="snip1390 hover">
+      <img
+        src="https://i.postimg.cc/g2XHqTGj/C12-Luke-Evertson-2.jpg"
+        alt="profile-sample5"
+        class="profile"
+      />
+      <figcaption>
+        <h2>Luke Evertson</h2>
+        <h4>Customer</h4>
+        <blockquote>
+          The staff is always friendly and knowledgeable, and their willingness
+          to assist customers makes shopping here a pleasure.
+        </blockquote>
+      </figcaption>
+    </figure>
+    <figure class="snip1390">
+      <img
+        src="https://i.postimg.cc/vmc7CH8t/ethan2.png"
+        alt="profile-sample6"
+        class="profile"
+      />
+      <figcaption>
+        <h2>Ethan Lesar</h2>
+        <h4>Customer</h4>
+        <blockquote>
+          Whether I'm shopping for groceries, household items, or even
+          electronics, I can always count on Cloud 9 to have it all.
+        </blockquote>
+      </figcaption>
+    </figure>
   </div>
 </template>
+
 <script>
 export default {};
 </script>
 <style scoped>
+@media (max-width: 768px) {
+  .d-flex {
+    flex-direction: column;
+  }
+  .snip1390 {
+    width: 90% !important;
+    margin-bottom: 20px; /* Optional spacing between testimonials */
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 25px !important;
+  }
+  .arrow {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .mission-img {
+    height: 250px !important;
+  }
+}
 figure.snip1390 {
   font-family: "Roboto", Arial, sans-serif;
   position: relative;

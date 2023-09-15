@@ -41,7 +41,7 @@
             </router-link>
           </div>
         </div>
-        <div class="col-2"></div>
+        <!-- <div class="col-2"></div> -->
         <div class="col-4">
           <img
             src="https://i.postimg.cc/FRjsc8kz/skincare.jpg"
@@ -83,7 +83,7 @@
             </router-link>
           </div>
         </div>
-        <div class="col-2"></div>
+        <!-- <div class="col-2"></div> -->
         <div class="col-4">
           <img
             src="https://i.postimg.cc/rm65q6Lw/snacks.webp"

@@ -35,6 +35,7 @@
   <SpinnerComp v-else />
 </template>
 <script>
+import Swal from "sweetalert2";
 import SpinnerComp from "@/components/SpinnerComp.vue";
 export default {
   components: { SpinnerComp },
@@ -62,8 +63,25 @@ export default {
           userID: this.userData.userID,
           prodID,
         });
+
+        // Show a SweetAlert message
+        Swal.fire({
+          icon: "success",
+          background: "#86bbd8",
+          color: "white",
+          title: "Item Added to Cart",
+          text: "The product has been added to your cart.",
+          showConfirmButton: false,
+          timer: 1500, // You can adjust the timer as needed
+        });
       } else {
-        // Handle the case where the user is not logged in, prompt for login, etc.
+        Swal.fire({
+          background: "#86bbd8",
+          color: "white",
+          icon: "error",
+          title: "Not Logged In",
+          text: "Please log in to add items to your cart.",
+        });
       }
     },
   },

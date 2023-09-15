@@ -33,6 +33,7 @@
           >Checkout</router-link
         >
       </button>
+      <button @click="clear">Clear Cart</button>
     </table>
   </div>
 </template>
@@ -56,6 +57,45 @@ export default {
     this.$store.dispatch("getCart", this.user.userID);
   },
   methods: {
+    async clear() {
+      const userID = this.user.userID;
+
+      // Show a confirmation dialog using SweetAlert
+      Swal.fire({
+        title: "Are you sure?",
+        color: "white",
+        background: "#86bbd8",
+        text: "Do you want to clear your cart?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, clear it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            // Clear the cart
+            await this.$store.dispatch("clearCart", { userID });
+
+            // Show a success message
+            Swal.fire({
+              title: "Cart Cleared!",
+              text: "Your cart is now empty",
+              background: "#86bbd8",
+              color: "white",
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then(() => {
+              // Redirect to the cart page after clicking OK
+              this.$router.push("/cart");
+            });
+          } catch (error) {
+            console.error("Error clearing cart:", error);
+          }
+        }
+      });
+    },
+
     removeFromCart(cartID) {
       const userID = this.user.userID;
 
@@ -70,9 +110,6 @@ export default {
 };
 </script>
 <style scoped>
-.container {
-  height: 80vh;
-}
 th {
   color: white;
 }
