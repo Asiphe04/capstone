@@ -250,4 +250,7 @@ button {
     opacity: 1;
   }
 }
+button:hover {
+  background: var(--secondary-color);
+}
 </style>
