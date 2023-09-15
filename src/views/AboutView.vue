@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-md-flex">
+  <div class="container d-md-flex blur-animation">
     <div class="col-6 mt-5">
       <img
         src="https://i.postimg.cc/JzdRxNQW/e2.webp"
@@ -25,7 +25,7 @@
       </p>
     </div>
   </div>
-  <div class="sec-divider d-flex justify-content-center row">
+  <div class="sec-divider d-flex justify-content-center row blur-animation">
     <div class="col-3">
       <h4 class="text-start category-name">OUR HISTORY</h4>
       <img
@@ -215,7 +215,31 @@ export default {
 
 <style scoped>
 @media screen and (min-width: 700px) {
- 
+}
+/* Define the initial state of the container */
+.container,
+.sec-divider {
+  transition: filter 0.5s; /* Add a smooth transition for the filter property */
+}
+
+/* Define the animation using keyframes */
+@keyframes blur {
+  0% {
+    filter: blur(10px);
+  }
+
+  50% {
+    filter: blur(5px);
+  }
+
+  100% {
+    filter: blur(0);
+  }
+}
+
+/* Apply the animation to the container when the blur-animation class is added */
+.blur-animation {
+  animation: blur 1s forwards; /* Run the blur animation for 1 second */
 }
 
 @media (max-width: 768px) {

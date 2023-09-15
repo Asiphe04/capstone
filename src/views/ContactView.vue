@@ -1,7 +1,7 @@
 <template>
   <h1 class="m-2">CONTACT US</h1>
   <div class="container d-flex">
-    <div class="contact-form col-6 m-4">
+    <div class="contact-form col-6 m-4 form-slide-in">
       <span class="title text-white">Leave a Message</span>
       <form
         class="form"
@@ -37,7 +37,7 @@
         <!-- <button>Clear fields</button> -->
       </form>
     </div>
-    <div class="col-6 m-4 contact-div">
+    <div class="col-6 m-4 contact-div image-slide-in">
       <img
         src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
         alt=""
@@ -220,5 +220,34 @@ button {
 }
 .social-icons a :hover {
   color: var(--secondary-color);
+}
+.form-slide-in {
+  animation: slideInLeft 1s forwards;
+}
+
+.image-slide-in {
+  animation: slideInRight 1s forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 </style>

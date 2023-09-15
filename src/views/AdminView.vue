@@ -44,11 +44,10 @@
           <th class="text-white">Name</th>
           <th class="text-white">Surname</th>
           <th class="text-white">Age</th>
-          <!-- <th class="text-white">Gender</th> -->
+
           <th class="text-white">Role</th>
           <th class="text-white">Email</th>
-          <!-- <th class="text-white password">Password</th> -->
-          <!-- <th class="text-white">Image</th> -->
+
           <th class="text-white">Actions</th>
         </tr>
       </thead>

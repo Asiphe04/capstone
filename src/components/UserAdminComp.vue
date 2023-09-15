@@ -4,23 +4,19 @@
     <td class="text-white">{{ user.firstName }}</td>
     <td class="text-white">{{ user.lastName }}</td>
     <td class="text-white">{{ user.userAge }}</td>
-    <!-- <td class="text-white">{{ user.Gender }}</td> -->
+
     <td class="text-white">{{ user.userRole }}</td>
     <td class="text-white emailAdd">{{ user.emailAdd }}</td>
-    <!-- <td class="text-white password text-start w-25">{{ user.userPass }}</td> -->
-    <!-- <td><img :src="user.userProfile" alt="" class="prodImg" /></td> -->
 
     <td class="second-table-data">
       <div class="action">
-     <router-link :to="{ name: 'user profile', params: { id: user.userID } }"> 
- <button class="btn-edit text-white" >
-          <i class="fa fa-eye" aria-hidden="true"></i>
-        </button>
-     </router-link>
-     
-        <!-- <button class="btn-delete text-white" @click="deleteUser(user.userID)">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button> -->
+        <router-link
+          :to="{ name: 'user profile', params: { id: user.userID } }"
+        >
+          <button class="btn-edit text-white">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+        </router-link>
       </div>
     </td>
   </tr>

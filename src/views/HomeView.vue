@@ -1,11 +1,11 @@
 <template>
-  <h1 class="text-center">CLOUD 9 SUPERSTORE</h1>
+  <h1 class="text-center focus-in">CLOUD 9 SUPERSTORE</h1>
   <div class="container">
     <div class="col-12">
       <img
         src="https://i.postimg.cc/VkH6WTBR/c92.webp"
         alt=""
-        class="home-wallpaper"
+        class="home-wallpaper slide-in"
       />
       <br />
       <br />
@@ -145,8 +145,42 @@ button:hover {
   height: 515px;
   max-width: 100%;
   border-radius: 10px;
+  opacity: 0;
+}
+.focus-in {
+  animation: focusIn 1s ease-out forwards;
+  opacity: 0; /* Initially set opacity to 0 */
+  transform: translateY(-20px); /* Initially set a slight upward translation */
 }
 
+@keyframes focusIn {
+  0% {
+    opacity: 0; /* Start with opacity 0 */
+    transform: translateY(-20px); /* Start with a slight upward translation */
+  }
+  100% {
+    opacity: 1; /* End with opacity 1 */
+    transform: translateY(
+      0
+    ); /* End with no translation (back to its original position) */
+  }
+}
+.slide-in {
+  animation: slideIn 1s forwards; /* Use a CSS animation named slideIn */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%); /* Start position: slide in from the left */
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    transform: translateX(
+      0
+    ); /* End position: slide in to the original position */
+    opacity: 1; /* End with opacity 1 */
+  }
+}
 /* Media queries for different screen sizes */
 @media (max-width: 768px) {
   .home-wallpaper {

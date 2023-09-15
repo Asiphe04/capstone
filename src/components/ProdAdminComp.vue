@@ -53,6 +53,7 @@ export default {
 </script>
 
 <style scoped>
+
 .prodImg {
   width: 100px;
 }
