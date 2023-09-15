@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex">
-    <div class="col-6 payment">
-      <h1 class="heading">CONFIRM YOUR PAYMENT</h1>
+    <div class="col-6">
+      <h1>CONFIRM YOUR PAYMENT</h1>
       <div class="first-row">
         <div class="owner">
           <h3>Owner</h3>
@@ -51,7 +51,11 @@
               <option value="2015">2024</option>
             </select>
           </div>
-         
+          <div class="cards">
+            <img src="https://i.postimg.cc/J72jL382/mc.png" alt="" />
+            <img src="https://i.postimg.cc/KjwTDbQ2/vi.png" alt="" />
+            <img src="https://i.postimg.cc/GhTGhBhh/pp.png" alt="" />
+          </div>
         </div>
       </div>
 
@@ -59,7 +63,7 @@
       <h5>Or</h5>
       <button class="m-2" @click="paycash">Pay on delivery</button>
     </div>
-    <div class="col-6 cart-iems">
+    <div class="col-6">
       <h1>YOUR ITEMS</h1>
       <table v-if="products && products.length > 0">
         <tr>
@@ -72,7 +76,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-         
+            <!-- <th>Quantity</th> -->
           </tr>
         </thead>
         <tbody>
@@ -85,7 +89,7 @@
         </tbody>
       </table>
       <div class="text-white">
-        <h1 class ="total-price">Total Price: R {{ cartTotalPrice }}</h1>
+        <h1>Total Price: R {{ cartTotalPrice }}</h1>
       </div>
       <router-link to="/cart">
         <button>Edit Items</button>
@@ -190,36 +194,12 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 768px) {
-  .heading{
-    font-size: 23px !important;
-  }
-  .cards{
-    display: none;
-  }
-  .total-price{
-    font-size: 18px !important;
-  }
-   .col-6 {
-    width: 100%;
-    }
-  .container{
-    flex-direction: column;
-  }
-.cart-iems{
- order: 1;
-}
-.payment{
-order: 2;
-}
-}
-
 th,
 td {
   color: white;
 }
 .container {
-  
+  height: 80vh;
   display: flex;
 
   padding: 40px;
