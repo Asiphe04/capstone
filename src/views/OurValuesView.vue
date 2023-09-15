@@ -89,6 +89,12 @@
     order: 1;
   }
 }
+@media screen and (max-width: 720px) {
+  .values-img {
+    width: 100% !important;
+    height: 300px !important;
+  }
+}
 
 p {
   font-size: 16px;

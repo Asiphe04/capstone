@@ -114,6 +114,12 @@ export default {};
     height: 180px !important;
   }
 }
+@media screen and (max-width: 720px) {
+  .history-img {
+    width: 90% !important;
+    height: 300px !important;
+  }
+}
 p {
   font-size: 16px;
 }

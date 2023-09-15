@@ -27,13 +27,18 @@ export default {
 };
 </script>
 <style scoped>
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .cards {
     width: 100% !important;
   }
   .top-picks-items {
     justify-content: center !important;
     align-items: center !important;
+  }
+}
+@media screen and (max-width: 720px) {
+  .cards {
+    width: 50% !important;
   }
 }
 a {

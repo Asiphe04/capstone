@@ -116,6 +116,13 @@ export default {
     width: 100%;
   }
 }
+@media screen and (max-width: 720px) {
+  .top-picks-img {
+    margin: 0% !important;
+    width: 100% !important;
+    height: 450px !important;
+  }
+}
 .category {
   color: var(--secondary-color) !important;
 }

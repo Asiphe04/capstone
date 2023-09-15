@@ -283,6 +283,14 @@ export default {
     flex-wrap: wrap;
   }
 }
+@media screen and (max-width: 720px) {
+  .col-3 {
+    width: 50% !important;
+  }
+  .radio-inputs {
+    width: 30% !important;
+  }
+}
 .employees-img {
   height: 300px;
   width: 85%;

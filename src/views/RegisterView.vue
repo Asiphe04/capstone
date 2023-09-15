@@ -125,6 +125,8 @@ export default {
           });
         } else {
           await Swal.fire({
+            background: "#86bbd8",
+            color: "white",
             icon: "error",
             title: "Registration failed",
             text: resp.error || "Unexpected error",
@@ -132,13 +134,13 @@ export default {
         }
         this.$router.push("/login");
       } catch (e) {
-        // Display Axios error in SweetAlert
+      
         await Swal.fire({
           icon: "error",
           background: "#86bbd8",
           color: "white",
           title: "Registration failed",
-          text: e.response?.data?.error || "Unexpected error", // Access the error message from Axios response
+          text: e.response?.data?.error || "Unexpected error",
         });
       }
     },
@@ -147,21 +149,20 @@ export default {
 </script>
 <style scoped>
 @media (max-width: 768px) {
-  .col-6{
+  .col-6 {
     width: 100% !important;
   }
- 
-  
-  .img-div{
-display: none;
+
+  .img-div {
+    display: none;
   }
-   .heading{
-     font-size: 25px !important;
+  .heading {
+    font-size: 25px !important;
   }
-    label{
-     font-size: 20px !important;
+  label {
+    font-size: 20px !important;
   }
-  }
+}
 
 .register-link {
   color: var(--secondary-color) !important;
