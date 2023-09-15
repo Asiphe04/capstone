@@ -20,24 +20,7 @@ WHERE cart.userID = ?
   );
 };
 
-// const getCart = (id, result) => {
-//   db.query(
-//     `SELECT prodName,description ,amount ,prodUrl
-//      FROM users
-//      INNER JOIN cart ON users.userID = cart.userID
-//     INNER JOIN products ON cart.prodID = products.prodID
-//     WHERE cart.userID = ? `,
-//     [id],
-//     (err, results) => {
-//       if (err) {
-//         console.log(err);
-//         result(err, null);
-//       } else {
-//         result(null, results);
-//       }
-//     }
-//   );
-// };
+
 const insertCart = (data, result) => {
   db.query("INSERT INTO cart SET ?;", data, (err, results) => {
     if (err) {
@@ -48,20 +31,6 @@ const insertCart = (data, result) => {
     }
   });
 };
-// const insertCart = (userID, prodID, callback) => {
-//   db.query(
-//     'INSERT INTO cart (userID, prodID) VALUES (?, ?)',
-//     [userID, prodID],
-//     (err, results) => {
-//       if (err) {
-//         console.log('Database error');
-//         callback(err, null);
-//       } else {
-//         callback(null, results);
-//       }
-//     }
-//   );
-// };
 
 const updateCartbyId = (data, id, result) => {
   db.query(
@@ -91,16 +60,6 @@ const removeCart = ( cartID, callback) => {
   );
 };
 
-// const removeCart = (id, result) => {
-//   db.query(`DELETE FROM cart WHERE cartID = ?`, [cartID], (err, results) => {
-//     if (err) {
-//       console.log(err);
-//       result(err, null);
-//     } else {
-//       result(null, results);
-//     }
-//   });
-// };
 
 const removeAllcartItems = (id, result) => {
   db.query(`DELETE FROM cart WHERE userID = ?`, id, (err, results) => {
