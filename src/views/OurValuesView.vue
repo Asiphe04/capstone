@@ -2,11 +2,12 @@
   <div class="container">
     <router-link to="/about" class="arrow">
       <img
-        src="https://i.postimg.cc/wTxGjk32/arrow-removebg-preview.png"
+        src="https://i.ibb.co/rQX14Fb/arrow5.png"
         alt=""
         class="arrow"
       />
     </router-link>
+    <br>
     <h1 class="mt-2">OUR VALUES</h1>
   </div>
   <div class="container d-flex" id="details">
@@ -58,7 +59,7 @@
     </div>
     <div class="col-6 store-img">
       <img
-        src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
+        src="https://i.ibb.co/FqGhwt2/c9logo-removebg-preview.png"
         alt=""
         class="values-img m-2"
       />

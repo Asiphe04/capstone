@@ -2,7 +2,7 @@
   <div class="container">
     <router-link to="/about" class="arrow">
       <img
-        src="https://i.postimg.cc/wTxGjk32/arrow-removebg-preview.png"
+        src="https://i.ibb.co/rQX14Fb/arrow5.png"
         alt=""
         class="arrow"
       />
@@ -35,7 +35,7 @@
     </div>
     <div class="col-6 history-div">
       <img
-        src="https://i.postimg.cc/26Dnrsx4/hhiissttor.webp"
+        src="https://i.ibb.co/xj8FNNx/old-logo.webp"
         alt=""
         class="history-img"
       />

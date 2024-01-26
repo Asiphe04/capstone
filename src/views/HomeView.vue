@@ -3,7 +3,7 @@
   <div class="container">
     <div class="col-12">
       <img
-        src="https://i.postimg.cc/VkH6WTBR/c92.webp"
+        src="https://i.ibb.co/YpbmQvz/cloud-9-home-img.webp"
         alt=""
         class="home-wallpaper slide-in"
       />
@@ -23,7 +23,7 @@
       <div class="shop row justify-content-center">
         <div class="col-4 type">
           <img
-            src="https://i.postimg.cc/DytgH5TP/hardware.jpg"
+            src="https://i.ibb.co/tM6tf5K/hardware.jpg"
             alt=""
             class="hardware-display"
           />
@@ -44,7 +44,8 @@
        
         <div class="col-4">
           <img
-            src="https://i.postimg.cc/FRjsc8kz/skincare.jpg"
+            src="https://i.postimg.cc/vBXBgBRm/skin-routine.jpg
+"
             alt=""
             class="hardware-display"
           />
@@ -65,7 +66,7 @@
         </div>
         <div class="col-4">
           <img
-            src="https://i.postimg.cc/pLYwfvqg/beverages.png"
+            src="https://i.ibb.co/vHg895w/beverages.webp"
             alt=""
             class="hardware-display"
           />
@@ -86,7 +87,7 @@
        
         <div class="col-4">
           <img
-            src="https://i.postimg.cc/rm65q6Lw/snacks.webp"
+            src="https://i.ibb.co/m50DVDR/snacks.webp"
             alt=""
             class="hardware-display"
           />

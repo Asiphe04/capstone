@@ -2,21 +2,24 @@
   <div class="container">
     <router-link to="/about" class="arrow">
       <img
-        src="https://i.postimg.cc/wTxGjk32/arrow-removebg-preview.png"
+        src="https://i.ibb.co/rQX14Fb/arrow5.png"
         alt=""
         class="arrow"
       />
     </router-link>
+       <br>
+        
     <h1 class="mt-2">OUR MISSION</h1>
   </div>
   <div class="container first-div">
     <div class="d-flex flex-column-reverse flex-md-row">
       <div class="col-md-6 mission-div-img">
         <img
-          src="https://i.postimg.cc/wjghLb53/h12.webp"
+          src="https://i.ibb.co/JkvxkvQ/mission.webp"
           alt=""
           class="mission-img"
         />
+     
       </div>
       <div class="col-md-6 heading-power">
         <h1 class="heading text-start m-2">
@@ -38,7 +41,7 @@
   <div class="d-flex justify-content-center">
     <figure class="snip1390">
       <img
-        src="https://i.postimg.cc/c4Jm6JjQ/C12-Ayesha-Galant-Class1-2.jpg"
+        src="https://i.ibb.co/5Gd3v2F/ayesha.png"
         alt="profile-sample3"
         class="profile"
       />
@@ -53,7 +56,7 @@
     </figure>
     <figure class="snip1390 hover">
       <img
-        src="https://i.postimg.cc/g2XHqTGj/C12-Luke-Evertson-2.jpg"
+        src="https://i.ibb.co/XWdyMgM/C12-Luke-Evertson-1.jpg"
         alt="profile-sample5"
         class="profile"
       />
@@ -68,12 +71,12 @@
     </figure>
     <figure class="snip1390">
       <img
-        src="https://i.postimg.cc/vmc7CH8t/ethan2.png"
+        src="https://i.ibb.co/cck0K9J/Sidwell-2.png"
         alt="profile-sample6"
         class="profile"
       />
       <figcaption>
-        <h2>Ethan Lesar</h2>
+        <h2>Sidwell Batyi</h2>
         <h4>Customer</h4>
         <blockquote>
           Whether I'm shopping for groceries, household items, or even

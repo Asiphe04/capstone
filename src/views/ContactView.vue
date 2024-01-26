@@ -39,7 +39,7 @@
     </div>
     <div class="col-6 m-4 contact-div image-slide-in">
       <img
-        src="https://i.postimg.cc/3RrKFWwd/c91.jpg"
+        src="https://i.ibb.co/Lzwv8q3/c9-contact.jpg"
         alt=""
         id="contact-img"
       />

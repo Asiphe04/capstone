@@ -2,7 +2,7 @@
   <div class="container d-md-flex blur-animation">
     <div class="col-6 mt-5">
       <img
-        src="https://i.postimg.cc/JzdRxNQW/e2.webp"
+        src="https://i.ibb.co/2FhxXrb/c9-cast-about.webp"
         alt=""
         class="employees-img"
       />
@@ -29,7 +29,7 @@
     <div class="col-3">
       <h4 class="text-start category-name">OUR HISTORY</h4>
       <img
-        src="https://i.postimg.cc/Dwg9FHyT/111111.jpg"
+        src="https://i.ibb.co/bNzN9b0/history.jpg"
         alt=""
         class="hardware-display"
       />
@@ -47,7 +47,7 @@
     <div class="col-3">
       <h4 class="text-start category-name">OUR VALUES</h4>
       <img
-        src="https://i.postimg.cc/fTHPrXHz/v1.jpg"
+        src="https://i.ibb.co/Kr3SL1q/c9-customers.jpg"
         alt=""
         class="hardware-display"
       />
@@ -66,7 +66,7 @@
     <div class="col-3">
       <h4 class="text-start category-name">OUR MISSION</h4>
       <img
-        src="https://i.postimg.cc/wjghLb53/h12.webp"
+        src="https://i.ibb.co/JkvxkvQ/mission.webp"
         alt=""
         class="hardware-display"
       />
