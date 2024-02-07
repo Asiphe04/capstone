@@ -2,7 +2,7 @@
   <div class="container d-flex p-4">
     <div class="col-6 img-div">
       <img
-        src="https://i.postimg.cc/YCJbkvPZ/c9bl-removebg-preview.png"
+        src="https://i.postimg.cc/ncvnJZZf/c9real-removebg-preview.png"
         alt=""
       />
     </div>
@@ -21,7 +21,7 @@
 
           <input
             type="text"
-            placeholder="https://i.postimg.cc/Cx0fdCZw/C12-Asiphe-Ndimlana-3.jpg"
+            placeholder="https://i.postimg.cc/gkpKgq2q/user-removebg-preview.png"
             v-model="userProfile"
           />
         </div>
@@ -79,7 +79,7 @@ export default {
       userRole: "User",
       emailAdd: "",
       userPass: "",
-      userProfile: "https://i.postimg.cc/BZzhb5bJ/user4-removebg-preview.png",
+      userProfile: "https://i.postimg.cc/gkpKgq2q/user-removebg-preview.png",
     };
   },
   methods: {

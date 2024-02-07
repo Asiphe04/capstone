@@ -2,7 +2,7 @@
   <div class="container d-flex p-4">
     <div class="col-6 img-div">
       <img
-        src="https://i.postimg.cc/YCJbkvPZ/c9bl-removebg-preview.png"
+        src="https://i.postimg.cc/ncvnJZZf/c9real-removebg-preview.png"
         alt=""
       />
     </div>

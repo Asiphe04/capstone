@@ -65,7 +65,7 @@ export default {
       quantity: "",
       amount: "",
       category: "",
-      prodURL: "https://i.postimg.cc/43GzNPSc/img1.jpg",
+      prodURL: "https://i.postimg.cc/ydzJ7j5L/no-img-removebg-preview.png",
       description: "",
     };
   },
