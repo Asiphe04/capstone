@@ -52,16 +52,17 @@
             </select>
           </div>
           <div class="cards">
-            <img src="https://i.postimg.cc/J72jL382/mc.png" alt="" />
-            <img src="https://i.postimg.cc/KjwTDbQ2/vi.png" alt="" />
-            <img src="https://i.postimg.cc/GhTGhBhh/pp.png" alt="" />
+            <img src="https://i.postimg.cc/BQLX1tDW/mc-removebg-preview.png" alt="" />
+            <img src="https://i.postimg.cc/3JsWj7Ck/visa-removebg-preview.png" alt="" />
+            <img src="https://i.postimg.cc/qv2qjYjj/paypal-removebg-preview.png" alt="" />
           </div>
         </div>
       </div>
 
-      <button @click="checkout" class="m-2" type="submit">Pay Now</button>
+      <button @click="checkout" type="submit">Pay Now</button>
       <h5>Or</h5>
-      <button class="m-2" @click="paycash">Pay on delivery</button>
+      <button  @click="paycash">Pay on delivery</button>
+    
     </div>
     <div class="col-6">
       <h1>YOUR ITEMS</h1>
